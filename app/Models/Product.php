@@ -17,7 +17,9 @@ class Product extends Model
         'Visibility'
     ];
 
-
+    public function categories(){
+        return $this->belongsToMany(Category::class,'category_product');
+    }
 
 
 }
