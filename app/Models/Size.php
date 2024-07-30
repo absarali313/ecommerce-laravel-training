@@ -17,4 +17,9 @@ class Size extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function prices()
+    {
+        return $this->hasMany(Price::class);
+    }
 }

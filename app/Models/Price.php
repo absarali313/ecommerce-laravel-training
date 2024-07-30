@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Price extends Model
 {
+    use HasFactory;
     protected $fillable=[
         'price','started_at','ended_at'
     ];
-    use HasFactory;
+
+    public function size()
+    {
+        return $this->belongsTo(Size::class);
+    }
 }
