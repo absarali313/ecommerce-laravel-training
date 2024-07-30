@@ -23,10 +23,6 @@ class Product extends Model
         return $this->belongsToMany(Product::class,'product_product','product_id','related_product_id');
     }
 
-    public function relatedItems(){
-        return $this->belongsToMany(Product::class,'product_product','related_product_id','product_id');
-    }
-
     public function sizes()
     {
         return $this->hasMany(Size::class);
