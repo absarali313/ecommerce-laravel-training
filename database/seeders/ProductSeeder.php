@@ -27,5 +27,7 @@ class ProductSeeder extends Seeder
 
             $product->relatedProducts()->attach($relatedProducts);
         }
+
+        $this->call(ProductImageSeeder::class);
     }
 }

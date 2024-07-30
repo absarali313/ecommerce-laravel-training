@@ -28,4 +28,8 @@ class Product extends Model
         return $this->belongsToMany(Product::class,'related_products','related_product_id','product_id');
     }
 
+    public function images(){
+        return $this->hasMany(ProductImage::class)->orderByAsc('order');
+    }
+
 }
