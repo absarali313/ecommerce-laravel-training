@@ -17,6 +17,13 @@ class Product extends Model
         'Visibility'
     ];
 
+    public function relatedProducts(){
+        return $this->belongsToMany(Product::class,'related_products','product_id','related_product_id');
+    }
+
+    public function relatedTo(){
+        return $this->belongsToMany(Product::class,'related_products','related_product_id','product_id');
+    }
 
 
 
