@@ -9,7 +9,9 @@ class Price extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'price','started_at','ended_at'
+        'price',
+        'started_at',
+        'ended_at',
     ];
 
     public function size()
