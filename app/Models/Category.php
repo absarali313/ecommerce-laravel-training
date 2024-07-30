@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','image_url','parent_id'];
+    
+    protected $fillable = [
+    'name',
+    'image_url',
+    'parent_id'
+    ];
 
     public function parent(){
         return $this->belongsTo(Category::class,'parent_id');
