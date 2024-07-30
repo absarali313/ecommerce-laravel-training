@@ -17,7 +17,10 @@ class Product extends Model
         'Visibility'
     ];
 
-
+    public function sizes()
+    {
+        return $this->hasMany(Size::class);
+    }
 
 
 }

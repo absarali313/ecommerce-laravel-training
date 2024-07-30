@@ -13,4 +13,8 @@ class Size extends Model
         'stock'
     ];
 
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

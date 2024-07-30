@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('sizes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->string('title');
             $table->integer('stock')->nullable(); // default zero or nullable
             $table->timestamps();
 

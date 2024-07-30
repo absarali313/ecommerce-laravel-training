@@ -18,7 +18,7 @@ class SizeFactory extends Factory
     public function definition(): array
     {
         return [
-            'product_id'=>Product::all()->random()->id,
+            'product_id'=>Product::factory(),
             'title'=>fake()->title(),
             'stock'=>fake()->numberBetween(1,10),
         ];
