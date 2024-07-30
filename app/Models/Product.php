@@ -27,6 +27,10 @@ class Product extends Model
     public function relatedTo(){
         return $this->belongsToMany(Product::class,'related_products','related_product_id','product_id');
     }
+    public function sizes()
+    {
+        return $this->hasMany(Size::class);
+    }
 
     public function images(){
         return $this->hasMany(ProductImage::class)->orderByAsc('order');
