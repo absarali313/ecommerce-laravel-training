@@ -22,4 +22,8 @@ class Size extends Model
     {
         return $this->hasMany(Price::class);
     }
+
+    public function scopeCurrentPrice(){
+        return $this->prices()->orderByDsc('started_at')->first();
+    }
 }
