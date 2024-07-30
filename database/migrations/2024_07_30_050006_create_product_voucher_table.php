@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('product_voucher', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->longText('description')->nullable(); // nullable
-            $table->boolean('Visibility')->default(true);
             $table->timestamps();
         });
     }
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('product_voucher');
     }
 };
