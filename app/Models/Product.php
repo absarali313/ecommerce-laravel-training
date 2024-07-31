@@ -31,4 +31,8 @@ class Product extends Model
         return $this->hasMany(ProductImage::class)->orderByAsc('order');
     }
 
+    public function scopeCoverImage(){
+        return $this->images()->orderByAsc('order')->first();
+    }
+
 }
