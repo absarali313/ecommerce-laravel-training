@@ -1,3 +1,9 @@
+
+
+/* Light text color on hover for elements with hover-text-light */
+.hover-text-light:hover {
+    color: #f8f9fa; /* Light text color on hover */
+}
 .hover-border:hover
 {
     border-width: 5px;
@@ -13,17 +19,29 @@
     border-width: 5px;
 }
 
+/* Custom background colors */
+.bg-light-gray {
+    background: #EBEBEB; /* light gray background */
+}
+.hover-bg-light-gray:hover {
+    background: #f3f3f3; /* light gray background */
+}
 .button-hover
 {
     color: Gray;
     background-color: transparent;
 }
-
+.bg-gray{
+    background: #252525;
+}
 .search-container
 {
     position: relative;
 }
 
+.bg-light-black {
+    background: rgb(28, 28, 28); /* Black background */
+}
 .search-container .form-control
 {
     width: 0;
@@ -32,13 +50,26 @@
     position: absolute;
     right: 0;
 }
-
+.bg-dark-gray {
+    background: rgb(48, 48, 48); /* Black background */
+}
 .search-container:hover .form-control
 {
     width: 200px;
     opacity: 1;
 }
+.hover-bg-dark-gray:hover {
+    background: rgb(57, 57, 57); /* Black background */
+}
 .search-icon
 {
     cursor: pointer;
 }
+
+
+/* Custom placeholder text color */
+.form-control::placeholder {
+    color: #6c757d; /* Light gray color for placeholder text */
+    opacity: 1; /* Ensures the color is applied */
+}
+
