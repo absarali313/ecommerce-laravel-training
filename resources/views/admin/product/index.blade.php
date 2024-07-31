@@ -33,12 +33,9 @@
                         <h6 class="text-secondary text-center">Inventory</h6>
                     </div>
                 </div>
-                <x-admin.product.product-box></x-admin.product.product-box>
-                <x-admin.product.product-box></x-admin.product.product-box>
-                <x-admin.product.product-box></x-admin.product.product-box>
-                <x-admin.product.product-box></x-admin.product.product-box>
-                <x-admin.product.product-box></x-admin.product.product-box>
-                <x-admin.product.product-box></x-admin.product.product-box>
+               @foreach($products as $product)
+                   <x-admin.product.product-box :product="$product"></x-admin.product.product-box>
+                @endforeach
 
 
 

@@ -25,23 +25,7 @@ class ProductSeeder extends Seeder
             $product->relatedProducts()->attach($relatedProducts);
         }
 
-        $products->each(function ($product)
-        {
-            ProductImage::factory(1)->create(['product_id' => $product->id]);
-        });
-
-        foreach ($products as $product)
-        {
-           $size= Size::factory(4)->create([
-                'product_id' => $product->id,
-            ]);
-
-           $size->each(function ($size)
-           {
-                Price::factory(2)->create([
-                    'product_size_id' => $size->id,
-                ]);
-           });
-        }
+        $this->call(ProductImageSeeder::class);
+        $this->call(SizeSeeder::class);
     }
 }

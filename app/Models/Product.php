@@ -44,6 +44,11 @@ class Product extends Model
         return $this->throughSizes()->hasPrices();
     }
 
+    public function getTotalStock()
+    {
+        return $this->sizes->sum('stock');
+    }
+
     public function scopeCurrentPrice()
     {
         return $this->sizes()->with(['prices' => function ($query) {
