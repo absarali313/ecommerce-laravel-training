@@ -29,5 +29,6 @@ class ProductSeeder extends Seeder
         }
 
         $this->call(ProductImageSeeder::class);
+        $this->call(SizeSeeder::class);
     }
 }

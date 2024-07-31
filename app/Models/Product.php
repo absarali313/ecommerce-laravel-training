@@ -27,12 +27,17 @@ class Product extends Model
     {
         return $this->hasMany(Size::class);
     }
+
     public function images(){
-        return $this->hasMany(ProductImage::class)->orderByAsc('order');
+        return $this->hasMany(ProductImage::class);
     }
 
-    public function scopeCoverImage(){
-        return $this->images()->orderByAsc('order')->first();
+    public function getImageAttribute(){}
+
+
+    public function getTotalStock()
+    {
+        return $this->sizes->sum('stock');
     }
 
 }
