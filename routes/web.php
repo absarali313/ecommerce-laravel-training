@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -9,18 +10,14 @@ Route::get('/', function () {
 });
 
 
+Route::middleware(['admin'])->group(function () {
 
+    Route::prefix('admin')->group(function () {
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+        Route::get('/products',[AdminProductController::class,'index']);
+    });
+
 });
-//
-//Route::middleware(['admin'])->group(function () {
-//
-//Route::get('/dashboard', function () {
-//    return view('admin');
-//});
-//});
 
 Route::middleware('guest')->group(function () {
     Route::controller(SessionController::class)->group(function () {

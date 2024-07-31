@@ -5,14 +5,8 @@
                 <x-admin.sidebox/>
             </div>
             <div class="col-md-9 d-flex align-items-center justify-content-center">
-                {{$slot}}
+               hi
             </div>
         </div>
     </div>
-    @auth
-        <form action="/logout" method="POST">
-            @csrf
-            <button type="submit">logout</button>
-        </form>
-    @endauth
 </x-admin.layout>
