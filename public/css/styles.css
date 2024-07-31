@@ -23,6 +23,9 @@
 .bg-light-gray {
     background: #EBEBEB; /* light gray background */
 }
+.bg-off-white {
+    background: #f3f3f3; /* light gray background */
+}
 .hover-bg-light-gray:hover {
     background: #f3f3f3; /* light gray background */
 }
@@ -34,6 +37,14 @@
 
 .bg-gray {
     background: #252525;
+
+}
+.btn-gray {
+    background: linear-gradient(180deg, #151515, #393939);
+    box-shadow: 0 1px #999;
+    color:white;
+    font-weight:bold;
+    font-size:12px;
 }
 .search-container
 {
@@ -74,3 +85,11 @@
     opacity: 1; /* Ensures the color is applied */
 }
 
+.active {
+    color: #02cf2a;
+
+}
+.warning {
+    color: #a50404;
+:#014B40;
+}

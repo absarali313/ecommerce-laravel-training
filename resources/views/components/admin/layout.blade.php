@@ -28,7 +28,7 @@
                     <div class="row w-auto">
                         <div class="col-md-4 col-sm-4 d-flex align-items-center justify-content-end">
                             <button
-                                class="bg-light-black border-0 text-secondary hover-bg-dark-gray">
+                                class="bg-light-black border-0 rounded-3 text-secondary hover-bg-dark-gray">
                                 <i class="fas fa-bell"></i>
                             </button>
                         </div>
@@ -43,7 +43,18 @@
 </div>
 <main>
 
-    {{$slot}}
+
+    <div class="container-fluid d-flex flex-column min-vh-100">
+        <div class="row flex-grow-1">
+            <div class="col-md-2 d-none d-md-block 4 bg-light-gray d-flex align-items-center justify-content-start">
+                <x-admin.sidebox/>
+            </div>
+            <div class="col-md-10 bg-off-white">
+                {{$slot}}
+            </div>
+        </div>
+    </div>
+
 
 </main>
 
