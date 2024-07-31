@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->longText('description');
+            $table->longText('description')->nullable(); // nullable
             $table->boolean('Visibility')->default(true);
             $table->timestamps();
         });
