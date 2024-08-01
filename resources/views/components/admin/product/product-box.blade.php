@@ -10,11 +10,11 @@
     <div class="col-6">
         <div class="row flex justify-content-start align-items-center  ">
             <div class="col-5">
-                <img src="{{asset($image_url)}}" alt="product"
-                     class="border border-1 rounded-3" style="width:50px; height:50px">
+                <a href="/admin/products/edit/{{$product->id}}"><img src="{{asset($image_url)}}" alt="product"
+                     class="border border-1 rounded-3" style="width:50px; height:50px"></a>
             </div>
             <div class="col-7 flex justify-content-center align-content-center">
-                <p class="text-center">{{$product->title}}</p>
+                <a class="text-center text-black text-decoration-none" href="/admin/product/edit/{{$product->id}}">{{$product->title}}</a>
             </div>
         </div>
     </div>

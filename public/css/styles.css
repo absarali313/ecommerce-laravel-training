@@ -51,6 +51,15 @@
     position: relative;
 }
 
+.btn-red {
+    background: linear-gradient(180deg, rgba(174, 54, 54, 0.85), rgba(189, 44, 44, 0.85));
+    box-shadow: 0 1px #999;
+    color:white;
+    font-weight:bold;
+    font-size:12px;
+}
+
+
 .bg-light-black {
     background: rgb(28, 28, 28); /* Black background */
 }
@@ -89,7 +98,6 @@
     color: #02cf2a;
 
 }
-.warning {
-    color: #a50404;
-:#014B40;
-}
+
+
+
