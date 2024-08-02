@@ -57,13 +57,11 @@ class ProductController extends Controller
             $visibility = false;
         }
 
-
         try {
             $product = Product::create([
                 'title' => $validated['title'],
                 'description' => $validated['description'],
                 'Visibility' => $visibility,
-
             ]);
 
             // Store Image
@@ -81,6 +79,7 @@ class ProductController extends Controller
             }
 
             return redirect("/admin/products/edit/$product->id");
+
         } catch (Exception $e) {
             return redirect()->back()
                 ->withInput($request->only('title'))
@@ -91,12 +90,14 @@ class ProductController extends Controller
 
     }
 
-    public function destroy( Product $product){
+    public function destroy(Product $product)
+    {
         $product->delete();
         return redirect("/admin/products");
     }
 
-    public function update(Request $request, Product $product){
+    public function update(Request $request, Product $product)
+    {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',

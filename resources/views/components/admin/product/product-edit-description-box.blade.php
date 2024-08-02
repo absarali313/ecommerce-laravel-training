@@ -1,7 +1,7 @@
 @props(['product' => new \App\Models\Product()])
 @php
 
-@endphp
+    @endphp
 
 <div class="row bg-white rounded-3 px-4 py-2 border border-1 border-white">
     <div class="col">
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-</div>
+    </div>
 
 
 </div>

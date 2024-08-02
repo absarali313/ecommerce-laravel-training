@@ -19,18 +19,23 @@ Route::middleware(['admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
 
-        Route::get('/products',[AdminProductController::class,'index'])->name('admin.products.index');
-        Route::get('/products/edit/{product}',[AdminProductController::class,'edit']);
-        Route::get('/products/create',[AdminProductController::class,'create']);
-        Route::post('/products',[AdminProductController::class,'store'])->name('products.store');
-        Route::patch('/products/edit/{product}',[AdminProductController::class,'update'])->name('products.update');
-        Route::delete('/products/delete/{product}',[AdminProductController::class,'destroy'])->name('products.delete');
+        Route::controller(AdminProductController::class)->group(function () {
+
+            Route::get('/products', [AdminProductController::class, 'index'])->name('admin.products.index');
+            Route::get('/products/edit/{product}', [AdminProductController::class, 'edit']);
+            Route::get('/products/create', [AdminProductController::class, 'create']);
+            Route::post('/products', [AdminProductController::class, 'store'])->name('products.store');
+            Route::patch('/products/edit/{product}', [AdminProductController::class, 'update'])->name('products.update');
+            Route::delete('/products/delete/{product}', [AdminProductController::class, 'destroy'])->name('products.delete');
+        });
 
         Route::delete('/products/images/delete/{productImage}', [AdminProductImageController::class, 'destroy'])->name('products.images.delete');
-       // Route::patch('products/update/{product}',[AdminProductController::class,'update'])->name('products.update');
 
-        Route::post('/products/size/{product}}', [AdminSizeController::class, 'store'])->name('products.size.store');
-        Route::put('/products/size/{size}', [AdminSizeController::class, 'update'])->name('products.size.update');
+        Route::controller(AdminSizeController::class)->group(function () {
+
+            Route::post('/products/size/{product}}', [AdminSizeController::class, 'store'])->name('products.size.store');
+            Route::put('/products/size/{size}', [AdminSizeController::class, 'update'])->name('products.size.update');
+        });
 
     });
 

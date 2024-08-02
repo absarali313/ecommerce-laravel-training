@@ -11,53 +11,57 @@ use Illuminate\Support\Facades\Date;
 
 class SizeController extends Controller
 {
-    public function store(Request $request, Product $product){
-       $request->validate([
+    public function store(Request $request, Product $product)
+    {
+
+        $request->validate([
             'size_title' => 'required|string',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
         ]);
 
-        $size =  Size::create([
+        $size = Size::create([
             'title' => $request->size_title,
             'product_id' => $product->id,
             'stock' => $request->stock,
-            ]);
+        ]);
 
         $price = Price::create([
             'product_size_id' => $size->id,
             'price' => $request->price,
-            'started_at'=> Date::now(),
+            'started_at' => Date::now(),
         ]);
+
         return redirect()->back();
     }
 
-    public function update(Request $request, Size $size){
+    public function update(Request $request, Size $size)
+    {
+
         $action = $request->input('action');
-
         if ($action == 'update') {
-           $request->validate([
-               'size_title' => 'required|string',
-               'stock' => 'required|integer',
-               'price' => 'required|numeric',
-           ]);
+            $request->validate([
+                'size_title' => 'required|string',
+                'stock' => 'required|integer',
+                'price' => 'required|numeric',
+            ]);
 
-           $size->update([
-               'title' => $request->size_title,
-               'stock' => $request->stock,
-           ]);
+            $size->update([
+                'title' => $request->size_title,
+                'stock' => $request->stock,
+            ]);
 
 
-           if($request->price != $size->getCurrentPrice()->price){
-               $price = Price::create([
-                   'product_size_id' => $size->id,
-                   'price' => $request->price,
-                   'started_at'=> Date::now(),
-               ]);
-           }
+            if ($request->price != $size->getCurrentPrice()->price) {
+                $price = Price::create([
+                    'product_size_id' => $size->id,
+                    'price' => $request->price,
+                    'started_at' => Date::now(),
+                ]);
+            }
 
         } elseif ($action == 'delete') {
-           $size->delete();
+            $size->delete();
         }
         return redirect()->back();
     }
