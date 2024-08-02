@@ -11,11 +11,17 @@
             <div class="container-fluid bg-white rounded-3 mt-3">
                 <div class="row d-flex justify-content-between">
                     <div class="col-6 mt-2">
-                        <button class="btn-gray rounded-2 mb-1">All</button>
-                        <button class="btn-gray rounded-2 mb-1">Active</button>
-                        <button class="btn-gray rounded-2 mb-1">Draft</button>
-                    </div>
-                    <div class="col-6">
+                        <Button class="btn-gray rounded-2 mb-1">All</Button>
+                        <Button class="btn-gray rounded-2 mb-1">Active</Button>
+                        <Button class="btn-gray rounded-2 mb-1">Draft</Button>
+
+                        <form method="POST" action="/admin/products/archive" class="me-0">
+                            @csrf
+                            @method('GET')
+                            <Button type="submit" class="btn-gray rounded-2 mb-1 ">Archive</Button>
+                        </form>
+
+
                     </div>
                 </div>
 

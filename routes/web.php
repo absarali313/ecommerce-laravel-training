@@ -25,6 +25,8 @@ Route::middleware(['admin'])->group(function () {
             Route::post('/products', [AdminProductController::class, 'store'])->name('products.store');
             Route::patch('/products/edit/{product}', [AdminProductController::class, 'update'])->name('products.update');
             Route::delete('/products/delete/{product}', [AdminProductController::class, 'destroy'])->name('products.delete');
+            Route::get('/products/archive', [AdminProductController::class, 'archive_index'])->name('products.archive');
+
         });
 
         Route::delete('/products/images/delete/{productImage}', [AdminProductImageController::class, 'destroy'])->name('products.images.delete');

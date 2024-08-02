@@ -1,4 +1,4 @@
-@props(['product'])
+@props(['product','status'=>false])
 @php
     // Retrieve the first image associated with the product
     $firstImage = $product->images->first();
@@ -27,11 +27,29 @@
     <div class="col-1 flex justify-content-center align-content-center">
         <h6 class="text-center">{{$product->getTotalStock()}}</h6>
     </div>
-    <div class="col-2 flex justify-content-end align-items-center">
-        <form method="POST" action="{{route("products.delete",$product)}}">
-            @csrf
-            @method('DELETE')
-            <Button type="submit" class="text-center btn btn-danger rounded-3 mx-5">Delete</Button>
-        </form>
+    <div class="col-2 d-flex justify-content-end align-items-center">
+        @if($status == true)
+            <div>
+                <form method="POST" action="">
+                    @csrf
+                    <Button type="submit" class="text-center btn btn-secondary rounded-3 mx-2">Restore</Button>
+                </form>
+            </div>
+
+        @else
+            <div class="d-flex">
+                <form method="POST" action="">
+                    @csrf
+                    <Button type="submit" class="text-center btn btn-light rounded-3 mx-2">Archive</Button>
+                </form>
+                <form method="POST" action="{{route("products.delete",$product)}}">
+                    @csrf
+                    @method('DELETE')
+                    <Button type="submit" class="text-center btn btn-danger rounded-3 mx-2">Delete</Button>
+                </form>
+
+            </div>
+        @endif
+
     </div>
 </div>
