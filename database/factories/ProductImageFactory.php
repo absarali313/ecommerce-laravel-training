@@ -20,8 +20,8 @@ class ProductImageFactory extends Factory
         return [
             'product_id' => Product::factory(), // Create a new Product instance if needed
             'order' => $this->faker->numberBetween(1, 100),
-            'image_path' => $this->faker->imageUrl(), // Generate a dummy image URL
-
+//            'image_path' => $this->faker->url(), // Generate a dummy image URL
+            'image_path' => 'http://picsum.photos/seed/{{rand(0,10000)}}/100/100'
         ];
     }
 }
