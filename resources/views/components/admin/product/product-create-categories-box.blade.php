@@ -11,9 +11,9 @@
 
                         <input class="form-check-input" type="checkbox"
                                id="category-{{ $category->id }}" name="categories[]"
-                               value="{{ $category->id }}" />
+                               value="{{ $category->id }}"/>
 
-                            <label class="form-check-label" for="category-{{ $category->id }}">
+                        <label class="form-check-label" for="category-{{ $category->id }}">
                             {{ $category->name }}
                         </label>
                     </div>
