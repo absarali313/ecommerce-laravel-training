@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Price;
 use App\Models\Product;
+use App\Models\ProductImage;
+use App\Models\Size;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +18,7 @@ class ProductSeeder extends Seeder
     {
 
         // Create 20 products
-        $products = Product::factory()->count(20)->create();
+        $products = Product::factory()->count(18)->create();
 
         // Establish relationships
         foreach ($products as $product) {
@@ -28,6 +31,22 @@ class ProductSeeder extends Seeder
             $product->relatedProducts()->attach($relatedProducts);
         }
 
-        $this->call(ProductImageSeeder::class);
+        $products->each(function ($product) {
+            ProductImage::factory(1)->create(['product_id' => $product->id]);
+        });
+
+
+        foreach ($products as $product) {
+           $size= Size::factory(4)->create([
+                'product_id' => $product->id,
+            ]);
+
+           $size->each(function ($size) {
+                Price::factory(2)->create([
+                    'product_size_id' => $size->id,
+                ]);
+           });
+        }
+//        $this->call(ProductImageSeeder::class);
     }
 }
