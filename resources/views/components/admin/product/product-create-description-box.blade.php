@@ -7,7 +7,7 @@
                 <label for="title" class="text-start text-secondary">Title</label>
                 <input id="title" name="title"
                        class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-100"
-                       placeholder="Black Titanium Ring"">
+                       placeholder="Black Titanium Ring">
                 <x-form-error name="title"></x-form-error>
             </div>
         </div>
