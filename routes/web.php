@@ -27,6 +27,8 @@ Route::middleware(['admin'])->group(function () {
             Route::post('/products', [AdminProductController::class, 'store'])->name('products.store');
             Route::patch('/products/edit/{product}', [AdminProductController::class, 'update'])->name('products.update');
             Route::delete('/products/delete/{product}', [AdminProductController::class, 'destroy'])->name('products.delete');
+            Route::get('/products/archive', [AdminProductController::class, 'archive_index'])->name('products.archive');
+
         });
 
         Route::delete('/products/images/delete/{productImage}', [AdminProductImageController::class, 'destroy'])->name('products.images.delete');
@@ -39,9 +41,9 @@ Route::middleware(['admin'])->group(function () {
 
     });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
 //
 //Route::middleware(['admin'])->group(function () {
 //
@@ -50,18 +52,19 @@ Route::get('/dashboard', function () {
 //});
 //});
 
-Route::middleware('guest')->group(function () {
-    Route::controller(SessionController::class)->group(function () {
+    Route::middleware('guest')->group(function () {
+        Route::controller(SessionController::class)->group(function () {
 
-        Route::post('/login', 'store');
-        Route::get('/login', 'create');
-        Route::post('/logout', 'destroy')->withoutMiddleware('guest')->middleware('auth');
-    });
-    Route::controller(RegisteredUserController::class)->group(function () {
+            Route::post('/login', 'store');
+            Route::get('/login', 'create');
+            Route::post('/logout', 'destroy')->withoutMiddleware('guest')->middleware('auth');
+        });
+        Route::controller(RegisteredUserController::class)->group(function () {
 
-        Route::post('/register', 'store');
-        Route::get('/register', 'create');
+            Route::post('/register', 'store');
+            Route::get('/register', 'create');
 
+        });
     });
 });
 

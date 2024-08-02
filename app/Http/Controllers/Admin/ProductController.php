@@ -147,4 +147,11 @@ class ProductController extends Controller
         }
     }
 
+    public function archive_index(Product $product)
+    {
+        $products=Product::all();
+
+        return view('admin.product.archive-index',['products'=>$products, 'status'=>false]);
+
+}
 }
