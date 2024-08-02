@@ -5,7 +5,7 @@
                 <h4> Products</h4>
             </div>
             <div class="col-6 d-flex justify-content-end ">
-                <button class="btn btn-gray rounded-2">Add Product</button>
+                <a href="/admin/products/create" class="btn btn-gray rounded-2">Add Product</a>
             </div>
 
             <div class="container-fluid bg-white rounded-3 mt-3">
@@ -31,6 +31,9 @@
                     </div>
                     <div class="col-2 flex justify-content-center align-content-center">
                         <h6 class="text-secondary text-center">Inventory</h6>
+                    </div>
+                    <div class="col-2 flex justify-content-center align-content-center">
+                        <h6 class="text-secondary text-center">Actions</h6>
                     </div>
                 </div>
                @foreach($products as $product)

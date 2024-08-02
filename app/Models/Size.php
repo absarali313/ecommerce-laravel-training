@@ -11,7 +11,8 @@ class Size extends Model
 
     protected $fillable = [
         'title',
-        'stock'
+        'stock',
+        'product_id',
     ];
 
     public function product()
@@ -21,10 +22,10 @@ class Size extends Model
 
     public function prices()
     {
-        return $this->hasMany(Price::class);
+        return $this->hasMany(Price::class,'product_size_id');
     }
 
-    public function scopeCurrentPrice(){
-        return $this->prices()->orderByDsc('started_at')->first();
+    public function getCurrentPrice(){
+        return $this->prices()->orderByDesc('started_at')->first();
     }
 }
