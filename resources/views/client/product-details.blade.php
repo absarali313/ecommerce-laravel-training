@@ -8,7 +8,7 @@
             color: 	#787878;/* Example gray color */
         }
     </style>
-    </style>
+
     <div class="d-flex w-100">
         <img src="http://picsum.photos/seed/{{rand(0,10000)}}/600/600" class="img-fluid mx-5 my-5" alt="">
         <div class="mx-5 my-5">
@@ -38,8 +38,24 @@
         </div>
     </div>
 
+<div>
+    <p class="ms-5 fs-5">You may also know</p>
+</div>
+    <div class="container my-5">
+        <div class="row">
+            @foreach($product->relatedproducts as $relate)
+                            <x-client.product :product="$relate" />
+            @endforeach
+        </div>
+    </div>
 
+    <hr>
+    <p class="ms-5 my-5 fs-6 text-gray-200 ">© 2024, ShopEase Powered by Shopify</p>
 </x-layout>
+
+
+
+
 
 {{--<x-layout>--}}
 {{--    <style>--}}
