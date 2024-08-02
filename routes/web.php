@@ -4,9 +4,11 @@ use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+
+
+
+Route::get('/',[\App\Http\Controllers\ProductController::class,'index'])->name('home');
+Route::get('/product/{product}',[\App\Http\Controllers\ProductController::class,'show'])->name('productDetails');
 
 
 
