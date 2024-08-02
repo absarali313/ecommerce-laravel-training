@@ -41,10 +41,7 @@ class CategoryController extends Controller
 
         $parentCategoryId = Category::where('name', $request->parent)->value('id');
 
-
-        // Check if the request has files
         if ($request->hasFile('images')) {
-            // Loop through each file and store it
             foreach ($request->file('images') as $image) {
                 $path = $image->store('product_images');
             }
@@ -53,7 +50,7 @@ class CategoryController extends Controller
         Category::create([
             'name' => $request->name,
             'parent_id' => $parentCategoryId,
-         //   'image_path'=> $path,
+            //   'image_path'=> $path,  (Has error)
         ]);
         return redirect()->route('admin.category.index');
     }
