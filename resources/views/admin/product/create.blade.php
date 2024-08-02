@@ -1,4 +1,4 @@
-@props(['categories', 'selectedCategories' => [] ])
+@props(['categories' => [], 'selectedCategories' => [] ])
 
 <x-admin.layout>
 
@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="col-6 d-flex justify-content-end ">
-                    <a class="btn btn-red rounded-2 mx-1 ">Cancel</a>
+                    <a href="/admin/products"class="btn btn-red rounded-2 mx-1 ">Cancel</a>
                     <button type="submit" class="btn btn-gray rounded-2 mx-1 ">Save</button>
                 </div>
 
@@ -24,36 +24,17 @@
             <div class="row d-flex justify-content-around mt-1 p-1 ">
 
                 <div class="col-7">
-                    <x-admin.product.product-description-box/>
+                    <x-admin.product.product-create-description-box/>
                 </div>
 
                 <div class="col-3">
                     <x-admin.product.product-visbility-box/>
-                    <x-admin.product.product-categories-box :categories="$categories"/>
+                    <x-admin.product.product-create-categories-box :categories="$categories" :selectedCategoies="$selectedCategories"/>
                 </div>
 
             </div>
 
-            <div class="row bg-white rounded-3 mx-5  py-2 border border-1 border-white mt-4">
 
-                <div class="row">
-                    <div class="col">
-
-                        <div class="row d-flex justify-content-between">
-                            <div class="col">
-                                <h5 class="text-start text-secondary">Sizes</h5>
-                            </div>
-                            <div class="col d-flex justify-content-end">
-                                <a id="addSizeBox" class="btn btn-outline-secondary">Add Size Box</a>
-                            </div>
-                        </div>
-
-                        <x-admin.product.size-box/>
-
-                    </div>
-                </div>
-
-            </div>
 
         </form>
     </div>

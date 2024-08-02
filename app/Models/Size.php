@@ -25,6 +25,10 @@ class Size extends Model
 
     public function prices(): HasMany
     {
-        return $this->hasMany(Price::class, 'product_size_id');
+        return $this->hasMany(Price::class,'product_size_id');
+    }
+
+    public function getCurrentPrice(){
+        return $this->prices()->orderByDesc('started_at')->first();
     }
 }

@@ -25,6 +25,9 @@ class ProductController extends Controller
     {
         return view('admin.product.edit', [
             'product' => $product,
+            'categories' => Category::all(),
+            'selectedCategories' => $product->categories,
+            'productSizes' => $product->sizes,
         ]);
     }
 
@@ -77,7 +80,62 @@ class ProductController extends Controller
                 $product->categories()->attach($validated['categories']);
             }
 
-            return redirect('/admin/products')->with('success', 'Product created successfully.');
+            return redirect("/admin/products/edit/$product->id");
+        } catch (Exception $e) {
+            return redirect()->back()
+                ->withInput($request->only('title'))
+                ->withErrors([
+                    'title' => $e->getMessage(),
+                ]);
+        }
+
+    }
+
+    public function destroy( Product $product){
+        $product->delete();
+        return redirect("/admin/products");
+    }
+
+    public function update(Request $request, Product $product){
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'images' => 'nullable',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'visibility' => Rule::in(['active', 'inactive']),
+            'categories' => 'nullable|array',
+            'categories.*' => 'exists:categories,id',
+        ]);
+
+        $visibility = true;
+        if ($validated['visibility'] == ('inactive')) {
+            $visibility = false;
+        }
+
+
+        try {
+            $product->update([
+                'title' => $validated['title'],
+                'description' => $validated['description'],
+                'Visibility' => $visibility,
+
+            ]);
+
+            // Store Image
+            if ($request->has('images')) {
+                foreach ($request->images as $image) {
+                    $path = $image->store('product_images');
+                    Log::info('Image stored at: ' . $path);
+                    $product->images()->create(['image_path' => $path, 'product_id' => $product->id]);
+                }
+            }
+
+            // Associate category_product relationship
+            if ($request->has('categories')) {
+                $product->categories()->attach($validated['categories']);
+            }
+
+            return redirect()->back();
 
         } catch (Exception $e) {
             return redirect()->back()

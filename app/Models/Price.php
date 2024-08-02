@@ -15,6 +15,7 @@ class Price extends Model
         'price',
         'started_at',
         'ended_at',
+        'product_size_id',
     ];
 
     public function size(): BelongsTo
