@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ProductImageController as AdminProductImageController;
 use App\Http\Controllers\Admin\SizeController as AdminSizeController;
-use App\Http\Controllers\Admin\ProductProductController as AdminRelatedProductController;
 use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
@@ -37,6 +36,13 @@ Route::middleware(['admin'])->group(function () {
 
             Route::post('/products/size/{product}}', [AdminSizeController::class, 'store'])->name('products.size.store');
             Route::put('/products/size/{size}', [AdminSizeController::class, 'update'])->name('products.size.update');
+        });
+
+        Route::controller(AdminCategoryController::class)->group(function () {
+            Route::get('/categories','index')->name('admin.category.index');
+            Route::get('/categories/create','create')->name('admin.category.create');
+            Route::delete('/categories/{category}','destroy')->name('admin.category.destroy');
+            Route::post('/categories','store')->name('admin.category.store');
         });
 
         Route::controller(AdminRelatedProductController::class)->group(function () {

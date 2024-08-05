@@ -7,15 +7,15 @@
         <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
 
             @csrf
-
-            <div class="row d-flex justify-content-around ">
+            <a href="/admin/products"class=" rounded-2 mx-1 "> <li class="fa fa-arrow-left text-secondary"></li></a>
+            <div class="row d-flex justify-content-around px-5">
 
                 <div class="col-6">
                     <h4>Add Product</h4>
                 </div>
 
                 <div class="col-6 d-flex justify-content-end ">
-                    <a href="/admin/products"class="btn btn-red rounded-2 mx-1 ">Cancel</a>
+
                     <button type="submit" class="btn btn-gray rounded-2 mx-1 ">Save</button>
                 </div>
 

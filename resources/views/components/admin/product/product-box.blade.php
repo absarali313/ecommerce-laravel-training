@@ -1,4 +1,4 @@
-@props(['product','status'=>false])
+@props(['product'])
 @php
     // Retrieve the first image associated with the product
     $firstImage = $product->images->first();
@@ -15,8 +15,8 @@
                                                                      class="border border-1 rounded-3"
                                                                      style="width:50px; height:50px"></a>
             </div>
-            <div class="col-7 flex justify-content-center align-content-center">
-                <a class="text-center text-black text-decoration-underline"
+            <div class="col-7 d-flex justify-content-center align-content-center ">
+                <a class="text-center text-black text-decoration-underline text-center"
                    href="/admin/products/edit/{{$product->id}}">{{$product->title}}</a>
             </div>
         </div>
