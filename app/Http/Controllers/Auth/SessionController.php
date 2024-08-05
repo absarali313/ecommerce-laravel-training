@@ -12,6 +12,7 @@ class SessionController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
+
         return redirect('/login');
     }
 
@@ -28,6 +29,7 @@ class SessionController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
+
         if (Auth::attempt($details)) {
             $request->session()->regenerate();
 
