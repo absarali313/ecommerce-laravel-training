@@ -30,22 +30,24 @@
     <div class="col-2 d-flex justify-content-end align-items-center">
         @if($status == true)
             <div>
-                <form method="POST" action="">
+                 <form method="POST" action="{{route("products.archive.restore",$product->id)}}">
                     @csrf
+                     @method('PATCH')
+
                     <Button type="submit" class="text-center btn btn-secondary rounded-3 mx-2">Restore</Button>
                 </form>
             </div>
 
         @else
             <div class="d-flex">
-                <form method="POST" action="">
-                    @csrf
-                    <Button type="submit" class="text-center btn btn-light rounded-3 mx-2">Archive</Button>
-                </form>
+{{--                <form method="POST" action="">--}}
+{{--                    @csrf--}}
+{{--                    <Button type="submit" class="text-center btn btn-light rounded-3 mx-2">Archive</Button>--}}
+{{--                </form>--}}
                 <form method="POST" action="{{route("products.delete",$product)}}">
                     @csrf
                     @method('DELETE')
-                    <Button type="submit" class="text-center btn btn-danger rounded-3 mx-2">Delete</Button>
+                    <Button type="submit" class="text-center btn btn-danger rounded-3 mx-5">Delete</Button>
                 </form>
 
             </div>

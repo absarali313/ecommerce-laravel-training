@@ -12,6 +12,7 @@ use Illuminate\Database\Query\Builder;
 class Product extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'title',
