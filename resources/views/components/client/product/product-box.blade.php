@@ -3,17 +3,17 @@
 
 <div class="col-md-3 mb-4">
     <div class="card shadow-sm h-100">
-        <a href="{{ url("/product/{$product['id']}") }}">
+        <a href="{{ url("/product/{$product?->id}") }}">
             <img src="http://picsum.photos/seed/{{rand(0,10000)}}/100/100" class="card-img-top rounded"
                  alt="Placeholder Image">
         </a>
 
         <div class="card-body text-center">
             <a href="{{ url("/product/{$product['id']}") }}" class="text-black text-decoration-none"><h5
-                    class="card-title mb-2">{{$product->title}}</h5></a>
+                    class="card-title mb-2">{{$product?->title}}</h5></a>
 
             <div class="d-flex justify-content-center align-items-center">
-                <p class="card-text fs-6 text-primary text-black text-center">Rs.{{$product->smallest_price->price}}.00
+                <p class="card-text fs-6 text-primary text-black text-center">Rs.{{$product?->smallest_price?->price }}.00
                     PKR</p>
 
             </div>

@@ -24,7 +24,6 @@ class RegisteredUserController extends Controller
 
         ]);
 
-
         $user = User::create($user_details);
         Auth::login($user);
 
