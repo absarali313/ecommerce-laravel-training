@@ -24,7 +24,7 @@
                 <x-form-error name="price"></x-form-error>
             </div>
         </div>
-        <div class=" col-2">
+        <div class=" col-2 ">
             <div class="row justify-content-start gap-3">
                 <div class="col-1">
                     <button class=" rounded-3 border-success " name="action" value="update">

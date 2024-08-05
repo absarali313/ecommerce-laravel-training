@@ -150,16 +150,35 @@
                                     <div class="col-9 align-content-center">
                                         <x-admin.product.relatedProduct-box :relatedProduct="$relatedProduct"/>
                                     </div>
-                                    <div class="col-1">
-                                        <button class="btn btn-success rounded-3 " name="action" value="update">Update
-                                        </button>
+{{--                                    <div class="col-1">--}}
+{{--                                        <button class="btn btn-success rounded-3 " name="action" value="update">Update--}}
+{{--                                        </button>--}}
+{{--                                        <button class=" rounded-3 border-success " name="action" value="update">--}}
+{{--                                            <li class="fa fa-pen text-success"></li>--}}
+{{--                                        </button>--}}
 
-                                    </div>
-                                    <div class="col-1">
+{{--                                    </div>--}}
+{{--                                    <div class="col-1">--}}
 
-                                        <button class="btn btn-danger rounded-3 mx-3" name="action" value="delete">
-                                            Delete
-                                        </button>
+{{--                                        <button class="btn btn-danger rounded-3 mx-3" name="action" value="delete">--}}
+{{--                                            Delete--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+                                    <div class=" col-2 ms-5">
+                                        <div class="row justify-content-start gap-3">
+                                            <div class="col-1">
+                                                <button class=" rounded-3 border-success " name="action" value="update">
+                                                    <li class="fa fa-pen text-success"></li>
+                                                </button>
+
+                                            </div>
+                                            <div class="col-1">
+
+                                                <button class=" rounded-3 border-secondary 3" name="action" value="delete">
+                                                    <li class="fa fa-trash text-secondary"></li>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
