@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Cassandra\TimestampGenerator\Monotonic;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -40,18 +39,18 @@ class CategoryController extends Controller
         ]);
 
         $parentCategoryId = Category::where('name', $request->parent)->value('id');
-
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
+        if ($request->hasFile('images'))
+        {
+            foreach ($request->file('images') as $image)
+            {
                 $path = $image->store('product_images');
             }
         }
-
         Category::create([
             'name' => $request->name,
             'parent_id' => $parentCategoryId,
-            //   'image_path'=> $path,  (Has error)
         ]);
+
         return redirect()->route('admin.category.index');
     }
 

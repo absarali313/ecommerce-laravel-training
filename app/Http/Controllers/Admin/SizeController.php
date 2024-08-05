@@ -13,7 +13,6 @@ class SizeController extends Controller
 {
     public function store(Request $request, Product $product)
     {
-
         $request->validate([
             'size_title' => 'required|string',
             'price' => 'required|numeric',
@@ -26,20 +25,21 @@ class SizeController extends Controller
             'stock' => $request->stock,
         ]);
 
-        $price = Price::create([
+        Price::create([
             'product_size_id' => $size->id,
             'price' => $request->price,
             'started_at' => Date::now(),
         ]);
 
         return redirect()->back();
+
     }
 
     public function update(Request $request, Size $size)
     {
-
         $action = $request->input('action');
-        if ($action == 'update') {
+        if ($action == 'update')
+        {
             $request->validate([
                 'size_title' => 'required|string',
                 'stock' => 'required|integer',
@@ -51,8 +51,8 @@ class SizeController extends Controller
                 'stock' => $request->stock,
             ]);
 
-
-            if ($request->price != $size->getCurrentPrice()->price) {
+            if ($request->price != $size->getCurrentPrice()->price)
+            {
                 $price = Price::create([
                     'product_size_id' => $size->id,
                     'price' => $request->price,
@@ -60,9 +60,13 @@ class SizeController extends Controller
                 ]);
             }
 
-        } elseif ($action == 'delete') {
+        }
+        elseif ($action == 'delete')
+        {
             $size->delete();
         }
+
         return redirect()->back();
+
     }
 }
