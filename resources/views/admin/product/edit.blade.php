@@ -6,6 +6,7 @@
               enctype="multipart/form-data">
             @method('PATCH')
             @csrf
+            <a href="/admin/products"class=" rounded-2 mx-1 "> <li class="fa fa-arrow-left text-secondary"></li></a>
 
             <div class="row d-flex justify-content-around px-5">
 
@@ -14,8 +15,7 @@
                 </div>
 
                 <div class="col-6 d-flex justify-content-end ">
-                    <a href="{{route('admin.products.index')}}" class="btn btn-red rounded-2 mx-1 ">Cancel</a>
-                    <button form="productForm" type="submit" class="btn btn-gray rounded-2 mx-1 ">Save</button>
+                         <button form="productForm" type="submit" class="btn btn-gray rounded-2 mx-1 ">Save</button>
                 </div>
 
             </div>
