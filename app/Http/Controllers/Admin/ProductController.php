@@ -16,6 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(10);
+
         return view('admin.product.index', [
             'products' => $products,
         ]);
@@ -28,6 +29,7 @@ class ProductController extends Controller
             'categories' => Category::all(),
             'selectedCategories' => $product->categories,
             'productSizes' => $product->sizes,
+            'relatedProducts' => $product->relatedProducts,
         ]);
     }
 
@@ -39,6 +41,7 @@ class ProductController extends Controller
             'categories' => $categories,
         ]);
     }
+
 
     public function store(Request $request)
     {
@@ -149,9 +152,17 @@ class ProductController extends Controller
 
     public function archive_index(Product $product)
     {
-        $products=Product::all();
-
+        $products=Product::onlyTrashed()->get();
         return view('admin.product.archive-index',['products'=>$products, 'status'=>false]);
 
 }
+
+    public function archive_r(Request $request, $id)
+    {
+//        dd($id);
+        $product=Product::withTrashed()->findOrFail($id);
+        $product->restore(); // Restore the soft-deleted product
+        return redirect()->route('products.archive')->with('success', 'Product restored successfully!');
+
+    }
 }

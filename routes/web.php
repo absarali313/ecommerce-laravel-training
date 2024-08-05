@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ProductImageController as AdminProductImageController;
 use App\Http\Controllers\Admin\SizeController as AdminSizeController;
+use App\Http\Controllers\Admin\ProductProductController as AdminRelatedProductController;
 use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
@@ -26,6 +27,7 @@ Route::middleware(['admin'])->group(function () {
             Route::patch('/products/edit/{product}', [AdminProductController::class, 'update'])->name('products.update');
             Route::delete('/products/delete/{product}', [AdminProductController::class, 'destroy'])->name('products.delete');
             Route::get('/products/archive', [AdminProductController::class, 'archive_index'])->name('products.archive');
+            Route::patch('/products/restore/{id}',  [AdminProductController::class, 'archive_r'])->name('products.archive.restore');
 
         });
 
@@ -37,6 +39,11 @@ Route::middleware(['admin'])->group(function () {
             Route::put('/products/size/{size}', [AdminSizeController::class, 'update'])->name('products.size.update');
         });
 
+        Route::controller(AdminRelatedProductController::class)->group(function () {
+
+            Route::post('/products/related/{product}', 'store')->name('products.related.store');
+            Route::put('/products/related/{product}',  'update')->name('products.related.update');
+        });
     });
 
 });

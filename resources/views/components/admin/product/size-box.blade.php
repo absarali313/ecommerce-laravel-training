@@ -2,7 +2,7 @@
 <div class="col">
     <label for="size_title" class="text-start text-secondary">Size Title</label>
     <input id="size_title" name="size_title"
-           class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10" style="width:100px"
+           class="bg-white-50 text border border-opacity-25 border-black rounded-2 px-2 w-10" style="width:100px"
            placeholder="Small" value= {{$productSize->title}}>
     <x-form-error name="size_title"></x-form-error>
 

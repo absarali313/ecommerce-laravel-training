@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
     use HasFactory;
-
+    use SoftDeletes;
     protected $fillable = [
         'title',
         'description',
@@ -20,7 +21,7 @@ class Product extends Model
     }
 
     public function relatedProducts(){
-        return $this->belongsToMany(Product::class,'product_product','product_id','related_product_id');
+        return $this->belongsToMany(Product::class,'product_products','product_id','related_product_id');
     }
 
     public function sizes()
