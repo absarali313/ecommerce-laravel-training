@@ -55,7 +55,7 @@ class Product extends Model
             ->select('prices.*')
             ->first();
 
-        return $smallestPrice ? $smallestPrice : null;
+        return $smallestPrice ?? null;
 
           }
 }
