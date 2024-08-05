@@ -1,6 +1,6 @@
 <x-layout>
 
-    
+    <x-client.product.hero-banner/>
     <div class="container my-5">
         <div class="row">
             @foreach($products as $product)

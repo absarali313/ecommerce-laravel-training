@@ -61,7 +61,7 @@
                 <div class="navbar-nav">
                     <a href="/" class="btn nav-link text-black">Home</a>
                     <a href="{{ route('categories') }}" class="btn nav-link text-black">Category</a>
-                    <a href="/" class="btn nav-link text-black">All Products</a>
+                    <a href="/products" class="btn nav-link text-black">All Products</a>
                     <a class="btn nav-link text-black">Rings</a>
                     <a class="btn nav-link text-black">Bracelets</a>
                     <a class="btn nav-link text-black">Neck Chain</a>

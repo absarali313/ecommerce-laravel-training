@@ -26,7 +26,8 @@ Route::controller(\App\Http\Controllers\Client\CategoryController::class)->group
 });
 
 Route::controller(ClientProductController::class)->group(function () {
-    Route::get('/', 'index')->name('home');
+    Route::get('/', 'home')->name('home');
+    Route::get('/products', 'index')->name('products');
     Route::get('product/{product}', 'show')->name('product.detail');
 });
 

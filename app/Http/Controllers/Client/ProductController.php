@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::query()->cursorPaginate(8);
+        $products = Product::cursorPaginate(8);
         return view('client.product.index', [
             'products' => $products,
         ]);
@@ -19,6 +19,14 @@ class ProductController extends Controller
     {
         return view('client.product.show', [
             'product' => $product,
+        ]);
+    }
+
+    public function home()
+    {
+        $products = Product::cursorPaginate(8);
+        return view('client.home', [
+            'products' => $products,
         ]);
     }
 }
