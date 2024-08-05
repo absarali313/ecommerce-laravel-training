@@ -5,10 +5,8 @@ use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 
-
-
-Route::get('/',[\App\Http\Controllers\ProductController::class,'index'])->name('home');
-Route::get('/product/{product}',[\App\Http\Controllers\ProductController::class,'show'])->name('productDetails');
+Route::get('/',[\App\Http\Controllers\Client\ProductController::class,'index'])->name('home');
+Route::get('/product/{product}',[\App\Http\Controllers\Client\ProductController::class,'show'])->name('productDetails');
 
 
 
@@ -34,5 +32,11 @@ Route::middleware('guest')->group(function () {
         Route::get('/register', 'create');
 
     });
+});
+
+
+Route::controller(\App\Http\Controllers\Client\CategoryController::class)->group(function () {
+    Route::get('/categories', 'index')->name('categories');
+    Route::get('/categories/{category}', 'show')->name('category.products');
 });
 

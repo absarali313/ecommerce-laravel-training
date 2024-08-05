@@ -59,11 +59,12 @@
             <!-- Navigation Tabs (Centered) -->
             <div class="collapse navbar-collapse justify-content-center">
                 <div class="navbar-nav">
-                    <button class="nav-link text-black">Home</button>
-                    <button class="nav-link text-black">All Products</button>
-                    <button class="nav-link text-black">Rings</button>
-                    <button class="nav-link text-black">Bracelets</button>
-                    <button class="nav-link text-black">Neck Chain</button>
+                    <a href="/" class="btn nav-link text-black">Home</a>
+                    <a href="{{ route('categories') }}" class="btn nav-link text-black">Category</a>
+                    <a href="/" class="btn nav-link text-black">All Products</a>
+                    <a class="btn nav-link text-black">Rings</a>
+                    <a class="btn nav-link text-black">Bracelets</a>
+                    <a class="btn nav-link text-black">Neck Chain</a>
                 </div>
             </div>
 

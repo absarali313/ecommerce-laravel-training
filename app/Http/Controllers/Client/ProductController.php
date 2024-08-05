@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\Size;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
