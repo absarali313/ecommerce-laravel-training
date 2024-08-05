@@ -44,7 +44,7 @@
     <div class="container my-5">
         <div class="row">
             @foreach($product->relatedproducts as $relate)
-                            <x-client.product :product="$relate" />
+                            <x-client.product.product-box :product="$relate" />
             @endforeach
         </div>
     </div>
