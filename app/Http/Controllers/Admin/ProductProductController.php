@@ -24,7 +24,7 @@ class ProductProductController extends Controller
                 'product_id' => $request->product_id,
                 'related_product_id' => $request->Related_id,
             ]);
-            dd($product);
+//            dd($product);
         }
 
 

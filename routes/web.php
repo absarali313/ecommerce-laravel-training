@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\Admin\ProductProductController as AdminRelatedProductController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ProductImageController as AdminProductImageController;
 use App\Http\Controllers\Admin\SizeController as AdminSizeController;

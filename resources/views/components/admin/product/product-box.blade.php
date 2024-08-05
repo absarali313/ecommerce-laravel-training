@@ -1,4 +1,4 @@
-@props(['product'])
+@props(['product'=>[], 'status' => false])
 @php
     // Retrieve the first image associated with the product
     $firstImage = $product->images->first();
@@ -31,10 +31,12 @@
         @if($status == true)
             <div>
                  <form method="POST" action="{{route("products.archive.restore",$product->id)}}">
-                    @csrf
+                     @csrf
                      @method('PATCH')
-
-                    <Button type="submit" class="text-center btn btn-secondary rounded-3 mx-2">Restore</Button>
+                     <button type="submit" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
+                         <li class="fa fa-undo text-secondary "></li>
+                     </button>
+{{--                    <Button type="submit" class="text-center btn btn-secondary rounded-3 mx-2">Restore</Button>--}}
                 </form>
             </div>
 
@@ -47,7 +49,9 @@
                 <form method="POST" action="{{route("products.delete",$product)}}">
                     @csrf
                     @method('DELETE')
-                    <Button type="submit" class="text-center btn btn-danger rounded-3 mx-5">Delete</Button>
+                    <button type="submit" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
+                        <li class="fa fa-trash text-secondary "></li>
+                    </button>
                 </form>
 
             </div>
