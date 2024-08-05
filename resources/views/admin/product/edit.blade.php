@@ -102,27 +102,7 @@
 
                     <div class="bg-light-gray rounded-3 p-3 mt-2">
                         @foreach($productSizes as $productSize)
-                            <form method="POST" action="{{route('products.size.update',$productSize)}}">
-                                @csrf
-                                @method('PUT')
-                                <div class="row my-2 border border-1 border-white border-top-0 border-start-0 border-end-0 py-3 mt-2 mb-2">
-                                    <div class="col-10 align-content-center">
-                                        <x-admin.product.size-box :productSize="$productSize"/>
-                                    </div>
-                                    <div class="col-1">
-                                        <button class=" rounded-3 border-success " name="action" value="update">
-                                            <li class="fa fa-pen text-success"></li>
-                                        </button>
-
-                                    </div>
-                                    <div class="col-1">
-
-                                        <button class=" rounded-3 border-secondary 3" name="action" value="delete">
-                                            <li class="fa fa-trash text-secondary"></li>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                            <x-admin.product.size-box :productSize="$productSize"/>
                         @endforeach
                     </div>
 
