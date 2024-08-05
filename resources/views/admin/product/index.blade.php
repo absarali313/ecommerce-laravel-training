@@ -23,10 +23,10 @@
                     <div class="col-2">
                         <h6 class="text-secondary">Product</h6>
                     </div>
-                    <div class="col-3 flex justify-content-center align-content-center">
-                        <h6 class="text-center text-secondary">Title</h6>
+                    <div class="col-3 d-flex justify-content-center align-content-center ">
+                        <h6 class="text-center text-secondary text-center">Title</h6>
                     </div>
-                    <div class="col-2 flex justify-content-center align-content-center">
+                    <div class="col-2 d-flex justify-content-center align-content-center">
                         <h6 class="text-secondary text-center">Status</h6>
                     </div>
                     <div class="col-2 flex justify-content-center align-content-center">

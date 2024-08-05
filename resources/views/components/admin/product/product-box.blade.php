@@ -15,8 +15,8 @@
                                                                      class="border border-1 rounded-3"
                                                                      style="width:50px; height:50px"></a>
             </div>
-            <div class="col-7 flex justify-content-center align-content-center">
-                <a class="text-center text-black text-decoration-underline"
+            <div class="col-7 d-flex justify-content-center align-content-center ">
+                <a class="text-center text-black text-decoration-underline text-center"
                    href="/admin/products/edit/{{$product->id}}">{{$product->title}}</a>
             </div>
         </div>
@@ -31,7 +31,9 @@
         <form method="POST" action="{{route("products.delete",$product)}}">
             @csrf
             @method('DELETE')
-            <Button type="submit" class="text-center btn btn-danger rounded-3 mx-5">Delete</Button>
+            <Button type="submit" class="text-center rounded-3 mx-5">
+                <li class="fa fa-trash text-secondary"></li>
+            </Button>
         </form>
     </div>
 </div>

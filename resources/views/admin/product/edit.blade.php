@@ -7,7 +7,7 @@
             @method('PATCH')
             @csrf
 
-            <div class="row d-flex justify-content-around ">
+            <div class="row d-flex justify-content-around px-5">
 
                 <div class="col-6">
                     <h4>Edit Product</h4>
@@ -71,7 +71,7 @@
                         @csrf
                         <div class="col d-flex justify-content-between py-2">
                             <p class="text-secondary">Sizes</p>
-                            <button type='submit' class="btn btn-secondary rounded-2">Add Size</button>
+
                         </div>
                         <div class="col">
                             <label for="size_title" class="text-start text-secondary">Size Title</label>
@@ -91,7 +91,12 @@
                                    class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 "
                                    placeholder="Small">
                             <x-form-error name="price"></x-form-error>
+                            <button type='submit'
+                                    class="mx-3 text-secondary border border-1 border-secondary rounded-2">
+                                <li class="fa fa-plus"></li>
+                            </button>
                         </div>
+
                     </form>
 
 
@@ -100,19 +105,20 @@
                             <form method="POST" action="{{route('products.size.update',$productSize)}}">
                                 @csrf
                                 @method('PUT')
-                                <div class="row my-2">
-                                    <div class="col-9 align-content-center">
+                                <div class="row my-2 border border-1 border-white border-top-0 border-start-0 border-end-0 py-3 mt-2 mb-2">
+                                    <div class="col-10 align-content-center">
                                         <x-admin.product.size-box :productSize="$productSize"/>
                                     </div>
                                     <div class="col-1">
-                                        <button class="btn btn-success rounded-3 " name="action" value="update">Update
+                                        <button class=" rounded-3 border-success " name="action" value="update">
+                                            <li class="fa fa-pen text-success"></li>
                                         </button>
 
                                     </div>
                                     <div class="col-1">
 
-                                        <button class="btn btn-danger rounded-3 mx-3" name="action" value="delete">
-                                            Delete
+                                        <button class=" rounded-3 border-secondary 3" name="action" value="delete">
+                                            <li class="fa fa-trash text-secondary"></li>
                                         </button>
                                     </div>
                                 </div>
