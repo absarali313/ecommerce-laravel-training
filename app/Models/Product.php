@@ -16,11 +16,13 @@ class Product extends Model
         'Visibility'
     ];
 
-    public function categories(){
+    public function categories()
+    {
         return $this->belongsToMany(Category::class,'category_product');
     }
 
-    public function relatedProducts(){
+    public function relatedProducts()
+    {
         return $this->belongsToMany(Product::class,'product_products','product_id','related_product_id');
     }
 
@@ -29,11 +31,10 @@ class Product extends Model
         return $this->hasMany(Size::class);
     }
 
-    public function images(){
+    public function images()
+    {
         return $this->hasMany(ProductImage::class);
     }
-
-    public function getImageAttribute(){}
 
 
     public function getTotalStock()

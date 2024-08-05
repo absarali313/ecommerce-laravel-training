@@ -56,7 +56,8 @@ class ProductController extends Controller
         ]);
 
         $visibility = true;
-        if ($validated['visibility'] == ('inactive')) {
+        if ($validated['visibility'] == ('inactive'))
+        {
             $visibility = false;
         }
 
@@ -68,8 +69,10 @@ class ProductController extends Controller
             ]);
 
             // Store Image
-            if ($request->has('images')) {
-                foreach ($request->images as $image) {
+            if ($request->has('images'))
+            {
+                foreach ($request->images as $image)
+                {
                     $path = $image->store('product_images');
                     Log::info('Image stored at: ' . $path);
                     $product->images()->create(['image_path' => $path, 'product_id' => $product->id]);
@@ -77,13 +80,16 @@ class ProductController extends Controller
             }
 
             // Associate category_product relationship
-            if ($request->has('categories')) {
+            if ($request->has('categories'))
+            {
                 $product->categories()->attach($validated['categories']);
             }
 
             return redirect("/admin/products/edit/$product->id");
 
-        } catch (Exception $e) {
+        }
+        catch (Exception $e)
+        {
             return redirect()->back()
                 ->withInput($request->only('title'))
                 ->withErrors([
@@ -96,6 +102,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+
         return redirect("/admin/products");
     }
 
@@ -112,22 +119,25 @@ class ProductController extends Controller
         ]);
 
         $visibility = true;
-        if ($validated['visibility'] == ('inactive')) {
+        if ($validated['visibility'] == ('inactive'))
+        {
             $visibility = false;
         }
 
 
-        try {
+        try
+        {
             $product->update([
                 'title' => $validated['title'],
                 'description' => $validated['description'],
                 'Visibility' => $visibility,
-
             ]);
 
             // Store Image
-            if ($request->has('images')) {
-                foreach ($request->images as $image) {
+            if ($request->has('images'))
+            {
+                foreach ($request->images as $image)
+                {
                     $path = $image->store('product_images');
                     Log::info('Image stored at: ' . $path);
                     $product->images()->create(['image_path' => $path, 'product_id' => $product->id]);
@@ -135,13 +145,16 @@ class ProductController extends Controller
             }
 
             // Associate category_product relationship
-            if ($request->has('categories')) {
+            if ($request->has('categories'))
+            {
                 $product->categories()->attach($validated['categories']);
             }
 
             return redirect()->back();
 
-        } catch (Exception $e) {
+        }
+        catch (Exception $e)
+        {
             return redirect()->back()
                 ->withInput($request->only('title'))
                 ->withErrors([
@@ -153,15 +166,16 @@ class ProductController extends Controller
     public function archive_index(Product $product)
     {
         $products=Product::onlyTrashed()->get();
+
         return view('admin.product.archive-index',['products'=>$products, 'status'=>false]);
 
-}
+    }
 
     public function archive_r(Request $request, $id)
     {
-//        dd($id);
         $product=Product::withTrashed()->findOrFail($id);
         $product->restore(); // Restore the soft-deleted product
+
         return redirect()->route('products.archive')->with('success', 'Product restored successfully!');
 
     }

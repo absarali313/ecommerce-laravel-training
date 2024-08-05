@@ -11,7 +11,9 @@ class SessionController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
+
         return redirect('/login');
+
     }
 
     public function create()
@@ -22,17 +24,19 @@ class SessionController extends Controller
 
     public function store(Request $request)
     {
-
         $details = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        if (Auth::attempt($details)) {
+        if (Auth::attempt($details))
+        {
             $request->session()->regenerate();
 
             return redirect('/');
-        } else {
 
+        }
+        else
+        {
             return redirect()->back()
                 ->withInput($request->only('email'))
                 ->withErrors([
