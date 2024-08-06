@@ -1,7 +1,6 @@
 @props(['visibility' => true])
 <div class="row bg-white rounded-3 px-3 py-2 border border-1 border-white">
     <div class="col">
-
         <div class="row">
             <div class="col">
                 <label for="visibility" class="text-start text-secondary">Visibility</label>
@@ -11,6 +10,9 @@
                 </select>
                 <x-form-error name="visibility"></x-form-error>
             </div>
+
         </div>
+
     </div>
+
 </div>

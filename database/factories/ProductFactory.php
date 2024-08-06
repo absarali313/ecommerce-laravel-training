@@ -19,10 +19,11 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-        return [
+        return
+            [
             'title' => fake()->domainWord(),
             'description' => fake()->paragraph(),
             'Visibility' => fake()->boolean()
-        ];
+            ];
     }
 }

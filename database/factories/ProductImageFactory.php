@@ -17,11 +17,11 @@ class ProductImageFactory extends Factory
      */
     public function definition(): array
     {
-        return [
+        return
+            [
             'product_id' => Product::factory(), // Create a new Product instance if needed
             'order' => $this->faker->numberBetween(1, 100),
             'image_path' => $this->faker->imageUrl(), // Generate a dummy image URL
-
-        ];
+            ];
     }
 }
