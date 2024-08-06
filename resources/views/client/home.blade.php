@@ -1,5 +1,4 @@
 <x-layout>
-
     <x-client.product.hero-banner/>
     <div class="container my-5">
         <div class="row">
@@ -9,5 +8,6 @@
         </div>
 
         <x-client.paginator :items="$products"/>
+
     </div>
 </x-layout>
