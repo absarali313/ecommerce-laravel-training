@@ -1,13 +1,8 @@
 <x-admin.layout>
-
     <div class="container-fluid my-5 ">
-
         <form method="POST" action="{{ route('admin.category.store') }}">
-
             @csrf
-
             <div class="row d-flex justify-content-around ">
-
                 <div class="col-6">
                     <h4>Add Category</h4>
                 </div>
@@ -20,17 +15,13 @@
             </div>
 
             <div class="row d-flex justify-content-around mt-1 p-1 ">
-
                 <div class="col-7">
                     <x-admin.Category.category-create-description-box/>
-
                 </div>
-
 
                 <div class="col-3">
                     <div class="row bg-white rounded-3 px-3 py-2 border border-1 border-white">
                         <div class="col">
-
                             <div class="row">
                                 <div class="col">
                                     <label for="parent" class="text-start text-secondary">Parent Category</label>
@@ -41,13 +32,16 @@
                                     </select>
                                     <x-form-error name="parent"></x-form-error>
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
 
             </div>
-
 
         </form>
     </div>
