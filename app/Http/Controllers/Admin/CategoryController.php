@@ -17,9 +17,17 @@ class CategoryController extends Controller
         ]);
     }
 
+    public function destroy(Category $category)
+    {
+        $category->delete();
+
+        return redirect()->route('admin.category.index');
+    }
+
     public function create()
     {
         $categories = Category::all();
+
         return view('admin.category.create', [
             'categories' => $categories,
         ]);
@@ -41,17 +49,12 @@ class CategoryController extends Controller
                 $path = $image->store('product_images');
             }
         }
+
         Category::create([
             'name' => $request->name,
             'parent_id' => $parentCategoryId,
         ]);
 
-        return redirect()->route('admin.category.index');
-    }
-
-    public function destroy(Category $category)
-    {
-        $category->delete();
         return redirect()->route('admin.category.index');
     }
 

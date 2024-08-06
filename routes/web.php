@@ -41,10 +41,10 @@ Route::middleware(['admin'])->group(function () {
 
         Route::controller(AdminCategoryController::class)->group(function () {
 
-            Route::get('/categories', 'index')->name('admin.category.index');
-            Route::get('/categories/create', 'create')->name('admin.category.create');
-            Route::delete('/categories/{category}', 'destroy')->name('admin.category.destroy');
-            Route::post('/categories', 'store')->name('admin.category.store');
+            Route::get('/categories','index')->name('admin.category.index');
+            Route::get('/categories/create','create')->name('admin.category.create');
+            Route::delete('/categories/{category}','destroy')->name('admin.category.destroy');
+            Route::post('/categories','store')->name('admin.category.store');
         });
 
         Route::controller(AdminRelatedProductController::class)->group(function () {

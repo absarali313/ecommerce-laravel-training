@@ -116,7 +116,6 @@ class ProductController extends Controller
             $visibility = false;
         }
 
-
         try
         {
             $product->update([
@@ -170,7 +169,7 @@ class ProductController extends Controller
 
     }
 
-    public function archive_r(Request $request, $id)
+    public function restore(Request $request, $id)
     {
         $product=Product::withTrashed()->findOrFail($id);
         $product->restore(); // Restore the soft-deleted product

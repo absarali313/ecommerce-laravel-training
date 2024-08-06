@@ -2,10 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Price;
 use App\Models\Product;
-use App\Models\ProductImage;
-use App\Models\Size;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,14 +14,12 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
 
-        // Create 20 products
+
         $products = Product::factory()->count(20)->create();
 
         // Establish relationships
         foreach ($products as $product) {
-            // Randomly attach related products
             $relatedProducts = $products->random(rand(1, 5))->pluck('id')->toArray();
-            // Avoid self-referencing
             $relatedProducts = array_diff($relatedProducts, [$product->id]);
             $product->relatedProducts()->attach($relatedProducts);
         }
