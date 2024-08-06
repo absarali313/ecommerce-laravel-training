@@ -27,33 +27,20 @@
                                     <label for="parent" class="text-start text-secondary">Parent Category</label>
                                     <select id="parent" name="parent" class="form-select">
                                         @foreach($categories as $category)
-                                            <option value="{{$category->name}}" >{{$category->name}}</option>
+                                            <option value="{{ $category->name }}" >{{ $category->name }}</option>
                                         @endforeach
                                     </select>
+
                                     <x-form-error name="parent"></x-form-error>
+
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
 
         </form>
     </div>
-
-    <script>
-        tinymce.init({
-            selector: '#description',  // The ID of your textarea
-            menubar: false,
-            plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
-            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-            height: 300
-        });
-    </script>
 
 </x-admin.layout>

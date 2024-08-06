@@ -1,3 +1,4 @@
+
 <div class="overflow-auto" style="height: 100%; max-height: 100%;">
     <ul class="list-unstyled ">
         <x-admin.sidebox-items icon="fa fa-home mx-2" link="/home">Home</x-admin.sidebox-items>

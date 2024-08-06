@@ -1,4 +1,5 @@
 <x-admin.layout>
+
     <div class="container-fluid my-5 ">
         <form id="productForm" method="POST" action="{{ route('products.update', $product) }}" enctype="multipart/form-data">
             @method('PATCH')
@@ -28,6 +29,7 @@
             </div>
 
         </form>
+
         <div class="row mt-4 mx-5">
             <div class="col bg-light-gray rounded-3 p-3">
                 <div class="mb-3 row">
@@ -47,8 +49,8 @@
                 </div>
 
                 <x-form-error name="images"></x-form-error>
-            </div>
 
+            </div>
         </div>
 
         <div class="row bg-white rounded-3 px-3 py-2 border border-1 border-white mt-4">
@@ -86,10 +88,9 @@
                     </div>
 
             </div>
-
         </div>
-
     </div>
+
         <div class="row bg-white rounded-3 px-3 py-2 border border-1 border-white mt-4">
             <div class="row">
                 <div class="col">
@@ -135,30 +136,19 @@
                                             </div>
 
                                         </div>
-
                                     </div>
-
                                 </div>
-
                             </form>
+
                         @endforeach
+
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
-    <script>
-        tinymce.init({
-            selector: '#description',  // The ID of your textarea
-            menubar: false,
-            plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
-            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-            height: 300
-        });
-    </script>
+    @push('tinymce')
+        <script src="{{ asset('js/tinymce.js') }}"></script>
+    @endpush
 </x-admin.layout>
