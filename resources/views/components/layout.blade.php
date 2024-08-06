@@ -8,12 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
     <style>
         .search-container {
             position: relative;
         }
-
         .search-container .form-control {
             width: 0;
             opacity: 0;
@@ -35,24 +33,9 @@
 <body>
     <p  class="text-center my-2">Welcome to ShopEase</p>
     <hr>
-{{--    <nav >--}}
-{{--        <div  class="nav nav-tabs justify-content-center" role="tablist">--}}
-{{--            <button class="nav-link text-black">Home</button>--}}
-{{--            <button class="nav-link text-black">All Products</button>--}}
-{{--            <button class="nav-link text-black">Rings</button>--}}
-{{--            <button class="nav-link text-black">Bracelets</button>--}}
-{{--            <button class="nav-link text-black">Neck Chain</button>--}}
-{{--        </div>--}}
-
-{{--        --}}{{--            <form class="d-flex me-0">--}}
-{{--        --}}{{--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">--}}
-{{--        --}}{{--                <button class="btn btn-outline-success" type="submit">Search</button>--}}
-{{--        --}}{{--            </form>--}}
-{{--        --}}{{--       </div>--}}
-
-{{--    </nav>--}}
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent my-0">
         <div class="container-fluid">
+
             <!-- Shop Name -->
             <a class="navbar-brand ms-5 fs-4" href="#">ShopEase</a>
 
