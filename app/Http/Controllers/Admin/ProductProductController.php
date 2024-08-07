@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProductProduct\StoreProductProductRequest;
 use App\Models\Product;
 use App\Models\ProductProduct;
 use Illuminate\Http\Request;
@@ -10,23 +11,16 @@ use Illuminate\Http\Request;
 
 class ProductProductController extends Controller
 {
-    public function store(Request $request, Product $product)
+    public function store(StoreProductProductRequest $request, Product $product)
     {
-        $request->validate([
-            'product_id' => 'required|numeric',
-            'Related_id' => 'required|numeric',
+        $request->validated();
+
+        ProductProduct::create([
+            'product_id' => $request->product_id,
+            'related_product_id' => $request->Related_id,
         ]);
 
-        if ( $product->id == $request->product_id )
-        {
-            ProductProduct::create([
-                'product_id' => $request->product_id,
-                'related_product_id' => $request->Related_id,
-            ]);
-
-        }
-
-     return redirect()->back();
+        return redirect()->back();
 
     }
 
@@ -42,7 +36,7 @@ class ProductProductController extends Controller
         }
         elseif ($action == 'delete')
         {
-            ProductProduct::where('product_id',$request->product_id)->where('related_product_id',$request->related_id)->delete();
+            ProductProduct::relatedProduct($request->id,$request->related_id)->delete();
         }
 
         return redirect()->back();

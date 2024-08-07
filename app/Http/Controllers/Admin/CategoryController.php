@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Category\StoreCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -17,13 +18,6 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function destroy(Category $category)
-    {
-        $category->delete();
-
-        return redirect()->route('admin.category.index');
-    }
-
     public function create()
     {
         $categories = Category::all();
@@ -33,29 +27,22 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        $category = $request->validate([
-            'name' => 'required|unique:categories|max:255',
-            'parent' => 'required',
-            'images' => 'nullable',
-        ]);
+        $request->validated();
 
-        $parentCategoryId = Category::where('name', $request->parent)->value('id');
-        if ($request->hasFile('images'))
+        $category = Category::setCategory($request->name, $request->parent, $request->images);
+        if($request->hasFile('images'))
         {
-            foreach ($request->file('images') as $image)
-            {
-                $path = $image->store('product_images');
-            }
+            $category->storeImage($request->images);
         }
-
-        Category::create([
-            'name' => $request->name,
-            'parent_id' => $parentCategoryId,
-        ]);
-
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.categories');
     }
 
+    public function destroy(Category $category)
+    {
+        $category->delete();
+
+        return redirect()->route('admin.categories');
+    }
 }
