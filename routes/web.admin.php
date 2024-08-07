@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\Admin\ProductProductController as AdminRelatedProductController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
@@ -9,25 +10,20 @@ use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
-
-
 Route::middleware(['admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
 
         Route::controller(AdminProductController::class)->group(function () {
 
-            Route::get('/products','index')->name('admin.products.index');
-            Route::get('/products/edit/{product}','edit');
+            Route::get('/products', 'index')->name('admin.products.index');
+            Route::get('/products/edit/{product}', 'edit');
             Route::get('/products/create', 'create');
             Route::post('/products', 'store')->name('products.store');
             Route::patch('/products/edit/{product}', 'update')->name('products.update');
             Route::delete('/products/delete/{product}', 'destroy')->name('products.delete');
             Route::get('/products/archive', 'archive_index')->name('products.archive');
-            Route::patch('/products/restore/{id}',  'archive_r')->name('products.archive.restore');
+            Route::patch('/products/restore/{id}', 'archive_r')->name('products.archive.restore');
 
         });
 
@@ -35,7 +31,7 @@ Route::middleware(['admin'])->group(function () {
 
         Route::controller(AdminSizeController::class)->group(function () {
 
-            Route::post('/products/size/{product}}','store')->name('products.size.store');
+            Route::post('/products/size/{product}}', 'store')->name('products.size.store');
             Route::put('/products/size/{size}', 'update')->name('products.size.update');
         });
 
@@ -50,25 +46,8 @@ Route::middleware(['admin'])->group(function () {
         Route::controller(AdminRelatedProductController::class)->group(function () {
 
             Route::post('/products/related/{product}', 'store')->name('products.related.store');
-            Route::put('/products/related/{product}',  'update')->name('products.related.update');
+            Route::put('/products/related/{product}', 'update')->name('products.related.update');
         });
     });
 
 });
-
-Route::middleware('guest')->group(function () {
-
-    Route::controller(SessionController::class)->group(function () {
-
-        Route::post('/login', 'store');
-        Route::get('/login', 'create');
-        Route::post('/logout', 'destroy')->withoutMiddleware('guest')->middleware('auth');
-    });
-    Route::controller(RegisteredUserController::class)->group(function () {
-
-        Route::post('/register', 'store');
-        Route::get('/register', 'create');
-
-    });
-});
-

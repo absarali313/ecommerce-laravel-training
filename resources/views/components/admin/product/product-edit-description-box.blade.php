@@ -5,19 +5,19 @@
         <div class="row">
             <div class="col">
                 <label for="title" class="text-start text-secondary">Title</label>
-                <input id="title" name="title" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-100" placeholder="Black Titanium Ring" value="{{$product->title}}">
-                <x-form-error name="title"></x-form-error>
-            </div>
+                <input id="title" name="title" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-100" placeholder="Black Titanium Ring" value="{{ $product->title }}">
 
+                <x-form-error name="title" />
+            </div>
         </div>
 
         <div class="row mt-4">
             <div class="col">
                 <label for="description" class="text-start text-secondary">Description</label>
-                <textarea id="description" name="description" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-100" placeholder="Describe the specifications of your product">{{$product->description}}</textarea>
-                <x-form-error name="description"></x-form-error>
-            </div>
+                <textarea id="description" name="description" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-100" placeholder="Describe the specifications of your product">{{ $product->description }}</textarea>
 
+                <x-form-error name="description" />
+            </div>
         </div>
 
         <div class="row mt-4">
@@ -27,11 +27,8 @@
                     <input class="form-control" type="file" id="images" name="images[]" accept="image/*" multiple>
                 </div>
 
-                <x-form-error name="images"></x-form-error>
+                <x-form-error name="images" />
             </div>
-
         </div>
-
     </div>
-
 </div>

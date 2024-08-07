@@ -11,15 +11,10 @@ class CategoryController extends Controller
     public function index()
     {
         $category = Category::paginate(10);
+
         return view('admin.category.index', [
             'categories' => $category,
         ]);
-    }
-
-    public function destroy(Category $category)
-    {
-        $category->delete();
-        return redirect()->route('admin.category.index');
     }
 
     public function create()
@@ -51,6 +46,12 @@ class CategoryController extends Controller
             'parent_id' => $parentCategoryId,
         ]);
 
+        return redirect()->route('admin.category.index');
+    }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
         return redirect()->route('admin.category.index');
     }
 
