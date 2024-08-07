@@ -22,17 +22,6 @@ class ProductController extends Controller
         ]);
     }
 
-    public function edit(Request $request, Product $product)
-    {
-        return view('admin.product.edit', [
-            'product' => $product,
-            'categories' => Category::all(),
-            'selectedCategories' => $product->categories,
-            'productSizes' => $product->sizes,
-            'relatedProducts' => $product->relatedProducts,
-        ]);
-    }
-
     public function create()
     {
         $categories = Category::all();
@@ -41,7 +30,6 @@ class ProductController extends Controller
             'categories' => $categories,
         ]);
     }
-
 
     public function store(Request $request)
     {
@@ -99,11 +87,15 @@ class ProductController extends Controller
 
     }
 
-    public function destroy(Product $product)
+    public function edit(Request $request, Product $product)
     {
-        $product->delete();
-
-        return redirect("/admin/products");
+        return view('admin.product.edit', [
+            'product' => $product,
+            'categories' => Category::all(),
+            'selectedCategories' => $product->categories,
+            'productSizes' => $product->sizes,
+            'relatedProducts' => $product->relatedProducts,
+        ]);
     }
 
     public function update(Request $request, Product $product)
@@ -161,6 +153,13 @@ class ProductController extends Controller
                     'title' => $e->getMessage(),
                 ]);
         }
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+
+        return redirect("/admin/products");
     }
 
     public function archive_index(Product $product)

@@ -21,9 +21,9 @@ class ProductFactory extends Factory
     {
         return
             [
-            'title' => fake()->domainWord(),
-            'description' => fake()->paragraph(),
-            'Visibility' => fake()->boolean()
+                'title' => fake()->domainWord(),
+                'description' => fake()->paragraph(),
+                'Visibility' => fake()->boolean()
             ];
     }
 }

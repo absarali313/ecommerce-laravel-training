@@ -19,9 +19,9 @@ class ProductImageFactory extends Factory
     {
         return
             [
-            'product_id' => Product::factory(), // Create a new Product instance if needed
-            'order' => $this->faker->numberBetween(1, 100),
-            'image_path' => $this->faker->imageUrl(), // Generate a dummy image URL
+                'product_id' => Product::factory(), // Create a new Product instance if needed
+                'order' => $this->faker->numberBetween(1, 100),
+                'image_path' => $this->faker->imageUrl(), // Generate a dummy image URL
             ];
     }
 }

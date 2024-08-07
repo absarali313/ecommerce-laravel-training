@@ -21,10 +21,8 @@ class ProductSeeder extends Seeder
         foreach ($products as $product) {
             // Randomly attach related products
             $relatedProducts = $products->random(rand(1, 5))->pluck('id')->toArray();
-
             // Avoid self-referencing
             $relatedProducts = array_diff($relatedProducts, [$product->id]);
-
             $product->relatedProducts()->attach($relatedProducts);
         }
 

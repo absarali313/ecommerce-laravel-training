@@ -19,9 +19,9 @@ class SizeFactory extends Factory
     {
         return
             [
-            'product_id'=>Product::factory(),
-            'title'=>fake()->title(),
-            'stock'=>fake()->numberBetween(1,10),
+                'product_id'=>Product::factory(),
+                'title'=>fake()->title(),
+                'stock'=>fake()->numberBetween(1,10),
             ];
     }
 }

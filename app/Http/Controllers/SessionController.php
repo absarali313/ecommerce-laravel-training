@@ -7,20 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class SessionController extends Controller
 {
-    public function destroy(Request $request)
-    {
-        $request->session()->flush();
-        Auth::logout();
-
-        return redirect('/login');
-
-    }
-
     public function create()
     {
         return view('auth.login');
     }
-
 
     public function store(Request $request)
     {
@@ -45,4 +35,14 @@ class SessionController extends Controller
         }
 
     }
+
+    public function destroy(Request $request)
+    {
+        $request->session()->flush();
+        Auth::logout();
+
+        return redirect('/login');
+
+    }
+
 }

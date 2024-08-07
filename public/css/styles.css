@@ -55,7 +55,9 @@
 
 .active {
     color: #02cf2a;
-
+}
+.form-label{
+    width: 100px;
 }
 
 
