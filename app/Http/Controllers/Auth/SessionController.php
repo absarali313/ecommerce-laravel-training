@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSessionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,19 +22,13 @@ class SessionController extends Controller
         return view('auth.login');
     }
 
-
-    public function store(Request $request)
+    public function store(StoreSessionRequest $request)
     {
-
-        $details = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        $details = $request->validated();
 
         if (Auth::attempt($details)) {
             $request->session()->regenerate();
 
-            return redirect('/');
         } else {
 
             return redirect()->back()
@@ -43,5 +38,6 @@ class SessionController extends Controller
                 ]);
         }
 
+        return redirect('/');
     }
 }
