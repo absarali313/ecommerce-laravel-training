@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Product\UpdateProductRequest;
+use App\Http\Requests\Admin\Size\StoreSizeRequest;
+use App\Http\Requests\Admin\Size\UpdateSizeRequest;
 use App\Models\Price;
 use App\Models\Product;
 use App\Models\Size;
@@ -11,55 +14,23 @@ use Illuminate\Support\Facades\Date;
 
 class SizeController extends Controller
 {
-    public function store(Request $request, Product $product)
+    public function store(StoreSizeRequest $request, Product $product)
     {
-        $request->validate([
-            'size_title' => 'required|string',
-            'price' => 'required|numeric',
-            'stock' => 'required|integer',
-        ]);
+        $request->validated();
 
-        $size = Size::create([
-            'title' => $request->size_title,
-            'product_id' => $product->id,
-            'stock' => $request->stock,
-        ]);
-
-        Price::create([
-            'product_size_id' => $size->id,
-            'price' => $request->price,
-            'started_at' => Date::now(),
-        ]);
+        Size::setSize($request, $product);
 
         return redirect()->back();
-
     }
 
-    public function update(Request $request, Size $size)
+    public function update(StoreSizeRequest $request, Size $size)
     {
         $action = $request->input('action');
+
         if ($action == 'update')
         {
-            $request->validate([
-                'size_title' => 'required|string',
-                'stock' => 'required|integer',
-                'price' => 'required|numeric',
-            ]);
-
-            $size->update([
-                'title' => $request->size_title,
-                'stock' => $request->stock,
-            ]);
-
-            if ($request->price != $size->getCurrentPrice()->price)
-            {
-                $price = Price::create([
-                    'product_size_id' => $size->id,
-                    'price' => $request->price,
-                    'started_at' => Date::now(),
-                ]);
-            }
-
+           $request->validated();
+            Size::setSize($request, size:  $size);
         }
         elseif ($action == 'delete')
         {
