@@ -32,6 +32,7 @@ class Product extends Model
     {
         return $this->hasMany(Size::class,  'product_id',);
     }
+
     public function images() : HasMany
     {
         return $this->hasMany(ProductImage::class,'product_id');
@@ -41,7 +42,6 @@ class Product extends Model
     {
         return $this->throughSizes()->hasPrices();
     }
-
 
     public function scopeCurrentPrice()
     {
@@ -56,7 +56,7 @@ class Product extends Model
      * Returns the lowest price from different variations of product
      * @return Price|null
      */
-    public function getSmallestPriceAttribute() : Price|null
+    public function getSmallestPriceAttribute() : mixed
     {
         // Fetch the minimum price among all sizes related to the product
         $smallestPrice = $this->sizes()
