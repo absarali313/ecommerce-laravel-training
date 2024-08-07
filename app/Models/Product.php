@@ -133,4 +133,16 @@ class Product extends Model
         return $product;
     }
 
+    /**
+     * Deletes a product.
+     * Set the visibility to false
+     * @param Product $product
+     * @return void
+     */
+    public function destroyProduct(){
+        $this->visibility = false;
+        $this->save();
+        $this->delete();
+    }
+
 }
