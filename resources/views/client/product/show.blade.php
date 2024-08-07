@@ -1,29 +1,23 @@
 @props(['product'])
-@push('border-style')
-    <style>
-        .hover-border:hover {
-            border-width: 3px !important; /* Increase border width on hover */
-        }
-        .text-gray-200 {
-            color: 	#787878; /* Example gray color */
-        }
-    </style>
-@endpush
-<x-layout>
-    @stack('border-style')
-    <div class="d-flex w-100">
-        <img src="http://picsum.photos/seed/{{rand(0,10000)}}/600/600" class="img-fluid mx-5 my-5" alt="">
 
+<x-client.layout>
+    <div class="d-flex w-100">
+        {{-- Product Image --}}
+        <img src="http://picsum.photos/seed/{{rand(0,10000)}}/600/600" class="img-fluid mx-5 my-5" alt="">
         <div class="mx-5 my-5">
-            <p class="my-0 text-gray-200 text-xs-start">My store</p>
-            <h1 class="fs-2">{{$product?->title}}  Boys | Girls</h1>
-            <p class="fs-5">Rs.{{$product?->smallestprice?->price}}.00PKR</p>
+
+            {{-- Product Details --}}
+            <p class="my-0 text-gray-200 text-xs-start">Planet Silver</p>
+            <h1 class="fs-2">{{  $product?->title }}  Boys | Girls</h1>
+            <p class="fs-5">Rs.{{  $product?->smallestprice?->price }}.00PKR</p>
             <p class="text-gray-200 my-2 text-sm-start">Size</p>
 
+            {{-- Product Sizes --}}
             @foreach($product->sizes as $size)
-                <x-client.product-size :size="$size->title"/>
+                @include('client.product.partials.product-size', [
+                'size' => $size->title,
+                ])
             @endforeach
-
             <p  class="text-gray-200 my-2 ">Quantity</p>
 
             <x-client.product-quantity />
@@ -36,24 +30,28 @@
                 <span class="my-2" >Buy it now</span>
             </div>
 
+            {{-- Product Description --}}
             <div class="mt-5 text-gray-200">
-                {{$product->description}}
+                {{ $product->description }}
             </div>
         </div>
     </div>
 
     <div>
-        <p class="ms-5 fs-5">You may also know</p>
+        <p class="ms-5 fs-5">You may also want</p>
     </div>
 
     <div class="container my-5">
         <div class="row">
             @foreach($product->relatedproducts as $relate)
-                            <x-client.product.product-box :product="$relate" />
+                @include('client.product.partials.product-box', [
+                'item' => $relate,
+                ])
             @endforeach
         </div>
     </div>
+
     <hr>
     <p class="ms-5 my-5 fs-6 text-gray-200 ">© 2024, ShopEase Powered by Shopify</p>
-</x-layout>
+</x-client.layout>
 
