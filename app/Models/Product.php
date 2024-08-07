@@ -15,6 +15,7 @@ class Product extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
     protected $fillable = [
         'title',
         'description',
@@ -131,6 +132,18 @@ class Product extends Model
         }
 
         return $product;
+    }
+
+    /**
+     * Deletes a product.
+     * Set the visibility to false
+     * @param Product $product
+     * @return void
+     */
+    public function destroyProduct(){
+        $this->visibility = false;
+        $this->save();
+        $this->delete();
     }
 
     public function scopeCurrentPrice()
