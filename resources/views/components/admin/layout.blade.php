@@ -11,8 +11,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
-<body style="margin:0; padding:0">
-<div style="background: white">
+<body class="no-margin">
+<div class="div-style">
     <nav>
         <div class="container-fluid text-center bg-light-black h-auto">
             <div class="row align-content-center justify-content-between mx-md-2 py-1 ">
