@@ -12,6 +12,5 @@ class ProductImageController extends Controller
        $productImage->delete();
 
        return redirect()->back();
-
     }
 }
