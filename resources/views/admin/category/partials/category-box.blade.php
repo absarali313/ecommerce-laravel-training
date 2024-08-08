@@ -18,7 +18,6 @@
     </div>
 
     <div class="col-2 flex justify-content-end align-items-center">
-
         <form method="POST" action="{{ route('admin_category_destroy', $category) }}">
             @csrf
             @method('DELETE')

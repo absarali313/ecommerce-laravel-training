@@ -15,7 +15,6 @@
             </div>
 
             <div class="row d-flex justify-content-around mt-1 p-1 ">
-
                 {{-- Title & Description --}}
                 <div class="col-7">
                     <x-admin.Category.category-description-box/>
@@ -28,6 +27,7 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="parent" class="text-start text-secondary">Parent Category</label>
+
                                     <select id="parent" name="parent" class="form-select">
                                         @foreach($categories as $category)
                                             <option value="{{ $category->name }}" >{{ $category->name }}</option>
