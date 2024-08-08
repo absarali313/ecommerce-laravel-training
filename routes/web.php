@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ProductImageController as AdminProductImageController;
 use App\Http\Controllers\Admin\SizeController as AdminSizeController;
 use App\Http\Controllers\Admin\ArchiveProductController as AdminArchiveProductController;
+use App\Http\Controllers\Admin\ArchiveCategoryController as AdminArchiveCategoryController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,12 @@ Route::middleware(['admin'])->group(function ()
             Route::get('/categories/create','create')->name('admin_category_create');
             Route::delete('/categories/{category}','destroy')->name('admin_category_destroy');
             Route::post('/categories','store')->name('admin_category_store');
+        });
+
+        Route::controller(AdminArchiveCategoryController::class)->group(function () {
+
+            Route::get('/categories/archive','index')->name('admin_categories_archive')->withTrashed();
+            Route::patch('/categories/restore/{id}','update')->name('admin_category_restore')->withTrashed();
         });
 
         Route::controller(AdminRelatedProductController::class)->group(function ()

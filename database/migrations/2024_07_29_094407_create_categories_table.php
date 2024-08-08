@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('image_path')->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade')->nullable();
             $table->timestamps();
+            $table->softDeletes(); // This will add the `deleted_at` column
+
         });
 
     }
@@ -27,5 +29,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('categories');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->dropSoftDeletes(); // This will remove the `deleted_at` column
+        });
     }
 };
