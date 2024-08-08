@@ -34,10 +34,10 @@
                         @csrf
                         @method('PUT')
                         <div class="row my-2">
+
                             {{--Display Related Products--}}
                             <div class="col-9 align-content-center">
-
-                                <x-admin.product.relatedProduct-box :relatedProduct="$relatedProduct"/>
+                                @include('admin.product.partials.relatedProduct-box')
                             </div>
 
                             {{--Modification Buttons--}}

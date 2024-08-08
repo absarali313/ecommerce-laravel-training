@@ -29,7 +29,7 @@
     </div>
 
     <div class="col-2 d-flex justify-content-end align-items-center">
-        @if($status == false)
+        @if($status)
             <div>
                 <form method="POST" action="{{ route("admin_restore_archive", $product->id) }}">
                     @csrf
@@ -39,9 +39,10 @@
                     </button>
                 </form>
             </div>
+
         @else
             <div class="d-flex">
-                <form method="POST" action="{{ route("admin_products_delete", $product) }}">
+                <form method="POST" action="{{ route("admin_product_delete", $product) }}">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">

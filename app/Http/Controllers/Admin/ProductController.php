@@ -51,7 +51,7 @@ class ProductController extends Controller
         $validatedData = $request->validated();
         $product = Product::setProduct($validatedData);
 
-        return redirect()->route('admin_products_edit', $product);
+        return redirect()->route('admin_product_edit', $product);
     }
 
     public function update(UpdateProductRequest $request, Product $product)

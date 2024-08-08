@@ -21,27 +21,27 @@ Route::middleware(['admin'])->group(function ()
         Route::controller(AdminProductController::class)->group(function ()
         {
             Route::get('/products','index')->name('admin_products');
-            Route::get('/products/edit/{product}','edit')->name('admin_products_edit');
-            Route::get('/products/create', 'create')->name('admin_products_create');
-            Route::post('/products', 'store')->name('admin_products_store');
-            Route::patch('/products/edit/{product}', 'update')->name('admin_products_update');
-            Route::delete('/products/delete/{product}', 'destroy')->name('admin_products_delete');
+            Route::get('/products/edit/{product}','edit')->name('admin_product_edit');
+            Route::get('/products/create', 'create')->name('admin_product_create');
+            Route::post('/products', 'store')->name('admin_product_store');
+            Route::patch('/products/edit/{product}', 'update')->name('admin_product_update');
+            Route::delete('/products/delete/{product}', 'destroy')->name('admin_product_delete');
         });
 
         Route::controller(AdminProductImageController::class)->group(function ()
         {
-            Route::delete('/products/images/delete/{productImage}', 'destroy')->name('admin_product_images_delete');
+            Route::delete('/products/images/delete/{productImage}', 'destroy')->name('admin_product_image_delete');
         });
 
         Route::controller(AdminSizeController::class)->group(function ()
         {
-            Route::post('/products/size/{product}}','store')->name('admin_products_size_store');
-            Route::put('/products/size/{size}', 'update')->name('admin_products_size_update');
+            Route::post('/products/size/{product}}','store')->name('admin_size_store');
+            Route::put('/products/size/{size}', 'update')->name('admin_size_update');
         });
 
         Route::controller(AdminCategoryController::class)->group(function () {
 
-            Route::get('/categories','index')->name('admin_categories_index');
+            Route::get('/categories','index')->name('admin_categories');
             Route::get('/categories/create','create')->name('admin_category_create');
             Route::delete('/categories/{category}','destroy')->name('admin_category_destroy');
             Route::post('/categories','store')->name('admin_category_store');
@@ -65,19 +65,16 @@ Route::middleware(['admin'])->group(function ()
             Route::patch('/products/restore/{id}',  'update')->name('admin_restore_archive')->withTrashed();
         });
     });
-
 });
 
 Route::middleware('guest')->group(function () {
-
     Route::controller(SessionController::class)->group(function () {
-
         Route::post('/login', 'store');
         Route::get('/login', 'create');
         Route::post('/logout', 'destroy')->withoutMiddleware('guest')->middleware('auth');
     });
-    Route::controller(RegisteredUserController::class)->group(function () {
 
+    Route::controller(RegisteredUserController::class)->group(function () {
         Route::post('/register', 'store');
         Route::get('/register', 'create');
 

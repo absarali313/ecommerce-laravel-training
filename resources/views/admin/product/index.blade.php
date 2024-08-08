@@ -16,11 +16,10 @@
                     <div class="col-6 mt-2 ">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-
                                 <x-admin.product.product-button class="nav-link active" aria-current="page"  href="/admin/products" class="btn-gray rounded-2 mb-1 px-1 py-1">Product</x-admin.product.product-button>
                             </li>
-                            <li class="nav-item">
 
+                            <li class="nav-item">
                                 <x-admin.product.product-button class="nav-link" href="/admin/products/archive" class="btn-gray rounded-2 mb-1 px-1 py-1">Archive</x-admin.product.product-button>
                             </li>
                         </ul>

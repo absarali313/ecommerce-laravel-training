@@ -5,11 +5,7 @@
                 <label for="visibility" class="text-start text-secondary">Visibility</label>
                 <select id="visibility" name="visibility" class="form-select">
                     <option value="active">Active</option>
-                    @if(isset($product) && !$product->visibility)
-                        <option value="inactive" selected>Inactive</option>
-                    @else
-                        <option value="inactive">Inactive</option>
-                    @endif
+                    <option value="inactive" @selected(isset($product) && !$product->visibility)>Inactive</option>
                 </select>
 
                 <x-form-error name="visibility"/>

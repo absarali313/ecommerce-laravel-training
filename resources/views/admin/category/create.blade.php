@@ -1,6 +1,7 @@
 <x-admin.layout>
     <div class="container-fluid my-5 ">
-        <form method="POST" action="{{ route('admin_categories_index') }}">
+
+        <form method="POST" action="{{ route('admin_categories') }}">
             @csrf
             <div class="row d-flex justify-content-around ">
                 <div class="col-6">
@@ -20,9 +21,8 @@
                     <x-admin.Category.category-description-box/>
                 </div>
 
+                {{-- Parent Category Selection Box --}}
                 <div class="col-3">
-
-                    {{-- Parent Category Selection Box --}}
                     <div class="row bg-white rounded-3 px-3 py-2 border border-1 border-white">
                         <div class="col">
                             <div class="row">
@@ -32,6 +32,7 @@
                                         @foreach($categories as $category)
                                             <option value="{{ $category->name }}" >{{ $category->name }}</option>
                                         @endforeach
+
                                     </select>
 
                                     <x-form-error name="parent" />
