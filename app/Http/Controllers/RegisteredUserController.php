@@ -15,17 +15,11 @@ class RegisteredUserController extends Controller
 
     public function store(Request $request)
     {
-        $user_details = $request->validate([
-            'name' => ['required'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'min:8'],
-
-        ]);
+        $user_details = $request->validated();
 
         $user = User::create($user_details);
         Auth::login($user);
 
         return redirect('/');
-
     }
 }
