@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Size;
+namespace App\Http\Requests\Admin\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateSizeRequest extends FormRequest
+class CategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,9 @@ class UpdateSizeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'size_title' => 'required|string',
-            'stock' => 'required|integer',
-            'price' => 'required|numeric',
+            'name' => 'required|unique:categories|max:255',
+            'parent' => 'required',
+            'images' => 'required',
         ];
     }
 }

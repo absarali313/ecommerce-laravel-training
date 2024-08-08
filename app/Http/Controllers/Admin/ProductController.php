@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Product\StoreProductRequest;
+use App\Http\Requests\Admin\Product\ProductRequest;
 use App\Http\Requests\Admin\Product\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -22,11 +22,11 @@ class ProductController extends Controller
 
         return view('admin.product.index', [
             'products' => $products,
-            'status'=>true,
+            'status'=>false,
         ]);
     }
 
-    public function edit(Request $request, Product $product)
+    public function edit(Product $product)
     {
         return view('admin.product.edit', [
             'product' => $product,
@@ -46,18 +46,16 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(StoreProductRequest $request)
+    public function store(ProductRequest $request)
     {
-        $validatedData = $request->validated();
-        $product = Product::setProduct($validatedData);
+        $product = Product::setProduct($request->validated());
 
         return redirect()->route('admin_product_edit', $product);
     }
 
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        $validatedData = $request->validated();
-        Product::setProduct($validatedData, $product);
+        Product::setProduct($request->validated(), $product);
 
         return redirect("/admin/products/edit/$product->id");
     }
