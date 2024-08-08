@@ -19,8 +19,8 @@
                         <div class="col-6 mt-2 ">
 
                             <x-admin.product.product-button href="{{  route('admin_categories_archive') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Archive</x-admin.product.product-button>
-                            <x-admin.product.product-button href="{{  route('admin_categories_index') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Categories</x-admin.product.product-button>
 
+                            <x-admin.product.product-button href="{{  route('admin_categories') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Categories</x-admin.product.product-button>
                         </div>
                     </div>
                 </div>

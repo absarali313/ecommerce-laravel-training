@@ -2,7 +2,7 @@
     <div class="container-fluid my-5 ">
 
         {{--Product Edit Block--}}
-        <form id="productForm" method="POST" action="{{ route('admin_products_update', $product) }}" enctype="multipart/form-data">
+        <form id="productForm" method="POST" action="{{ route('admin_product_update', $product) }}" enctype="multipart/form-data">
             @method('PATCH')
             @csrf
             {{--Back Button--}}
@@ -25,13 +25,11 @@
 
                 {{--Categories--}}
                 <div class="col-7">
-
                     @include('admin.product.partials.description-box')
                 </div>
 
                 {{--Visibility--}}
                 <div class="col-3">
-                    
                     @include('admin.product.partials.visbility-box')
                     @include('admin.product.partials.categories-box')
                 </div>
@@ -40,11 +38,16 @@
 
         {{--Product Images Block--}}
         @include('admin.product.partials.images-form')
+
         {{--Product Sizes Block--}}
         @include('admin.product.partials.size-form')
+
         {{--Product Related Products Block--}}
-        @include('admin.product.partials.relatedproducts-form')
+        @include('admin.product.partials.relatedproducts-form', [
+            'relatedProducts' => $product->relatedProducts
+        ])
     </div>
+
     @push('tinymce')
         <script src="{{ asset('js/tinymce.js') }}"></script>
     @endpush

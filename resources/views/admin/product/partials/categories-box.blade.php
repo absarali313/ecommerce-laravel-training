@@ -9,7 +9,6 @@
                 </div>
             @endforeach
         </div>
-
         <x-form-error name="categories" />
     </div>
 </div>

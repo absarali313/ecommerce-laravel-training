@@ -27,13 +27,13 @@ class CategoryController extends Controller
     {
         Category::setCategory($request->validated());
 
-        return redirect()->route('admin_categories_index');
+        return redirect()->route('admin_categories');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
 
-        return redirect()->route('admin_categories_index');
+        return redirect()->route('admin_categories');
     }
 }

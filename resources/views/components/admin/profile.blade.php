@@ -5,7 +5,7 @@
         </div>
 
         <div class='col-md-4 col-sm-3 mt-md-2' >
-            <p class= '  text-white font-weight-light ' > {{ $slot }}</p>
+            <p class= 'text-white font-weight-light'>{{ $slot }}</p>
         </div>
     </div>
 </div>
