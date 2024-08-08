@@ -36,13 +36,14 @@ class CategoryController extends Controller
         {
             $category->storeImage($request->images);
         }
-        return redirect()->route('admin.categories');
+
+        return redirect()->route('admin_categories_index');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
 
-        return redirect()->route('admin.categories');
+        return redirect()->route('admin_categories_index');
     }
 }

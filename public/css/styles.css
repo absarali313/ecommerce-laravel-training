@@ -4,20 +4,6 @@
 .hover-text-light:hover {
     color: #f8f9fa; /* Light text color on hover */
 }
-.hover-border:hover
-{
-    border-width: 5px;
-}
-
-.text-gray-200
-{
-    color: 	#787878;
-}
-
-.hover-border:hover
-{
-    border-width: 5px;
-}
 
 /* Custom background colors */
 .bg-light-gray {
@@ -29,13 +15,7 @@
 .hover-bg-light-gray:hover {
     background: #f3f3f3; /* light gray background */
 }
-.button-hover
-{
-    color: Gray;
-    background-color: transparent;
-}
-
-.bg-gray {
+.bg-gray{
     background: #252525;
 
 }
@@ -45,10 +25,6 @@
     color:white;
     font-weight:bold;
     font-size:12px;
-}
-.search-container
-{
-    position: relative;
 }
 
 .btn-red {
@@ -63,28 +39,11 @@
 .bg-light-black {
     background: rgb(28, 28, 28); /* Black background */
 }
-.search-container .form-control
-{
-    width: 0;
-    opacity: 0;
-    transition: width 0.4s ease, opacity 0.4s ease;
-    position: absolute;
-    right: 0;
-}
 .bg-dark-gray {
     background: rgb(48, 48, 48); /* Black background */
 }
-.search-container:hover .form-control
-{
-    width: 200px;
-    opacity: 1;
-}
 .hover-bg-dark-gray:hover {
     background: rgb(57, 57, 57); /* Black background */
-}
-.search-icon
-{
-    cursor: pointer;
 }
 
 
@@ -100,6 +59,18 @@
 .form-label{
     width: 100px;
 }
+.no-margin
+{
+    margin:0;
+    padding:0
+}
+.div-style
+{
+    background: white
+}
 
-
+.box-style
+{
+    width: 80px
+}
 
