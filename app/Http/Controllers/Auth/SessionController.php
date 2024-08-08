@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreSessionRequest;
+use App\Http\Requests\SessionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,16 +14,11 @@ class SessionController extends Controller
         return view('auth.login');
     }
 
-    public function store(StoreSessionRequest $request)
+    public function store(SessionRequest $request)
     {
-        $details = $request->validated();
-
-        if (Auth::attempt($details))
-        {
+       if (Auth::attempt($request->validated())){
             $request->session()->regenerate();
-        }
-        else
-        {
+        } else{
             return redirect()
                 ->back()
                 ->withInput($request->only('email'))
