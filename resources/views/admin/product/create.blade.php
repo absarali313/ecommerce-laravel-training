@@ -2,7 +2,7 @@
 
 <x-admin.layout>
     <div class="container-fluid my-5 ">
-        <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin_products_create') }}" enctype="multipart/form-data">
             @csrf
             <a href="/admin/products" class="rounded-2 mx-1">
                 <li class="fa fa-arrow-left text-secondary"></li>
