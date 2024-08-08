@@ -1,5 +1,3 @@
-@props(['product'])
-
 <x-client.layout>
     <div class="d-flex w-100">
 
@@ -12,13 +10,15 @@
             <h1 class="fs-2">{{ $product?->title }}  Boys | Girls</h1>
             <p class="fs-5">Rs.{{ $product?->smallestprice?->price }}.00PKR</p>
             <p class="text-gray-200 my-2 text-sm-start">Size</p>
+
             {{-- Product Sizes --}}
             @foreach($product->sizes as $size)
                 @include('client.product.partials.product-size', [
-                'size' => $size->title,
+                    'size' => $size->title,
                 ])
             @endforeach
             <p  class="text-gray-200 my-2 ">Quantity</p>
+
             @include('client.product.partials.product-quantity')
 
             {{-- Add to cart Block --}}
@@ -46,7 +46,7 @@
         <div class="row">
             @foreach($product->relatedproducts as $relate)
                 @include('client.product.partials.product-box', [
-                'item' => $relate,
+                    'item' => $relate,
                 ])
             @endforeach
         </div>
