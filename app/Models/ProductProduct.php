@@ -21,7 +21,7 @@ class ProductProduct extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function scopeRelatedProduct($query, $product,$relatedProduct) : ProductProduct
+    public function scopeRelatedProduct($query, $product, $relatedProduct) : ProductProduct
     {
         return $query->where('product_id', $product)
             ->where('related_product_id', $relatedProduct);
@@ -38,14 +38,14 @@ class ProductProduct extends Model
         $action = $relatedProductData->input('action');
         if ($action == 'update')
         {
-            ProductProduct::where('product_id',$relatedProductData->product_id)->where( 'related_product_id',$product->id)->update([
+            ProductProduct::where('product_id', $relatedProductData->product_id)->where( 'related_product_id', $product->id)->update([
                 'product_id' => $relatedProductData->product_id,
                 'related_product_id' => $relatedProductData->related_id,
             ]);
         }
         elseif ($action == 'delete')
         {
-            ProductProduct::where('product_id',$relatedProductData->product_id)->where( 'related_product_id',$product->id)->delete();
+            ProductProduct::where('product_id', $relatedProductData->product_id)->where( 'related_product_id', $product->id)->delete();
         }
     }
 

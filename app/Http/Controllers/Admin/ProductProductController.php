@@ -19,7 +19,7 @@ class ProductProductController extends Controller
         return redirect()->back();
     }
 
-    public function update(Request $request,Product $product)
+    public function update(Request $request, Product $product)
     {
         ProductProduct::updateOrDelete($request, $product);
 
