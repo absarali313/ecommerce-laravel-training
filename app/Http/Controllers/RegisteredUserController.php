@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreRegisteredUserRequest;
+use App\Http\Requests\RegisteredUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,11 +14,9 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
-    public function store(StoreRegisteredUserRequest $request)
+    public function store(RegisteredUserRequest $request)
     {
-        $user_details = $request->validated();
-
-        $user = User::create($user_details);
+        $user = User::create($request->validated());
         Auth::login($user);
 
         return redirect('/');
