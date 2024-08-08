@@ -14,16 +14,13 @@ class SessionController extends Controller
 
     public function store(Request $request)
     {
-        $details = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        $details = $request->validated();
+
         if (Auth::attempt($details))
         {
             $request->session()->regenerate();
 
             return redirect('/admin/products');
-
         }
         else
         {
@@ -33,7 +30,6 @@ class SessionController extends Controller
                     'email' => 'The provided credentials are incorrect.',
                 ]);
         }
-
     }
 
     public function destroy(Request $request)
@@ -42,7 +38,6 @@ class SessionController extends Controller
         Auth::logout();
 
         return redirect('/login');
-
     }
 
 }
