@@ -29,23 +29,31 @@ class ProductProduct extends Model
 
     /**
      * Update or delete the product
-     * @param Request $relationData
+     * @param Request $relatedProductData
      * @param Product $product
      * @return void
      */
-    public static function updateOrDelete(Request $relationData,Product $product)
+    public static function updateOrDelete(Request $relatedProductData, Product $product)
     {
-        $action = $relationData->input('action');
+        $action = $relatedProductData->input('action');
         if ($action == 'update')
         {
-            ProductProduct::where('product_id',$relationData->product_id)->where( 'related_product_id',$product->id)->update([
-                'product_id' => $relationData->product_id,
-                'related_product_id' => $relationData->related_id,
+            ProductProduct::where('product_id',$relatedProductData->product_id)->where( 'related_product_id',$product->id)->update([
+                'product_id' => $relatedProductData->product_id,
+                'related_product_id' => $relatedProductData->related_id,
             ]);
         }
         elseif ($action == 'delete')
         {
-            ProductProduct::where('product_id',$relationData->product_id)->where( 'related_product_id',$product->id)->delete();
+            ProductProduct::where('product_id',$relatedProductData->product_id)->where( 'related_product_id',$product->id)->delete();
         }
+    }
+
+    public static function setRelatedProduct(Request $relatedProductData)
+    {
+        ProductProduct::create([
+            'product_id' => $relatedProductData->product_id,
+            'related_product_id' => $relatedProductData->Related_id,
+        ]);
     }
 }
