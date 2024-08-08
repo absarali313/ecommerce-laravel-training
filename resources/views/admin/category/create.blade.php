@@ -17,7 +17,7 @@
 
                 {{-- Title & Description --}}
                 <div class="col-7">
-                    <x-admin.Category.category-create-description-box/>
+                    <x-admin.Category.category-description-box/>
                 </div>
 
                 <div class="col-3">

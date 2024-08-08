@@ -47,6 +47,7 @@
                 {{-- Categories --}}
                 <div>
                     @foreach($categories as $category)
+
                         @include('admin.category.partials.category-box', [
                         'category' => $category
                         ])

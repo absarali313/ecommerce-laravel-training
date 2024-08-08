@@ -24,6 +24,7 @@
                 </div>
 
                 <div class="col-3">
+
                     @include('admin.product.partials.visbility-box')
                     @include('admin.product.partials.categories-box')
                 </div>
