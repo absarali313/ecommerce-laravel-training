@@ -3,7 +3,7 @@
         <div class="col">
 
             {{--Add Related Prroduct Form--}}
-            <form method="POST" action="{{ route('admin_related_products_store',$product) }}">
+            <form method="POST" action="{{ route('admin_related_products_store', $product) }}">
                 @csrf
                 <div class="col d-flex justify-content-between py-2">
                     <p class="text-secondary">Related Product</p>
@@ -30,7 +30,7 @@
             {{--Display Existed Related Prroducts--}}
             <div class="bg-light-gray rounded-3 p-3 mt-2">
                 @foreach($relatedProducts as $relatedProduct)
-                    <form method="POST" action="{{ route('admin_related_products_update',$relatedProduct) }}">
+                    <form method="POST" action="{{ route('admin_related_products_update', $relatedProduct) }}">
                         @csrf
                         @method('PUT')
                         <div class="row my-2">
