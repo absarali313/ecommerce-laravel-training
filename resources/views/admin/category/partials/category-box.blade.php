@@ -1,5 +1,3 @@
-@props(['category'])
-
 <div class="row d-flex justify-content-between bg-white mt-2 border border-1 border-end-0 border-start-0 border-top-0  p-2">
     <div class="col-5">
         <div class="row flex justify-content-start align-items-center  ">

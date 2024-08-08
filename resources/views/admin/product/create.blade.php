@@ -1,18 +1,39 @@
 @props(['categories' => [], 'selectedCategories' => [] ])
 
 <x-admin.layout>
-    @include('admin.product.partials.create-product-form')
-    @stack('scripts')
-</x-admin.layout>
-@push('scripts')
-    <script>
-        tinymce.init({
-            selector: '#description',  // The ID of your textarea
-            menubar: false,
-            plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
-            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-            height: 300
-        });
-    </script>
-@endpush
+    <div class="container-fluid my-5 ">
+        <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+            @csrf
+            <a href="/admin/products" class="rounded-2 mx-1">
+                <li class="fa fa-arrow-left text-secondary"></li>
+            </a>
+            <div class="row d-flex justify-content-around px-5">
+                <div class="col-6">
+                    <h4>Add Product</h4>
+                </div>
 
+                <div class="col-6 d-flex justify-content-end ">
+                    <button type="submit" class="btn btn-gray rounded-2 mx-1 ">Save</button>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-1 p-1 ">
+                <div class="col-7">
+
+                   @include('admin.product.partials.description-box',[
+                        'product' => null
+                   ])
+                </div>
+
+                <div class="col-3">
+                    @include('admin.product.partials.visbility-box')
+                    @include('admin.product.partials.categories-box')
+                </div>
+            </div>
+        </form>
+    </div>
+
+    @push('tinymce')
+        <script src="{{ asset('js/tinymce.js') }}"></script>
+    @endpush
+</x-admin.layout>

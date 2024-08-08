@@ -30,9 +30,9 @@ class Size extends Model
 
     /**
      * Returns the current price of a product size
-     * @return Price
+     * @return Price|null
      */
-    public function getCurrentPrice() : Price
+    public function getCurrentPrice() : Price|null
     {
         return $this->prices()->orderByDesc('started_at')->first();
     }
