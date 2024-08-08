@@ -1,5 +1,6 @@
 <x-admin.layout>
     <h2>Register</h2>
+
     <form action="/register" method="POST">
         @csrf
         <label for="name">Name:</label>

@@ -31,7 +31,7 @@
     <div class="col-2 d-flex justify-content-end align-items-center">
         @if($product->trashed())
             <div>
-                <form method="POST" action="{{ route("admin_restore_archive",$product->id) }}">
+                <form method="POST" action="{{ route("admin_restore_archive", $product->id) }}">
                     @csrf
                     @method('PATCH')
                     <button type="submit" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
@@ -41,7 +41,7 @@
             </div>
         @else
             <div class="d-flex">
-                <form method="POST" action="{{ route("admin_products_delete",$product) }}">
+                <form method="POST" action="{{ route("admin_products_delete", $product) }}">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
