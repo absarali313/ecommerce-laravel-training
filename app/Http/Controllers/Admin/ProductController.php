@@ -22,6 +22,7 @@ class ProductController extends Controller
 
         return view('admin.product.index', [
             'products' => $products,
+            'status'=>true,
         ]);
     }
 
@@ -50,7 +51,7 @@ class ProductController extends Controller
         $validatedData = $request->validated();
         $product = Product::setProduct($validatedData);
 
-        return redirect()->route('products.edit', $product);
+        return redirect()->route('admin_products_edit', $product);
     }
 
     public function update(UpdateProductRequest $request, Product $product)

@@ -1,7 +1,7 @@
 <div class="row bg-white rounded-3 px-3 py-2 border border-1 border-white mt-4">
     <div class="row">
         <div class="col">
-            <form method="POST" action="{{ route("products.size.store",$product) }}">
+            <form method="POST" action="{{ route("admin_products_size_store",$product) }}">
                 @csrf
                 {{--Size Title--}}
                 <div class="col d-flex justify-content-between py-2">

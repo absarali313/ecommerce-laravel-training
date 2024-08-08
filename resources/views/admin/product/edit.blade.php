@@ -2,7 +2,7 @@
     <div class="container-fluid my-5 ">
 
         {{--Product Edit Block--}}
-        <form id="productForm" method="POST" action="{{ route('products.update', $product) }}" enctype="multipart/form-data">
+        <form id="productForm" method="POST" action="{{ route('admin_products_update', $product) }}" enctype="multipart/form-data">
             @method('PATCH')
             @csrf
             {{--Back Button--}}

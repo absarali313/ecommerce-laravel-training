@@ -18,7 +18,7 @@
     </div>
 
     <div class="col-2 flex justify-content-end align-items-center">
-        <form method="POST" action="{{ route('admin.category.destroy',$category) }}">
+        <form method="POST" action="{{ route('admin_category_destroy',$category) }}">
             @csrf
             @method('DELETE')
             <Button type="submit" class="text-center btn btn-danger rounded-3 mx-5">Delete</Button>

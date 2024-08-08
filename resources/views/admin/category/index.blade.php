@@ -8,19 +8,20 @@
             </div>
 
             <div class="col-6 d-flex justify-content-end ">
-                <a href="{{ route('admin.category.create') }}" class="btn btn-gray rounded-2">Add Category</a>
+                <a href="{{ route('admin_category_create') }}" class="btn btn-gray rounded-2">Add Category</a>
             </div>
 
             <div class="container-fluid bg-white rounded-3 mt-3">
 
                 {{-- Filter Bar --}}
                 <div class="row d-flex justify-content-between">
-                    <div class="col-6 mt-2">
-                        <button class="btn-gray rounded-2 mb-1">All</button>
-                    </div>
+                    <div class="row d-flex flex-row justify-content-between">
+                        <div class="col-6 mt-2 ">
 
-                    <div class="col-6 d-flex justify-content-end align-items-center mt-2">
-                        <button class="btn-gray rounded-2 mb-1">Archive</button>
+                            <x-admin.product.product-button href="{{  route('admin_categories_archive') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Archive</x-admin.product.product-button>
+                            <x-admin.product.product-button href="{{  route('admin_categories_index') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Categories</x-admin.product.product-button>
+
+                        </div>
                     </div>
                 </div>
 

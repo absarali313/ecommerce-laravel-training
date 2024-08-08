@@ -36,7 +36,7 @@ class ProductProductController extends Controller
         }
         elseif ($action == 'delete')
         {
-            ProductProduct::relatedProduct($request->id,$request->related_id)->delete();
+            ProductProduct::where('product_id',$request->product_id)->where( 'related_product_id',$product->id)->delete();
         }
 
         return redirect()->back();
