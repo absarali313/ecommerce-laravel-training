@@ -22,6 +22,7 @@ class ProductController extends Controller
 
         return view('admin.product.index', [
             'products' => $products,
+            'status'=>true,
         ]);
     }
 

@@ -1,6 +1,6 @@
 <x-admin.layout>
     <div class="container-fluid my-5 ">
-        <form method="POST" action="{{ route('admin.category.store') }}">
+        <form method="POST" action="{{ route('admin_categories_index') }}">
             @csrf
             <div class="row d-flex justify-content-around ">
                 <div class="col-6">

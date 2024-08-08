@@ -57,7 +57,7 @@ class Category extends Model
      * @param File nullable $image
      * @return Category
      */
-    public static function setCategory(String $name, String $parentName, File $image = null ) : Category
+    public static function setCategory(String $name, String $parentName ) : Category
     {
         $parentCategoryId = Category::where('name', $parentName)->value('id');
 
