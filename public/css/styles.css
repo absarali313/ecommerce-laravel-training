@@ -1,25 +1,35 @@
 
 
 /* Light text color on hover for elements with hover-text-light */
-.hover-text-light:hover {
+.hover-text-light:hover
+{
     color: #f8f9fa; /* Light text color on hover */
 }
 
 /* Custom background colors */
-.bg-light-gray {
+.bg-light-gray
+{
     background: #EBEBEB; /* light gray background */
 }
-.bg-off-white {
+
+.bg-off-white
+{
     background: #f3f3f3; /* light gray background */
 }
-.hover-bg-light-gray:hover {
+
+.hover-bg-light-gray:hover
+{
     background: #f3f3f3; /* light gray background */
 }
-.bg-gray{
+
+.bg-gray
+{
     background: #252525;
 
 }
-.btn-gray {
+
+.btn-gray
+{
     background: linear-gradient(180deg, #151515, #393939);
     box-shadow: 0 1px #999;
     color:white;
@@ -27,7 +37,8 @@
     font-size:12px;
 }
 
-.btn-red {
+.btn-red
+{
     background: linear-gradient(180deg, rgba(174, 54, 54, 0.85), rgba(189, 44, 44, 0.85));
     box-shadow: 0 1px #999;
     color:white;
@@ -35,38 +46,61 @@
     font-size:12px;
 }
 
-
-.bg-light-black {
+.bg-light-black
+{
     background: rgb(28, 28, 28); /* Black background */
 }
-.bg-dark-gray {
+
+.bg-dark-gray
+{
     background: rgb(48, 48, 48); /* Black background */
 }
-.hover-bg-dark-gray:hover {
-    background: rgb(57, 57, 57); /* Black background */
+
+.hover-bg-dark-gray:hover
+{
+    background: rgb(57, 57, 57);
 }
 
-
-/* Custom placeholder text color */
-.form-control::placeholder {
-    color: #6c757d; /* Light gray color for placeholder text */
-    opacity: 1; /* Ensures the color is applied */
+.form-control::placeholder
+{
+    color: #6c757d;
+    opacity: 1;
 }
 
-.active {
+.active
+{
     color: #02cf2a;
 }
-.form-label{
+
+.form-label
+{
     width: 100px;
 }
+
 .no-margin
 {
     margin:0;
     padding:0
 }
+
 .div-style
 {
     background: white
 }
 
+.box-style
+{
+    width: 80px
+}
 
+.image-style
+{
+    height:150px;
+    width:150px
+}
+
+.category-style
+{
+    width:50px;
+    height:50px
+}

@@ -18,12 +18,12 @@ class ArchiveProductController extends Controller
         ]);
     }
 
-    public function update(Product $product)
+    public function update($product)
     {
         $product=Product::withTrashed()->findOrFail($product);
         $product->restore(); // Restore the soft-deleted product
 
-        return redirect()->route('products.archive')->with('success', 'Product restored successfully!');
+        return redirect()->route('admin_products_archive')->with('success', 'Product restored successfully!');
 
     }
 }

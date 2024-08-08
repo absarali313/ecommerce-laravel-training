@@ -1,5 +1,5 @@
 <x-admin.layout>
-    <div class="container-fluid my-5 ">
+    <div @class(["container-fluid my-5 "])>
         {{--Product Edit Block--}}
         @include('admin.product.partials.edit-product-form')
         {{--Product Images Block--}}

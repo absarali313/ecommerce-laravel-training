@@ -1,3 +1,11 @@
 @props(['visible' => false])
 
-<h6 class="{{ $visible? 'bg-success text-white w-auto' : 'bg-secondary text-white w-auto' }} text-center p-1 rounded-4 " style="width:80px">{{ $visible? 'Active' : 'Inactive' }}</h6>
+<h6
+    @class([
+        'text-center p-1 rounded-4',
+        'bg-success text-white w-auto' => $visible,
+        'bg-secondary text-white w-auto' => ! $visible,
+        'box-style'
+    ]) >
+    {{ $visible ? 'Active' : 'Inactive' }}
+</h6>
