@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        $products = Category::find($category->id)->products()->cursorPaginate(8);
+        $products = $category->products()->cursorPaginate(8);
 
         return view('client.product.index',[
             'products' => $products,
