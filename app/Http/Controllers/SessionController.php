@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSessionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,18 +13,15 @@ class SessionController extends Controller
         return view('auth.login');
     }
 
-    public function store(Request $request)
+    public function store(StoreSessionRequest $request)
     {
-        $details = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        $details = $request->validated();
+
         if (Auth::attempt($details))
         {
             $request->session()->regenerate();
 
             return redirect('/admin/products');
-
         }
         else
         {
@@ -33,7 +31,6 @@ class SessionController extends Controller
                     'email' => 'The provided credentials are incorrect.',
                 ]);
         }
-
     }
 
     public function destroy(Request $request)
@@ -42,7 +39,6 @@ class SessionController extends Controller
         Auth::logout();
 
         return redirect('/login');
-
     }
 
 }

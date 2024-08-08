@@ -26,18 +26,7 @@ class ProductProductController extends Controller
 
     public function update(Request $request,Product $product)
     {
-        $action = $request->input('action');
-        if ($action == 'update')
-        {
-            ProductProduct::where('product_id',$request->product_id)->where( 'related_product_id',$product->id)->update([
-                'product_id' => $request->product_id,
-                'related_product_id' => $request->related_id,
-            ]);
-        }
-        elseif ($action == 'delete')
-        {
-            ProductProduct::where('product_id',$request->product_id)->where( 'related_product_id',$product->id)->delete();
-        }
+        ProductProduct::updateOrDelete($request, $product);
 
         return redirect()->back();
 
