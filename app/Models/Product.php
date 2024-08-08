@@ -59,7 +59,11 @@ class Product extends Model
      */
     public function setVisibility(String $status): bool
     {
-        return $status !== 'inactive';
+        if ($status == ('inactive'))
+        {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -95,7 +99,7 @@ class Product extends Model
      * @param  Request $request
      * @return \App\Models\Product
      */
-    public function setProduct(Request $request): Product
+    public static function setProduct($productData , ?Product $product = null) : Product
     {
         $this->fill($request->all());
         $this->save();
