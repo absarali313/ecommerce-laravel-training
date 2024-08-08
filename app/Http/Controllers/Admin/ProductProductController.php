@@ -21,7 +21,6 @@ class ProductProductController extends Controller
         ]);
 
         return redirect()->back();
-
     }
 
     public function update(Request $request,Product $product)
@@ -29,6 +28,5 @@ class ProductProductController extends Controller
         ProductProduct::updateOrDelete($request, $product);
 
         return redirect()->back();
-
     }
 }
