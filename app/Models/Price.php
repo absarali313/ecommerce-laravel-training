@@ -17,7 +17,7 @@ class Price extends Model
         'ended_at',
     ];
 
-    public function size() : BelongsTo
+    public function size(): BelongsTo
     {
         return $this->belongsTo(Size::class,'product_size_id');
     }
