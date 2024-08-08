@@ -10,7 +10,8 @@ class ArchiveProductController extends Controller
 {
     public function index(Product $product)
     {
-        $products=Product::onlyTrashed()->cursorPaginate(8);
+        $products=Product::onlyTrashed()->simplePaginate(8);
+
         return view('admin.archive_product.archive-index', [
             'products'=>$products,
             'status'=>false,
