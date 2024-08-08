@@ -1,5 +1,3 @@
-@props(['item'=> null])
-
 <div class="col-md-3 mb-4">
     <div class="card shadow-sm h-100">
 
@@ -8,10 +6,10 @@
         <div class="card-body text-center">
 
             {{-- Category Title --}}
-            <a href="{{route('category.products', $item)}}" class="text-black text-decoration-none">
-                <h5 class="card-title mb-2">{{$item->name}}</h5>
+            <a href="{{route('client_category_products', $category)}}" class="text-black text-decoration-none">
+                <h5 class="card-title mb-2">{{$category->name}}</h5>
             </a>
-            <a href="{{route('category.products', $item)}}" class="btn text-white bg-black border-dark text-center">Browse Category</a>
+            <a href="{{route('client_category_products', $category)}}" class="btn text-white bg-black border-dark text-center">Browse Category</a>
         </div>
 
     </div>
