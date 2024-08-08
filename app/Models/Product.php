@@ -18,27 +18,27 @@ class Product extends Model
         'Visibility'
     ];
 
-    public function categories() : BelongsToMany
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class,'category_product');
     }
 
-    public function relatedProducts() : BelongsToMany
+    public function relatedProducts(): BelongsToMany
     {
         return $this->belongsToMany(Product::class,'product_product','product_id','related_product_id');
     }
 
-    public function sizes() : HasMany
+    public function sizes(): HasMany
     {
         return $this->hasMany(Size::class,  'product_id',);
     }
 
-    public function images() : HasMany
+    public function images(): HasMany
     {
         return $this->hasMany(ProductImage::class,'product_id');
     }
 
-    public function prices() : Builder
+    public function prices(): Builder
     {
         return $this->throughSizes()->hasPrices();
     }
@@ -56,7 +56,7 @@ class Product extends Model
      * Returns the lowest price from different variations of product
      * @return Price|null
      */
-    public function getSmallestPriceAttribute() : mixed
+    public function getSmallestPriceAttribute(): mixed
     {
         // Fetch the minimum price among all sizes related to the product
         $smallestPrice = $this->sizes()

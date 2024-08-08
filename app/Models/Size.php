@@ -18,12 +18,12 @@ class Size extends Model
         'product_id'
     ];
 
-    public function product() : BelongsTo
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function prices() : HasMany
+    public function prices(): HasMany
     {
         return $this->hasMany(Price::class, 'product_size_id');
     }

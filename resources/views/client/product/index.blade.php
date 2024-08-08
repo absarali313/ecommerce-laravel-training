@@ -2,11 +2,11 @@
     <x-client.product.hero-banner/>
     <div class="container my-5">
         <div class="row">
+
             {{-- Product Boxes --}}
             @foreach($products as $product)
-
                 @include('client.product.partials.product-box', [
-                'product' => $product,
+                     'product' => $product,
                 ])
             @endforeach
         </div>
