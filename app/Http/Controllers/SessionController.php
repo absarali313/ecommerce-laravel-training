@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSessionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,7 @@ class SessionController extends Controller
         return view('auth.login');
     }
 
-    public function store(Request $request)
+    public function store(StoreSessionRequest $request)
     {
         $details = $request->validated();
 
