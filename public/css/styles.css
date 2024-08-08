@@ -1,25 +1,31 @@
-.hover-border:hover {
-    border-width: 3px !important;
+.hover-border:hover
+{
+    border-width: 5px;
 }
 
-.text-gray-200 {
+.text-gray-200
+{
     color: 	#787878;
 }
 
-.hover-border:hover {
-    border-width: 3px !important;
+.hover-border:hover
+{
+    border-width: 5px;
 }
 
-.button-hover{
-    color: Gray !important;
-    background-color: transparent !important;
+.button-hover
+{
+    color: Gray;
+    background-color: transparent;
 }
 
-.search-container {
+.search-container
+{
     position: relative;
 }
 
-.search-container .form-control {
+.search-container .form-control
+{
     width: 0;
     opacity: 0;
     transition: width 0.4s ease, opacity 0.4s ease;
@@ -27,11 +33,12 @@
     right: 0;
 }
 
-.search-container:hover .form-control {
+.search-container:hover .form-control
+{
     width: 200px;
     opacity: 1;
 }
-
-.search-icon {
+.search-icon
+{
     cursor: pointer;
 }

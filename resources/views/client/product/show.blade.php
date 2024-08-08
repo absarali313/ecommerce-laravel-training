@@ -20,7 +20,7 @@
             @endforeach
             <p  class="text-gray-200 my-2 ">Quantity</p>
 
-            <x-client.product-quantity />
+            @include('client.product.partials.product-quantity')
 
             <div class="d-flex align-items-center justify-content-center border border-1 border-dark mt-4 hover-border">
                 <span type="button" class="my-2" >Add to cart</span>

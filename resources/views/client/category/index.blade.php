@@ -5,7 +5,7 @@
             {{-- Product Boxes --}}
             @foreach($categories as $category)
                 @include('client.category.partials.category-box', [
-               'item' => $category,
+               'category' => $category,
                ])
             @endforeach
         </div>

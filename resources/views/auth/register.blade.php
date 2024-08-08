@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-</head>
-<body>
+<x-client.layout>
 <h2>Register</h2>
 <form action="/register" method="POST">
 @csrf
@@ -25,5 +18,4 @@
 
     <button type="submit">Register</button>
 </form>
-</body>
-</html>
+</x-client.layout>

@@ -23,14 +23,14 @@ Route::middleware('guest')->group(function () {
 Route::controller(ClientCategoryController::class)->group(function () {
 
     Route::get('/categories', 'index')->name('client_categories');
-    Route::get('/categories/{category}', 'show')->name('client_category.products');
+    Route::get('/categories/{category}', 'show')->name('client_category_products');
 });
 
 Route::controller(ClientProductController::class)->group(function () {
 
     Route::get('/', 'index')->name('home');
     Route::get('/products', 'index')->name('client_products');
-    Route::get('/product/{product}', 'show')->name('client_product.detail');
+    Route::get('/product/{product}', 'show')->name('client_product_detail');
 });
 
 
