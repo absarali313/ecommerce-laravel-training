@@ -1,5 +1,6 @@
 <x-client.layout>
     <x-client.product.hero-banner/>
+
     <div class="container my-5">
         <div class="row">
 
@@ -10,7 +11,6 @@
                 ])
             @endforeach
         </div>
-
         <x-client.paginator :items="$products"/>
     </div>
 </x-client.layout>

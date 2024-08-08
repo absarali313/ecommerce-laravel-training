@@ -9,7 +9,6 @@
                 ])
             @endforeach
         </div>
-
        <x-client.paginator :items="$categories" />
     </div>
 </x-client.layout>

@@ -33,6 +33,7 @@
             <!-- Search Form (Aligned to the right) -->
             <div class="search-container d-flex ">
                 <i class="bi bi-search search-icon me-5" ></i>
+
                 <form class="d-flex">
                     <input class="form-control me-5" type="search" placeholder="Search" aria-label="Search">
                 </form>
@@ -40,8 +41,11 @@
         </div>
     </nav>
     <hr>
+
     {{ $slot }}
+
     @auth
+
         <form action="/logout" method="POST">
             @csrf
             <button type="submit">logout</button>

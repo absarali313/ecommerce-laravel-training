@@ -1,5 +1,6 @@
 <x-client.layout>
     <h2>Login</h2>
+
     <form action="/login" method="POST">
         @csrf
         <label for="email">Username or Email:</label>
