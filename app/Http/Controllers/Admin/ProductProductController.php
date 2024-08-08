@@ -14,11 +14,7 @@ class ProductProductController extends Controller
     public function store(StoreProductProductRequest $request, Product $product)
     {
         $request->validated();
-
-        ProductProduct::create([
-            'product_id' => $request->product_id,
-            'related_product_id' => $request->Related_id,
-        ]);
+        ProductProduct::setRelatedProduct($request);
 
         return redirect()->back();
     }
