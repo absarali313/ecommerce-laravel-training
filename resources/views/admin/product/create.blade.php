@@ -18,7 +18,6 @@
 
             <div class="row d-flex justify-content-around mt-1 p-1 ">
                 <div class="col-7">
-
                    @include('admin.product.partials.description-box', [
                         'product' => null
                    ])
@@ -26,7 +25,6 @@
 
                 <div class="col-3">
                     @include('admin.product.partials.visbility-box')
-
                     @include('admin.product.partials.categories-box', [
                         'selectedCategories' => null
                     ])

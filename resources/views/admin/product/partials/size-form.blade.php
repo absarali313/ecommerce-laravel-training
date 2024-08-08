@@ -36,7 +36,6 @@
             </form>
 
             <div class="bg-light-gray rounded-3 p-3 mt-2">
-
                 {{-- Product Sizes --}}
                 @foreach($productSizes as $productSize)
                    @include('admin.product.partials.size-box')
