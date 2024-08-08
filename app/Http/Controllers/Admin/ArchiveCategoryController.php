@@ -9,7 +9,8 @@ class ArchiveCategoryController extends Controller
 {
     public function index(Category $category)
     {
-        $categories=Category::onlyTrashed()->cursorPaginate(8);
+        $categories=Category::onlyTrashed()->simplePaginate(8);
+
         return view('admin.archive_product.archive-index', [
             'categories'=> $categories,
             'status'=>false,
