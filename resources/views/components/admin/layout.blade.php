@@ -10,6 +10,7 @@
     <script src="https://cdn.tiny.cloud/1/v4437h8gvq2ak03n506ro895c5i9gmgr5xnnsgjpfttf8uqd/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    @stack('tinymce')
 </head>
 <body class="no-margin">
 <div class="div-style">
@@ -59,5 +60,18 @@
     </div>
 </main>
 </body>
+
+@push('tinymce')
+    <script>
+        tinymce.init({
+            selector: '#description',  // The ID of your textarea
+            menubar: false,
+            plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
+            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+            height: 300
+        });
+    </script>
+
+@endpush
 </html>
 

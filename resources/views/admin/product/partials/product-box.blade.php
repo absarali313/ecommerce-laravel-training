@@ -1,8 +1,10 @@
 @props(['product'=>[], 'status' => false])
+
 @php
     $firstImage = $product->images->first();
     $image_url = $firstImage ? $firstImage->image_path : 'images/bracelet.jpg';
 @endphp
+
 <div class="row d-flex justify-content-between bg-white mt-2 border border-1 border-end-0 border-start-0 border-top-0  p-2">
     <div class="col-5">
         <div class="row flex justify-content-start align-items-center  ">
@@ -19,8 +21,9 @@
     </div>
 
     <div class="col-1 flex justify-content-center align-content-center">
-
-        <x-admin.product.product-status :visible='$product->Visibility'>Active</x-admin.product.product-status>
+        @include('admin.product.partials.product-status', [
+            'visible' => $product->visibility
+        ])
     </div>
 
     <div class="col-1 flex justify-content-center align-content-center">
@@ -28,7 +31,7 @@
     </div>
 
     <div class="col-2 d-flex justify-content-end align-items-center">
-        @if($status == true)
+        @if($status)
             <div>
                 <form method="POST" action="{{ route("products.archive.restore",$product->id) }}">
                     @csrf
