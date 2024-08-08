@@ -15,7 +15,8 @@ class SizeSeeder extends Seeder
     public function run(): void
     {
         $sizes=Size::factory(7)->create();
-        $sizes->each(function ($size) {
+        $sizes->each(function ($size)
+        {
             Price::factory(2)->create([
                 'product_size_id' => $size->id,
             ]);

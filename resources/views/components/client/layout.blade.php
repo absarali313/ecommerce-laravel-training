@@ -15,7 +15,6 @@
     <hr>
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent my-0">
         <div class="container-fluid">
-
             <!-- Shop Name -->
             <a class="navbar-brand ms-5 fs-4" href="#">ShopEase</a>
 
@@ -51,11 +50,13 @@
 </body>
 @push('search-style')
     <style>
-        .search-container {
+        .search-container
+        {
             position: relative;
         }
 
-        .search-container .form-control {
+        .search-container .form-control
+        {
             width: 0;
             opacity: 0;
             transition: width 0.4s ease, opacity 0.4s ease;
@@ -63,12 +64,14 @@
             right: 0;
         }
 
-        .search-container:hover .form-control {
+        .search-container:hover .form-control
+        {
             width: 200px;
             opacity: 1;
         }
 
-        .search-icon {
+        .search-icon
+        {
             cursor: pointer;
         }
     </style>

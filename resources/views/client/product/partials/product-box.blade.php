@@ -2,7 +2,7 @@
     <div class="card shadow-sm h-100">
         {{-- Product Image --}}
         <a href="{{ url("/product/{$product?->id}") }}">
-            <img src="http://picsum.photos/seed/{{rand(0,10000)}}/100/100" class="card-img-top rounded"  alt="Placeholder Image">
+            <img src="http://picsum.photos/seed/{{ rand(0,10000) }}/100/100" class="card-img-top rounded"  alt="Placeholder Image">
         </a>
 
         <div class="card-body text-center">
@@ -21,6 +21,5 @@
                 <a href="#" class="btn btn-primary bg-black border-dark w-100">Add to Cart </a>
             </div>
         </div>
-
     </div>
 </div>
