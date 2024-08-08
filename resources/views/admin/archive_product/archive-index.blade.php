@@ -1,14 +1,8 @@
 <x-admin.layout>
     <div class="container-fluid my-5 ">
         <div class="row d-flex justify-content-around ">
-
-            {{-- Product Header --}}
             <div class="col-6">
-                <h4>Products</h4>
-            </div>
-
-            <div class="col-6 d-flex justify-content-end ">
-                <a href="/admin/products/create" class="btn btn-gray rounded-2">Add Product</a>
+                <h4>Archive Products</h4>
             </div>
 
             <div class="container-fluid bg-white rounded-3 mt-3">
@@ -21,7 +15,6 @@
                     </div>
                 </div>
 
-                {{-- Product Box Headings --}}
                 <div class="row d-flex justify-content-between bg-light-gray mt-1 p-1">
                     <div class="col-2">
                         <h6 class="text-secondary">Product</h6>
