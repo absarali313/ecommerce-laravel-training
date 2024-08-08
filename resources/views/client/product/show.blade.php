@@ -1,10 +1,8 @@
 <x-client.layout>
     <div class="d-flex w-100">
-
         {{-- Product Image --}}
         <img src="http://picsum.photos/seed/{{ rand(0,10000) }}/600/600" class="img-fluid mx-5 my-5" alt="">
         <div class="mx-5 my-5">
-
             {{-- Product Details --}}
             <p class="my-0 text-gray-200 text-xs-start">Planet Silver</p>
             <h1 class="fs-2">{{ $product?->title }}  Boys | Girls</h1>
@@ -17,6 +15,7 @@
                     'size' => $size->title,
                 ])
             @endforeach
+
             <p  class="text-gray-200 my-2 ">Quantity</p>
 
             @include('client.product.partials.product-quantity')
@@ -51,6 +50,7 @@
             @endforeach
         </div>
     </div>
+
     <hr>
     <p class="ms-5 my-5 fs-6 text-gray-200 ">© 2024, ShopEase Powered by Shopify</p>
 </x-client.layout>
