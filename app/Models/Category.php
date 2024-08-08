@@ -20,7 +20,7 @@ class Category extends Model
         'parent_id'
     ];
 
-    public function parent() : BelongsTo
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(Category::class,'parent_id');
     }
@@ -30,7 +30,7 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id');
     }
 
-    public function products() : BelongsToMany
+    public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class,'category_product');
     }
@@ -59,7 +59,7 @@ class Category extends Model
      * @param File nullable $image
      * @return Category
      */
-    public static function setCategory(String $name, String $parentName ) : Category
+    public static function setCategory(String $name, String $parentName ): Category
     {
         $parentCategoryId = Category::where('name', $parentName)->value('id');
 

@@ -18,12 +18,12 @@ class Size extends Model
         'product_id',
     ];
 
-    public function product() : BelongsTo
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function prices() : HasMany
+    public function prices(): HasMany
     {
         return $this->hasMany(Price::class,'product_size_id');
     }
@@ -32,7 +32,7 @@ class Size extends Model
      * Returns the current price of a product size
      * @return Price|null
      */
-    public function getCurrentPrice() : Price|null
+    public function getCurrentPrice(): Price|null
     {
         return $this->prices()->orderByDesc('started_at')->first();
     }
@@ -44,7 +44,7 @@ class Size extends Model
      * @param Size|null $size
      * @return Size
      */
-    public static function setSize(Request $request, ?Product $product = null, ?Size $size = null) : Size
+    public static function setSize(Request $request, ?Product $product = null, ?Size $size = null): Size
     {
         if ($size) {
             // Update existing size

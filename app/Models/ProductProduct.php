@@ -16,12 +16,12 @@ class ProductProduct extends Model
         'related_product_id',
     ];
 
-    public function product() : BelongsTo
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function scopeRelatedProduct($query, $product, $relatedProduct) : ProductProduct
+    public function scopeRelatedProduct($query, $product, $relatedProduct): ProductProduct
     {
         return $query->where('product_id', $product)
             ->where('related_product_id', $relatedProduct);

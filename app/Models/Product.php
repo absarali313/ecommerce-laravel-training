@@ -20,22 +20,22 @@ class Product extends Model
         'Visibility'
     ];
 
-    public function categories() : BelongsToMany
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class,'category_product');
     }
 
-    public function relatedProducts() : BelongsToMany
+    public function relatedProducts(): BelongsToMany
     {
         return $this->belongsToMany(Product::class,'product_products','product_id','related_product_id');
     }
 
-    public function sizes() : HasMany
+    public function sizes(): HasMany
     {
         return $this->hasMany(Size::class);
     }
 
-    public function images() : HasMany
+    public function images(): HasMany
     {
         return $this->hasMany(ProductImage::class);
     }
@@ -46,7 +46,7 @@ class Product extends Model
      *
      * @return int
      */
-    public function getTotalStock() : int
+    public function getTotalStock(): int
     {
         return $this->sizes->sum('stock');
     }
@@ -57,7 +57,7 @@ class Product extends Model
      * @param  String  $status
      * @return bool
      */
-    public function setVisibility(String $status) : bool
+    public function setVisibility(String $status): bool
     {
         if ($status == ('inactive'))
         {
@@ -101,7 +101,7 @@ class Product extends Model
      * @param  Product  $product
      * @return \App\Models\Product
      */
-    public static function setProduct($productData , ?Product $product = null) : Product
+    public static function setProduct($productData , ?Product $product = null): Product
     {
         if ($product) {
             // Update existing product
