@@ -25,11 +25,13 @@
 
                 {{--Categories--}}
                 <div class="col-7">
+
                     @include('admin.product.partials.description-box')
                 </div>
 
                 {{--Visibility--}}
                 <div class="col-3">
+                    
                     @include('admin.product.partials.visbility-box')
                     @include('admin.product.partials.categories-box')
                 </div>

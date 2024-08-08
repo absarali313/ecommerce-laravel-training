@@ -6,6 +6,6 @@
         'bg-success text-white w-auto' => $visible,
         'bg-secondary text-white w-auto' => ! $visible,
         'box-style'
-    ]) >
+    ])>
     {{ $visible ? 'Active' : 'Inactive' }}
 </h6>
