@@ -18,12 +18,14 @@ class SessionController extends Controller
     {
         $details = $request->validated();
 
-        if (Auth::attempt($details)) {
+        if (Auth::attempt($details))
+        {
             $request->session()->regenerate();
-
-        } else {
-
-            return redirect()->back()
+        }
+        else
+        {
+            return redirect()
+                ->back()
                 ->withInput($request->only('email'))
                 ->withErrors([
                     'email' => 'The provided credentials are incorrect.',

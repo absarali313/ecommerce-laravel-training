@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories=Category::cursorPaginate(8);
+        $categories=Category::simplePaginate(8);
 
         return view('client.category.index',[
             'categories' => $categories,
@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        $products = $category->products()->cursorPaginate(8);
+        $products = $category->products()->simplePaginate(8);
 
         return view('client.product.index',[
             'products' => $products,
