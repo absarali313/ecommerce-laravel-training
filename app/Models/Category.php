@@ -10,9 +10,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\File;
 
+
 class Category extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -54,23 +56,24 @@ class Category extends Model
     /**
      * Stores or updates the category
      * return instance of resultant category
-     * @param String $name
-     * @param String $parentName
-     * @param File nullable $image
+     * @param array $categoryData
      * @return Category
      */
-    public static function setCategory(Request $request): void
+    public function setCategory(array $categoryData ): Category
     {
-        $parentCategoryId = Category::where('name', $request->parent)->value('id');
+        $this->name = $categoryData['name'];
 
-        $category = Category::create([
-            'name' => $request->name,
-            'parent_id' => $parentCategoryId,
-        ]);
-
-        if($request->hasFile('images'))
-        {
-            $category->storeImage($request->images);
+        if (isset($categoryData['image'])) {
+            $this->storeImage($categoryData['image']);
         }
+
+        if (isset($categoryData['parent'])){
+            $parentCategoryId = Category::where('name', $categoryData['parent'])->value('id');
+            $this->parent_id = $parentCategoryId;
+        }
+
+        $this->save();
+
+        return $this;
     }
 }

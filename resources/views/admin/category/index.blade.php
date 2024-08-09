@@ -4,14 +4,20 @@
 
         <div class="container-fluid bg-white rounded-3 mt-3">
             {{-- Filter Bar --}}
-            <div class="row d-flex justify-content-between">
+            <div class="container-fluid bg-white mt-3">
                 <div class="row d-flex flex-row justify-content-between">
                     <div class="col-6 mt-2 ">
-                        <x-admin.product.product-button href="{{  route('admin_categories_archive') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Archive</x-admin.product.product-button>
-                        <x-admin.product.product-button href="{{  route('admin_categories') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Categories</x-admin.product.product-button>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <x-admin.product.product-button class="nav-link active" aria-current="page"  href="/admin/categories" class="btn-gray rounded-2 mb-1 px-1 py-1">Category</x-admin.product.product-button>
+                            </li>
+
+                            <li class="nav-item">
+                                <x-admin.product.product-button class="nav-link" href="{{ route('admin_categories_archive') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Archive</x-admin.product.product-button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
 
             {{-- Category List Container --}}
             <div class="row d-flex justify-content-between bg-light-gray mt-1 p-1">
@@ -36,7 +42,7 @@
             <div>
                 @foreach($categories as $category)
                     @include('admin.category.partials.category-box', [
-                        'category' => $category
+                        'category' => $category,
                     ])
                 @endforeach
             </div>
@@ -48,5 +54,5 @@
             </div>
         </div>
     </div>
-
+    </div>
 </x-admin.layout>

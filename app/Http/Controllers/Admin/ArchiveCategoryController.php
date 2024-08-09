@@ -11,7 +11,7 @@ class ArchiveCategoryController extends Controller
     {
         $categories=Category::onlyTrashed()->simplePaginate(8);
 
-        return view('admin.archive_product.archive-index', [
+        return view('admin.archive_category.index', [
             'categories'=> $categories,
             'status'=>false,
         ]);
@@ -19,10 +19,10 @@ class ArchiveCategoryController extends Controller
 
     public function update(Category $category)
     {
-        $category=Category::withTrashed()->findOrFail($category);
+        $category=Category::withTrashed()->findOrFail($category->id);
         $category->restore(); // Restore the soft-deleted product
 
-        return redirect()->route('admin_categories_archive')->with('success', 'Category restored successfully!');
+        return redirect()->back();
 
     }
 }

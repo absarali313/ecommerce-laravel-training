@@ -14,6 +14,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('redirect-back', function () {
+    return redirect()->back();
+})->name('redirect.back');
+
 Route::middleware(['admin'])->group(function ()
 {
     Route::prefix('admin')->group(function ()
@@ -44,8 +48,10 @@ Route::middleware(['admin'])->group(function ()
 
             Route::get('/categories','index')->name('admin_categories');
             Route::get('/categories/create','create')->name('admin_category_create');
+            Route::get('/categories/edit/{category}','edit')->name('admin_category_edit');
             Route::delete('/categories/{category}','destroy')->name('admin_category_destroy');
             Route::post('/categories','store')->name('admin_category_store');
+            Route::patch('/categories/{category}','update')->name('admin_category_update');
         });
 
         Route::controller(AdminRelatedProductController::class)->group(function ()
@@ -59,7 +65,12 @@ Route::middleware(['admin'])->group(function ()
         Route::controller(AdminArchiveProductController::class)->group(function ()
         {
             Route::get('/products/archive', 'index')->name('admin_products_archive')->withTrashed();
-            Route::patch('/products/restore/{id}',  'update')->name('admin_restore_archive')->withTrashed();
+            Route::patch('/products/restore/{product}',  'update')->name('admin_restore_archive')->withTrashed();
+        });
+
+        Route::controller(AdminCategoryImageController::class)->group(function ()
+        {
+            Route::delete('/categories/{category}/image/delete', 'destroy')->name('admin_category_image_delete');
         });
     });
 });
