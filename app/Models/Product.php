@@ -99,7 +99,7 @@ class Product extends Model
      * @param  Request $request
      * @return \App\Models\Product
      */
-    public static function setProduct($productData , ?Product $product = null) : Product
+    public static function setProduct($productData , ?Product $product = null): Product
     {
         $this->fill($request->all());
         $this->save();
@@ -120,6 +120,7 @@ class Product extends Model
     /**
      * Deletes a product.
      * Set the visibility to false
+     * @param Product $product
      * @return void
      */
     public function destroyProduct(): void
@@ -127,6 +128,32 @@ class Product extends Model
         $this->visibility = false;
         $this->save();
         $this->delete();
+    }
+
+    /**
+     * Checks if the product is visible
+     * @return bool
+     */
+    public function isVisible(): bool
+    {
+        return isset($this) && $this->visibility;
+    }
+
+    /**
+     * Checks if the product is not visible
+     * @return bool
+     */
+    public function isHidden(): bool
+    {
+        return isset($this) && !$this->visibility;
+    }
+
+    public function getVisibilityStatus(): String
+    {
+        if($this->isVisible()){
+            return 'Active';
+        }
+        return 'Inactive';
     }
 
     public function scopeCurrentPrice()

@@ -14,7 +14,6 @@ class ProductImage extends Model
         'order',
         'image_path',
         'product_id'
-
     ];
 
     public function product(): BelongsTo

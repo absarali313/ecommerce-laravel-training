@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('description')->nullable(); // nullable
             $table->boolean('visibility')->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

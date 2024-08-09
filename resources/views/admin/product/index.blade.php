@@ -51,7 +51,9 @@
 
                 {{-- Products --}}
                 @foreach($products as $product)
-                    @include('admin.product.partials.product-box')
+                    @include('admin.product.partials.product-box', [
+                        'product' => $product,
+                    ])
                 @endforeach
 
                 <div class="row mt-4">

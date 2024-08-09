@@ -7,7 +7,7 @@ use App\Models\Category;
 
 class ArchiveCategoryController extends Controller
 {
-    public function index(Category $category)
+    public function index()
     {
         $categories=Category::onlyTrashed()->simplePaginate(8);
 
@@ -17,7 +17,7 @@ class ArchiveCategoryController extends Controller
         ]);
     }
 
-    public function update($category)
+    public function update(Category $category)
     {
         $category=Category::withTrashed()->findOrFail($category);
         $category->restore(); // Restore the soft-deleted product

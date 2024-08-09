@@ -1,6 +1,5 @@
 <x-admin.layout>
     <div class="container-fluid my-5 ">
-
         <form method="POST" action="{{ route('admin_categories') }}">
             @csrf
             <div class="row d-flex justify-content-around ">
@@ -32,7 +31,6 @@
                                         @foreach($categories as $category)
                                             <option value="{{ $category->name }}" >{{ $category->name }}</option>
                                         @endforeach
-
                                     </select>
 
                                     <x-form-error name="parent" />
