@@ -12,18 +12,9 @@
             </a>
 
             {{--Form Header--}}
-            <div class="row d-flex justify-content-around px-5">
-                <div class="col-6">
-                    <h4>Edit Product</h4>
-                </div>
-
-                <div class="col-6 d-flex justify-content-end ">
-                    <button form="productForm" type="submit" class="btn btn-gray rounded-2 mx-1 ">Save</button>
-                </div>
-            </div>
+            <x-admin.header class="mx-4" :has-action="true" >Edit Product</x-admin.header>
 
             <div class="row d-flex justify-content-around mt-1 p-1 ">
-
                 {{--Categories--}}
                 <div class="col-7">
                     @include('admin.product.partials.description-box')

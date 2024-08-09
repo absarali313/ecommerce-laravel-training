@@ -1,17 +1,8 @@
 <x-admin.layout>
     <div class="container-fluid my-5 ">
-        <form method="POST" action="{{ route('admin_categories') }}">
+        <form method="POST" action="{{ route('admin_categories') }}" enctype="multipart/form-data">
             @csrf
-            <div class="row d-flex justify-content-around ">
-                <div class="col-6">
-                    <h4>Add Category</h4>
-                </div>
-
-                <div class="col-6 d-flex justify-content-end ">
-                    <a href="/admin/categories" class="btn btn-red rounded-2 mx-1 ">Cancel</a>
-                    <button type="submit" class="btn btn-gray rounded-2 mx-1 ">Save</button>
-                </div>
-            </div>
+            <x-admin.header :has-action="true" :action-btn="'Save'"> Add Category </x-admin.header>
 
             <div class="row d-flex justify-content-around mt-1 p-1 ">
                 {{-- Title & Description --}}
