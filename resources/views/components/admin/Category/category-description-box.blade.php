@@ -12,10 +12,10 @@
         <div class= 'row mt-4' >
             <div class= 'col' >
                 <div class= 'mb-3' >
-                    <label for="images" class= 'form-label' >Upload Images</label>
-                    <input class= 'form-control'  type="file" id="images" name="images[]" accept="image/*" multiple>
+                    <label for="image" class= 'form-label' >Upload Image</label>
+                    <input class= 'form-control'  type="file" id="image" name="image" accept="image/*">
 
-                    <x-form-error name="images" />
+                    <x-form-error name="image" />
                 </div>
             </div>
         </div>

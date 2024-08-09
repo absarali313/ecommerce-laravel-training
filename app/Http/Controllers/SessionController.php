@@ -15,14 +15,11 @@ class SessionController extends Controller
 
     public function store(SessionRequest $request)
     {
-        if (Auth::attempt($request->validated()))
-        {
+        if (Auth::attempt($request->validated())) {
             $request->session()->regenerate();
 
             return redirect('/admin/products');
-        }
-        else
-        {
+        } else {
             return redirect()->back()
                 ->withInput($request->only('email'))
                 ->withErrors([

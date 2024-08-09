@@ -31,11 +31,6 @@ class CategoryController extends Controller
     {
         $category = Category::setCategory($request->validated());
 
-        if($request->hasFile('images'))
-        {
-            $category->storeImage($request->images);
-        }
-
         return redirect()->route('admin_categories');
     }
 

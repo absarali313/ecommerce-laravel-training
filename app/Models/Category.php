@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\File;
 
+
 class Category extends Model
 {
     use HasFactory;
@@ -39,16 +40,11 @@ class Category extends Model
      * Stores the category image
      * @param \Illuminate\Http\UploadedFile $images
      */
-    public function storeImage(UploadedFile $images): void
+    public function storeImage(\Illuminate\Http\UploadedFile $image): void
     {
-        if ($images)
-        {
-            foreach ($images as $image)
-            {
-                $path = $image->store('category_images');
-                $this->image_path = $path;
-            }
-        }
+        $path = $image->store('category_images', 'public');
+        $this->image_path = $path;
+        $this->save(); // Save after storing each image path
     }
 
     /**
@@ -61,12 +57,17 @@ class Category extends Model
      */
     public static function setCategory(array $categoryData ): Category
     {
-        $parentCategoryId = Category::where('name', $categoryData->parent)->value('id');
+        if(isset($categoryData['parent']))
+            $parentCategoryId = Category::where('name', $categoryData['parent'])->value('id');
 
         $category = Category::create([
-            'name' => $categoryData->name,
-            'parent_id' => $parentCategoryId,
+            'name' => $categoryData['name'],
+            'parent_id' => $parentCategoryId?? null,
         ]);
+
+        if(isset($categoryData['image'])){
+            $category->storeImage($categoryData['image']);
+        }
 
         return $category;
     }
