@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\File;
 
 
 class Category extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -50,25 +52,24 @@ class Category extends Model
     /**
      * Stores or updates the category
      * return instance of resultant category
-     * @param String $name
-     * @param String $parentName
-     * @param File nullable $image
+     * @param array $categoryData
      * @return Category
      */
-    public static function setCategory(array $categoryData ): Category
+    public function setCategory(array $categoryData ): Category
     {
-        if(isset($categoryData['parent']))
-            $parentCategoryId = Category::where('name', $categoryData['parent'])->value('id');
+        $this->name = $categoryData['name'];
 
-        $category = Category::create([
-            'name' => $categoryData['name'],
-            'parent_id' => $parentCategoryId?? null,
-        ]);
-
-        if(isset($categoryData['image'])){
-            $category->storeImage($categoryData['image']);
+        if (isset($categoryData['image'])) {
+            $this->storeImage($categoryData['image']);
         }
 
-        return $category;
+        if (isset($categoryData['parent'])){
+            $parentCategoryId = Category::where('name', $categoryData['parent'])->value('id');
+            $this->parent_id = $parentCategoryId;
+        }
+
+        $this->save();
+
+        return $this;
     }
 }

@@ -2,9 +2,7 @@
     <div class="container-fluid my-5 ">
         <form method="POST" action="{{ route('admin_product_store') }}" enctype="multipart/form-data">
             @csrf
-            <a href="/admin/products" class="rounded-2 mx-1">
-                <li class="fa fa-arrow-left text-secondary"></li>
-            </a>
+            <x-admin.back-button :link="'admin_categories'"/>
 
             <x-admin.header :has-action="true" >Add Product</x-admin.header>
 

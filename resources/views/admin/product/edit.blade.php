@@ -1,15 +1,12 @@
 <x-admin.layout>
     <div class="container-fluid my-5 ">
-
         {{--Product Edit Block--}}
         <form id="productForm" method="POST" action="{{ route('admin_product_update', $product) }}"
               enctype="multipart/form-data">
             @method('PATCH')
             @csrf
             {{--Back Button--}}
-            <a href="/admin/products" class=" rounded-2 mx-1 ">
-                <li class="fa fa-arrow-left text-secondary"></li>
-            </a>
+            <x-admin.back-button :link="'admin_products'"/>
 
             {{--Form Header--}}
             <x-admin.header class="mx-4" :has-action="true" >Edit Product</x-admin.header>
