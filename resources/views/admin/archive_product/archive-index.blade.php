@@ -1,7 +1,6 @@
 <x-admin.layout>
     <div class="container-fluid my-5 ">
         <div class="row d-flex justify-content-start">
-
             <div class="col-6  ">
                 <h4 class="text-start">Archive Products</h4>
             </div>
@@ -46,7 +45,6 @@
                         'status' => false
                     ])
                 @endforeach
-
             </div>
         </div>
     </div>

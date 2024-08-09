@@ -39,7 +39,7 @@ class Category extends Model
      * Stores the category image
      * @param \Illuminate\Http\UploadedFile $images
      */
-    public function storeImage(UploadedFile $images)
+    public function storeImage(UploadedFile $images): void
     {
         if ($images)
         {
@@ -59,12 +59,12 @@ class Category extends Model
      * @param File nullable $image
      * @return Category
      */
-    public static function setCategory(String $name, String $parentName ): Category
+    public static function setCategory(array $categoryData ): Category
     {
-        $parentCategoryId = Category::where('name', $parentName)->value('id');
+        $parentCategoryId = Category::where('name', $categoryData->parent)->value('id');
 
         $category = Category::create([
-            'name' => $name,
+            'name' => $categoryData->name,
             'parent_id' => $parentCategoryId,
         ]);
 

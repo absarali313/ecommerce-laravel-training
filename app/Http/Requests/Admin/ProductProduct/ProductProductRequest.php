@@ -22,8 +22,8 @@ class ProductProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_id' => 'required|numeric',
-            'Related_id' => 'required|numeric',
+            'product_id' => 'required | numeric',
+            'Related_id' => 'required | numeric',
         ];
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use phpDocumentor\Reflection\Types\Boolean;
+use PhpParser\Node\Scalar\String_;
 
 class Product extends Model
 {
@@ -71,7 +72,7 @@ class Product extends Model
      *
      * @param  \Illuminate\Http\UploadedFile[]  $images
      */
-    public function storeImages($images)
+    public function storeImages($images): void
     {
         if ($images) {
             foreach ($images as $image) {
@@ -86,7 +87,7 @@ class Product extends Model
      *
      * @param array $categories
      */
-    public function associateCategories($categories)
+    public function associateCategories($categories): void
     {
         if ($categories) {
             $this->categories()->sync($categories);
@@ -139,10 +140,36 @@ class Product extends Model
      * @param Product $product
      * @return void
      */
-    public function destroyProduct(){
+    public function destroyProduct(): void
+    {
         $this->visibility = false;
         $this->save();
         $this->delete();
     }
 
+    /**
+     * Checks if the product is visible
+     * @return bool
+     */
+    public function isVisible(): bool
+    {
+        return isset($this) && $this->visibility;
+    }
+
+    /**
+     * Checks if the product is not visible
+     * @return bool
+     */
+    public function isHidden(): bool
+    {
+        return isset($this) && !$this->visibility;
+    }
+
+    public function getVisibilityStatus(): String
+    {
+        if($this->isVisible()){
+            return 'Active';
+        }
+        return 'Inactive';
+    }
 }

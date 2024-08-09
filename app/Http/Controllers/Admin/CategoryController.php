@@ -29,9 +29,8 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
-        $request->validated();
+        $category = Category::setCategory($request->validated());
 
-        $category = Category::setCategory($request->name, $request->parent, $request->images);
         if($request->hasFile('images'))
         {
             $category->storeImage($request->images);

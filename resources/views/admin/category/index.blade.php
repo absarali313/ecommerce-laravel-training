@@ -1,7 +1,6 @@
 <x-admin.layout>
     <div class="container-fluid my-5 ">
         <div class="row d-flex justify-content-around ">
-
             {{-- Form Header --}}
             <div class="col-6">
                 <h4>Categories</h4>

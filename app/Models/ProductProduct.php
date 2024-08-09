@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class ProductProduct extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'product_id',
         'related_product_id',
@@ -33,7 +31,7 @@ class ProductProduct extends Model
      * @param Product $product
      * @return void
      */
-    public static function updateOrDelete(Request $relatedProductData, Product $product)
+    public static function updateOrDelete(Request $relatedProductData, Product $product): void
     {
         $action = $relatedProductData->input('action');
         if ($action == 'update')
@@ -49,7 +47,7 @@ class ProductProduct extends Model
         }
     }
 
-    public static function setRelatedProduct(Request $relatedProductData)
+    public static function setRelatedProduct(Request $relatedProductData): void
     {
         ProductProduct::create([
             'product_id' => $relatedProductData->product_id,

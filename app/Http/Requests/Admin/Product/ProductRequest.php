@@ -23,11 +23,11 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
+            'title' => 'required | string | max:255',
+            'description' => 'required | string',
             'images' => 'nullable',
             'visibility' => ['required', Rule::in(['active', 'inactive'])],
-            'categories' => 'nullable|array',
+            'categories' => 'nullable | array',
             'categories.*' => 'exists:categories,id',
         ];
     }

@@ -19,9 +19,7 @@
     </div>
 
     <div class="col-1 flex justify-content-center align-content-center">
-        @include('admin.product.partials.product-status', [
-            'visible' => $product->visibility
-        ])
+        @include('admin.product.partials.product-status')
     </div>
 
     <div class="col-1 flex justify-content-center align-content-center">
