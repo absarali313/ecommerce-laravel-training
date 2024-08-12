@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         $categories=Category::simplePaginate(8);
 
-        return view('client.category.index',[
+        return view('client.category.index', [
             'categories' => $categories,
         ]);
     }
@@ -21,7 +21,7 @@ class CategoryController extends Controller
     {
         $products = $category->products()->simplePaginate(8);
 
-        return view('client.product.index',[
+        return view('client.product.index', [
             'products' => $products,
         ]);
     }
