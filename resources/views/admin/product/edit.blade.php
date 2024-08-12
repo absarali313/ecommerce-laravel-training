@@ -27,8 +27,10 @@
 
         {{--Product Images Block--}}
         @include('admin.product.partials.images-form')
+
         {{--Product Sizes Block--}}
         @include('admin.product.partials.size-form')
+        
         {{--Product Related Products Block--}}
         @include('admin.product.partials.relatedproducts-form', [
             'relatedProducts' => $product->relatedProducts

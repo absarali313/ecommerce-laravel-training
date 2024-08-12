@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Admin\CategoryImageController as AdminCategoryImageController;
 use App\Http\Controllers\Admin\ProductProductController as AdminRelatedProductController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
@@ -39,13 +41,12 @@ Route::middleware(['admin'])->group(function ()
 
         Route::controller(AdminSizeController::class)->group(function ()
         {
-            Route::post('/products/size/{product}}','store')->name('admin_size_store');
+            Route::post('/products/size/{product}','store')->name('admin_size_store');
             Route::put('/products/size/{size}', 'update')->name('admin_size_update');
             Route::delete('/products/size/{size}', 'destroy')->name('admin_size_destroy');
         });
 
         Route::controller(AdminCategoryController::class)->group(function () {
-
             Route::get('/categories','index')->name('admin_categories');
             Route::get('/categories/create','create')->name('admin_category_create');
             Route::get('/categories/edit/{category}','edit')->name('admin_category_edit');
@@ -54,12 +55,16 @@ Route::middleware(['admin'])->group(function ()
             Route::patch('/categories/{category}','update')->name('admin_category_update');
         });
 
+        Route::controller(AdminArchiveCategoryController::class)->group(function () {
+            Route::get('/categories/archive','index')->name('admin_categories_archive')->withTrashed();
+            Route::patch('/categories/archive/restore/{category}','update')->name('admin_category_restore')->withTrashed();
+        });
+
         Route::controller(AdminRelatedProductController::class)->group(function ()
         {
             Route::post('/products/related/{product}', 'store')->name('admin_related_products_store');
             Route::put('/products/related/{product}',  'update')->name('admin_related_products_update');
             Route::delete('/products/related/{product}',  'destroy')->name('admin_related_products_destroy');
-
         });
 
         Route::controller(AdminArchiveProductController::class)->group(function ()

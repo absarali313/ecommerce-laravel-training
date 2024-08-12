@@ -51,9 +51,7 @@
                 <x-admin.sidebox/>
             </div>
 
-            <div class= 'col-md-10 bg-off-white' >
-                {{ $slot }}
-            </div>
+            <div class= 'col-md-10 bg-off-white' > {{ $slot }} </div>
         </div>
     </div>
 </main>

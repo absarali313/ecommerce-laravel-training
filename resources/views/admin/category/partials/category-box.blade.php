@@ -2,7 +2,7 @@
     <div class="col-5">
         <div class="row flex justify-content-start align-items-center  ">
             <div class="col-5">
-                <a href="/admin/category/edit/{{ $category->id }}">
+                <a href="{{ route('admin_category_edit', $category) }}">
                     <img src="{{ asset($category->image_path) }}"  alt="product" class="border border-1 rounded-3" style="width:50px; height:50px">
                 </a>
             </div>
@@ -34,7 +34,6 @@
                     <li class="fa fa-trash text-secondary "></li>
                 </button>
             </form>
-
         @endif
     </div>
 </div>
