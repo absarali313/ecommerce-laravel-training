@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use phpDocumentor\Reflection\Types\Boolean;
+use Illuminate\Http\Request;
 
 class Product extends Model
 {
@@ -53,7 +53,6 @@ class Product extends Model
 
     /**
      * Set the visibility status of product in boolean type
-     *
      * @param  String  $status
      * @return bool
      */
@@ -68,10 +67,9 @@ class Product extends Model
 
     /**
      * Store images for the product.
-     *
-     * @param  \Illuminate\Http\UploadedFile[]  $images
+     * @param  array $images
      */
-    public function storeImages($images): void
+    public function storeImages(array $images): void
     {
         if ($images) {
             foreach ($images as $image) {
@@ -83,10 +81,9 @@ class Product extends Model
 
     /**
      * Associate categories with the product in pivot table.
-     *
      * @param array $categories
      */
-    public function associateCategories($categories): void
+    public function associateCategories(array $categories = []): void
     {
         if ($categories) {
             $this->categories()->sync($categories);
@@ -94,12 +91,11 @@ class Product extends Model
     }
 
     /**
-     * Create or Update a product.
-     *
+     * Create or Update a product
      * @param  Request $request
      * @return \App\Models\Product
      */
-    public static function setProduct($productData , ?Product $product = null): Product
+    public function setProduct(Request $request): Product
     {
         $this->fill($request->all());
         $this->save();
@@ -120,8 +116,6 @@ class Product extends Model
     /**
      * Deletes a product.
      * Set the visibility to false
-     * @param Product $product
-     * @return void
      */
     public function destroyProduct(): void
     {

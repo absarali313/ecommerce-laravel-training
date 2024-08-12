@@ -16,7 +16,8 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $products = Product::factory()->count(20)->create();
+
+        $products = Product::factory()->count(10)->create();
 
         // Establish relationships
         foreach ($products as $product) {
@@ -27,6 +28,7 @@ class ProductSeeder extends Seeder
 
         $this->call(ProductImageSeeder::class);
         $this->call(SizeSeeder::class);
+        $this->call(PriceSeeder::class);
         $this->call(CategorySeeder::class);
     }
 }
