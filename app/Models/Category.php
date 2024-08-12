@@ -76,4 +76,13 @@ class Category extends Model
 
         return $this;
     }
+
+    /**
+     * Return the number of products associated with a category
+     * @return int
+     */
+    public function getTotalProductsCount() : int
+    {
+        return $this->products()->count();
+    }
 }

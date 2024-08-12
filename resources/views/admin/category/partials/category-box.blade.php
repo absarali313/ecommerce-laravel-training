@@ -14,7 +14,7 @@
     </div>
 
     <div class="col-2 flex justify-content-center align-content-center">
-        <h6 class="text-center">1</h6>
+        <h6 class="text-center">{{ $category->getTotalProductsCount() }}</h6>
     </div>
 
     <div class="col-2 flex justify-content-end align-items-center">
