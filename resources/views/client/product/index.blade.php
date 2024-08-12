@@ -5,7 +5,7 @@
         <div class="row">
             {{-- Product Boxes --}}
             @foreach($products as $product)
-                @include('client.product.partials.product-box', [
+                @include('client.product.partials.box', [
                      'product' => $product,
                 ])
             @endforeach

@@ -11,10 +11,10 @@ Route::middleware('guest')->group(function () {
         Route::get('/login', 'create')->name('login_form');
         Route::post('/logout', 'destroy')->withoutMiddleware('guest')->middleware('auth')->name('logout');
     });
+
     Route::controller(RegisteredUserController::class)->group(function () {
         Route::post('/register', 'store')->name('register');
         Route::get('/register', 'create')->name('register_form');
-
     });
 });
 
@@ -26,7 +26,7 @@ Route::controller(ClientCategoryController::class)->group(function () {
 Route::controller(ClientProductController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/products', 'index')->name('client_products');
-    Route::get('/product/{product}', 'show')->name('client_product_detail');
+    Route::get('/product/{product}', 'show')->name('client_product');
 });
 
 

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Query\Builder;
 
 class Product extends Model
@@ -38,7 +39,7 @@ class Product extends Model
         return $this->hasMany(ProductImage::class,'product_id');
     }
 
-    public function prices(): Builder
+    public function prices(): HasManyThrough
     {
         return $this->throughSizes()->hasPrices();
     }
@@ -59,10 +60,8 @@ class Product extends Model
     public function getSmallestPriceAttribute(): Price | null
     {
         // Fetch the minimum price among all sizes related to the product
-        $smallestPrice = $this->sizes()
-            ->join('prices', 'sizes.id', '=', 'prices.product_size_id')
-            ->orderBy('prices.price', 'asc')
-            ->select('prices.*')
+        $smallestPrice = $this->prices()
+            ->orderByDesc('started_at')
             ->first();
 
         return $smallestPrice ?? null;
