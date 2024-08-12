@@ -20,22 +20,22 @@ class Product extends Model
         'Visibility'
     ];
 
-    public function categories() : BelongsToMany
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class,'category_product');
     }
 
-    public function relatedProducts() : BelongsToMany
+    public function relatedProducts(): BelongsToMany
     {
         return $this->belongsToMany(Product::class,'product_product','product_id','related_product_id');
     }
 
-    public function sizes() : HasMany
+    public function sizes(): HasMany
     {
         return $this->hasMany(Size::class);
     }
 
-    public function images() : HasMany
+    public function images(): HasMany
     {
         return $this->hasMany(ProductImage::class);
     }
@@ -45,7 +45,7 @@ class Product extends Model
      * from each size of the product
      * @return int
      */
-    public function getTotalStock() : int
+    public function getTotalStock(): int
     {
         return $this->sizes->sum('stock');
     }
@@ -68,7 +68,7 @@ class Product extends Model
      * Associate categories with the product in pivot table.
      * @param array $categories
      */
-    public function associateCategories(array $categories): void
+    public function associateCategories(array $categories = []): void
     {
         if ($categories) {
             $this->categories()->sync($categories);
@@ -86,13 +86,11 @@ class Product extends Model
         $this->save();
 
         if (array_key_exists('images', $request->all())) {
-            $this->storeImages($request['images']);
+            $this->storeImages($request->images);
         }
 
         if (array_key_exists('categories', $request->all())) {
             $this->associateCategories($request['categories']);
-        } else {
-            $this->categories()->detach(Category::all()->pluck('id')->toArray());
         }
 
         return $this;

@@ -6,7 +6,7 @@
             @foreach($categories as $category)
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="category-{{ $category->id }}" name="categories[]" value="{{ $category->id }}" @checked($product->categories->contains($category)) />
-                    <label class="form-check-label" for="category-{{ $category->id }}")>{{ $category->name }}</label>
+                    <label class="form-check-label" for="category-{{ $category->id }}" >{{ $category->name }}</label>
                 </div>
             @endforeach
         </div>
