@@ -1,7 +1,7 @@
 <x-admin.layout>
     <form action="/register" method="POST">
         @csrf
-        <div class="row justify-content-center mt-4">
+        <div class="row justify-content-center mt-5">
             <div class="col-12 col-md-6 col-lg-4 bg-white border border-1 border-secondary p-4 rounded">
                 <h2 class="text-center">Register</h2>
 
