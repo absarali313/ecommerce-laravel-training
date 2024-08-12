@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Http\Requests\Admin\Product\ProductRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -12,8 +11,8 @@ use Illuminate\Http\Request;
 
 class Product extends Model
 {
-    use SoftDeletes;
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -21,22 +20,22 @@ class Product extends Model
         'Visibility'
     ];
 
-    public function categories(): BelongsToMany
+    public function categories() : BelongsToMany
     {
         return $this->belongsToMany(Category::class,'category_product');
     }
 
-    public function relatedProducts(): BelongsToMany
+    public function relatedProducts() : BelongsToMany
     {
         return $this->belongsToMany(Product::class,'product_products','product_id','related_product_id');
     }
 
-    public function sizes(): HasMany
+    public function sizes() : HasMany
     {
         return $this->hasMany(Size::class);
     }
 
-    public function images(): HasMany
+    public function images() : HasMany
     {
         return $this->hasMany(ProductImage::class);
     }
@@ -44,17 +43,15 @@ class Product extends Model
     /**
      * Compute the sum of stocks
      * from each size of the product
-     *
      * @return int
      */
-    public function getTotalStock(): int
+    public function getTotalStock() : int
     {
         return $this->sizes->sum('stock');
     }
 
     /**
      * Set the visibility status of product in boolean type
-     *
      * @param  String  $status
      * @return bool
      */
@@ -65,11 +62,9 @@ class Product extends Model
 
     /**
      * Store images for the product.
-     *
-     * @param  \Illuminate\Http\UploadedFile[]  $images
-     * @return void
+     * @param  array $images
      */
-    public function storeImages($images): void
+    public function storeImages(array $images): void
     {
         if ($images) {
             foreach ($images as $image) {
@@ -81,11 +76,9 @@ class Product extends Model
 
     /**
      * Associate categories with the product in pivot table.
-     *
      * @param array $categories
-     * @return void
      */
-    public function associateCategories($categories): void
+    public function associateCategories(array $categories): void
     {
         if ($categories) {
             $this->categories()->sync($categories);
@@ -93,8 +86,7 @@ class Product extends Model
     }
 
     /**
-     * Create or Update a product.
-     *
+     * Create or Update a product
      * @param  Request $request
      * @return \App\Models\Product
      */
@@ -119,12 +111,37 @@ class Product extends Model
     /**
      * Deletes a product.
      * Set the visibility to false
-     * @return void
      */
     public function destroyProduct(): void
     {
         $this->visibility = false;
         $this->save();
         $this->delete();
+    }
+
+    /**
+     * Checks if the product is visible
+     * @return bool
+     */
+    public function isVisible(): bool
+    {
+        return isset($this) && $this->visibility;
+    }
+
+    /**
+     * Checks if the product is not visible
+     * @return bool
+     */
+    public function isHidden(): bool
+    {
+        return isset($this) && !$this->visibility;
+    }
+
+    public function getVisibilityStatus(): String
+    {
+        if($this->isVisible()){
+            return 'Active';
+        }
+        return 'Inactive';
     }
 }

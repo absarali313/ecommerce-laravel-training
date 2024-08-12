@@ -33,6 +33,7 @@ class Price extends Model
         $this->product_size_id = $productSize->id;
         $this->price = $request['price'];
         $this->started_at = now();
+
         $this->save();
 
         return $this;

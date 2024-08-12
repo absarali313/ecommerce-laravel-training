@@ -3,13 +3,10 @@
         <div class="row">
             <div class="col">
                 <label for="visibility" class="text-start text-secondary">Visibility</label>
+
                 <select id="visibility" name="visibility" class="form-select">
-                    <option value="active">Active</option>
-                    @if(isset($product) && !$product->visibility)
-                        <option value="inactive" selected>Inactive</option>
-                    @else
-                        <option value="inactive">Inactive</option>
-                    @endif
+                    <option value="active" @selected($product?->isVisible())>Active</option>
+                    <option value="inactive" @selected($product?->isHidden())>Inactive</option>
                 </select>
 
                 <x-form-error name="visibility"/>

@@ -2,27 +2,39 @@
     <div class="col-5">
         <div class="row flex justify-content-start align-items-center  ">
             <div class="col-5">
-                <a href="/admin/category/edit/{{ $category->id }}">
+                <a href="{{ route('admin_category_edit', $category) }}">
                     <img src="{{ asset($category->image_path) }}"  alt="product" class="border border-1 rounded-3" style="width:50px; height:50px">
                 </a>
             </div>
 
             <div class="col-7 flex justify-content-center align-content-center">
-                <a class="text-center text-black text-decoration-underline" href="/admin/products/edit/{{ $category->id }}">{{ $category->name }}</a>
+                <a class="text-center text-black text-decoration-underline" href="{{ route('admin_category_edit', $category) }}">{{ $category->name }}</a>
             </div>
         </div>
     </div>
 
     <div class="col-2 flex justify-content-center align-content-center">
-        <h6 class="text-center">1</h6>
+        <h6 class="text-center">{{ $category->getTotalProductsCount() }}</h6>
     </div>
 
     <div class="col-2 flex justify-content-end align-items-center">
-        <form method="POST" action="{{ route('admin_category_destroy',$category) }}">
-            @csrf
-            @method('DELETE')
-            <Button type="submit" class="text-center btn btn-danger rounded-3 mx-5">Delete</Button>
-        </form>
+        @if($category->trashed())
+            <form method="POST" action="{{ route('admin_category_restore', $category) }}">
+                @csrf
+                @method('PATCH')
+                <button type="submit" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
+                    <li class="fa fa-undo text-secondary "></li>
+                </button>
+            </form>
+        @else
+            <form method="POST" action="{{ route('admin_category_destroy', $category) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
+                    <li class="fa fa-trash text-secondary "></li>
+                </button>
+            </form>
+        @endif
     </div>
 </div>
 

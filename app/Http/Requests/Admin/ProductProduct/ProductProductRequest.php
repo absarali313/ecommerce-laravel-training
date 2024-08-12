@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\ProductProduct;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductProductRequest extends FormRequest
 {
@@ -22,8 +23,8 @@ class ProductProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_id' => 'required|numeric',
-            'related_product_id' => 'required|numeric',
+            'product_id' => 'required | numeric',
+            'related_product_id' => 'required | numeric',
         ];
     }
 }

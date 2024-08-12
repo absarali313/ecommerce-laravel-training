@@ -7,22 +7,20 @@ use App\Models\Category;
 
 class ArchiveCategoryController extends Controller
 {
-    public function index(Category $category)
+    public function index()
     {
         $categories=Category::onlyTrashed()->simplePaginate(8);
 
-        return view('admin.archive_product.archive-index', [
+        return view('admin.archive_category.index', [
             'categories'=> $categories,
             'status'=>false,
         ]);
     }
 
-    public function update($category)
+    public function update(Category $category)
     {
-        $category=Category::withTrashed()->findOrFail($category);
         $category->restore(); // Restore the soft-deleted product
 
-        return redirect()->route('admin_categories_archive')->with('success', 'Category restored successfully!');
-
+        return redirect()->back();
     }
 }

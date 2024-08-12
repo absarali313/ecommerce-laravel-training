@@ -1,5 +1,3 @@
-
-
 /* Light text color on hover for elements with hover-text-light */
 .hover-text-light:hover
 {
@@ -25,7 +23,6 @@
 .bg-gray
 {
     background: #252525;
-
 }
 
 .btn-gray
@@ -103,4 +100,9 @@
 {
     width:50px;
     height:50px
+}
+
+.small-text
+{
+    font-size:12px;
 }

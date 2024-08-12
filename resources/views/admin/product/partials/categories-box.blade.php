@@ -1,6 +1,7 @@
 <div class="row bg-white rounded-3 px-3 py-2 border border-1 border-white mt-5">
     <div class="col">
         <p class="text-start text-secondary">Categories</p>
+
         <div id="categories" class="form-check">
             @foreach($categories as $category)
                 <div class="form-check">

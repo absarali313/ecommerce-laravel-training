@@ -21,15 +21,14 @@ class SizeController extends Controller
 
     public function update(SizeRequest $request, Size $size)
     {
-//        dd($size,$request);
-        (Size::findOrFail($size->id))->setSize($request,size: $size);
+        $size->setSize($request,size: $size);
 
         return redirect()->back();
     }
 
-    public function destroy(SizeRequest $request, Size $size)
+    public function destroy(Size $size)
     {
-        (Size::findOrFail($size->id))->destroySize();
+        $size->destroySize();
 
         return redirect()->back();
     }

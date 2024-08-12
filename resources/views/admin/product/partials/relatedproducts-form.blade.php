@@ -3,7 +3,7 @@
         <div class="col">
 
             {{--Add Related Prroduct Form--}}
-            <form method="POST" action="{{ route('admin_related_products_store',$product) }}">
+            <form method="POST" action="{{ route('admin_related_products_store', $product) }}">
                 @csrf
                 <div class="col d-flex justify-content-between py-2">
                     <p class="text-secondary">Related Product</p>
@@ -33,7 +33,7 @@
                     {{--Display Related Products--}}
                     <div class="row">
                         <div class="col-6">
-                            <form method="POST" action="{{ route('admin_related_products_update',$relatedProduct) }}">
+                            <form method="POST" action="{{ route('admin_related_products_update', $relatedProduct) }}">
                                 @csrf
                                 @method('PUT')
                                 <x-admin.product.relatedProduct-box :relatedProduct="$relatedProduct"/>
@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="col-6">
-                            <form method="POST" action="{{ route('admin_related_products_destroy',$relatedProduct) }}">
+                            <form method="POST" action="{{ route('admin_related_products_destroy', $relatedProduct) }}">
                                 @csrf
                                 @method('Delete')
                                 <input type="hidden" name="product_id" value="{{ $relatedProduct->pivot->product_id }}">

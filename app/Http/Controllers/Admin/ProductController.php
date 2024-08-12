@@ -46,7 +46,7 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, Product $product)
     {
-        $product= (Product::findOrFail($product->id))->setProduct($request);
+        $product->setProduct($request);
 
         return redirect("/admin/products/edit/$product->id");
     }

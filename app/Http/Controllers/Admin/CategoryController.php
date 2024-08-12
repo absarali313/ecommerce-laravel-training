@@ -19,21 +19,36 @@ class CategoryController extends Controller
     public function create()
     {
         return view('admin.category.create', [
-            'categories' =>  Category::all(),
+            'categories' => Category::all(),
+        ]);
+    }
+
+    public function edit(Category $category)
+    {
+        return view('admin.category.edit', [
+            'categories' => Category::all(),
+            'category' => $category,
         ]);
     }
 
     public function store(CategoryRequest $request)
     {
-        Category::setCategory($request->validated());
+        $category = (new Category())->setCategory($request);
 
-        return redirect()->route('admin_categories_index');
+        return redirect()->route('admin_category_edit', $category);
+    }
+
+    public function update(CategoryRequest $request, Category $category)
+    {
+        $category->setCategory($request);
+
+        return redirect()->back();
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
 
-        return redirect()->route('admin_categories_index');
+        return redirect()->route('admin_categories');
     }
 }

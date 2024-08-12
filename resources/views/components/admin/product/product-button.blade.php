@@ -1,1 +1,1 @@
-<a href="{{ $href }}" @class([ 'btn {{ $class }}' ])> {{ $slot }}</a>
+<a href="{{ $href }}" class='btn {{ $class }}' > {{ $slot }}</a>

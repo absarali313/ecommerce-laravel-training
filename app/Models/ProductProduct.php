@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use App\Http\Requests\Admin\ProductProduct\ProductProductRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Void_;
 
 class ProductProduct extends Model
 {
@@ -29,7 +27,6 @@ class ProductProduct extends Model
 
     /**
      * Add or Update the product
-     * @return void
      */
     public function destroyRelatedProduct(): void
     {
@@ -39,7 +36,6 @@ class ProductProduct extends Model
     /**
      *  delete the product
      * @param Request $relatedProductData
-     * @return void
      */
     public function setRelatedProduct(Request $relatedProductData): void
     {

@@ -3,17 +3,20 @@
 namespace App\Models;
 
 use GuzzleHttp\Psr7\UploadedFile;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\File;
+use Illuminate\Http\Request;
 
 class Category extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'image_path',
@@ -39,36 +42,43 @@ class Category extends Model
      * Stores the category image
      * @param \Illuminate\Http\UploadedFile $images
      */
-    public function storeImage(UploadedFile $images): void
+    public function storeImage(\Illuminate\Http\UploadedFile $image): void
     {
-        if ($images)
-        {
-            foreach ($images as $image)
-            {
-                $path = $image->store('category_images');
-                $this->image_path = $path;
-            }
-        }
+        $path = $image->store('category_images', 'public');
+        $this->image_path = $path;
+        $this->save(); // Save after storing each image path
     }
 
     /**
      * Stores or updates the category
      * return instance of resultant category
-     * @param Request $request
-     * @return void
+     * @param Request $categoryData
+     * @return Category
      */
-    public static function setCategory(Request $request): void
+    public function setCategory(Request $categoryData): Category
     {
-        $parentCategoryId = Category::where('name', $request->parent)->value('id');
+        $this->name = $categoryData['name'];
 
-        $category = Category::create([
-            'name' => $request->name,
-            'parent_id' => $parentCategoryId,
-        ]);
-
-        if($request->hasFile('images'))
-        {
-            $category->storeImage($request->images);
+        if (isset($categoryData['image'])) {
+            $this->storeImage($categoryData['image']);
         }
+
+        if (isset($categoryData['parent'])){
+            $parentCategoryId = Category::where('name', $categoryData['parent'])->value('id');
+            $this->parent_id = $parentCategoryId;
+        }
+
+        $this->save();
+
+        return $this;
+    }
+
+    /**
+     * Return the number of products associated with a category
+     * @return int
+     */
+    public function getTotalProductsCount() : int
+    {
+        return $this->products()->count();
     }
 }

@@ -1,31 +1,25 @@
 <x-admin.layout>
     <div class="container-fluid my-5 ">
-        <form method="POST" action="{{ route('admin_products_store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin_product_store') }}" enctype="multipart/form-data">
             @csrf
-            <a href="/admin/products" class="rounded-2 mx-1">
-                <li class="fa fa-arrow-left text-secondary"></li>
-            </a>
-            <div class="row d-flex justify-content-around px-5">
-                <div class="col-6">
-                    <h4>Add Product</h4>
-                </div>
+            <x-admin.back-button :link="'admin_categories'"/>
 
-                <div class="col-6 d-flex justify-content-end ">
-                    <button type="submit" class="btn btn-gray rounded-2 mx-1 ">Save</button>
-                </div>
-            </div>
+            <x-admin.header :has-action="true" >Add Product</x-admin.header>
 
             <div class="row d-flex justify-content-around mt-1 p-1 ">
                 <div class="col-7">
-
-                   @include('admin.product.partials.description-box',[
-                        'product' => null
-                   ])
+                    @include('admin.product.partials.description-box', [
+                         'product' => null
+                    ])
                 </div>
 
                 <div class="col-3">
-                    @include('admin.product.partials.visbility-box')
-                    @include('admin.product.partials.categories-box')
+                    @include('admin.product.partials.visibility-box',[
+                        'product' => null
+                    ])
+                    @include('admin.product.partials.categories-box', [
+                        'selectedCategories' => null
+                    ])
                 </div>
             </div>
         </form>

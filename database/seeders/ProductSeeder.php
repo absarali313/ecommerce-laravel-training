@@ -16,6 +16,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
 //        $products = Product::factory()->count(10)->create();
 //
 //        // Establish relationships
@@ -32,6 +33,11 @@ class ProductSeeder extends Seeder
 //    }
         $products = Product::factory()->count(18)->create();
 
+=======
+        $products = Product::factory()->count(20)->create();
+
+        // Establish relationships
+>>>>>>> 2f7126ac542bb623c95ed33d667a71bc1f099ab1
         foreach ($products as $product) {
             $relatedProducts = $products->random(rand(1, 5))->pluck('id')->toArray();
             $relatedProducts = array_diff($relatedProducts, [$product->id]);
