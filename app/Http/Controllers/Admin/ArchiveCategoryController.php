@@ -11,7 +11,7 @@ class ArchiveCategoryController extends Controller
     {
         $categories=Category::onlyTrashed()->simplePaginate(8);
 
-        return view('admin.archive_category.index', [
+        return view('admin.category.archive.index', [
             'categories'=> $categories,
             'status'=>false,
         ]);

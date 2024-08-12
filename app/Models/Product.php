@@ -51,16 +51,6 @@ class Product extends Model
     }
 
     /**
-     * Set the visibility status of product in boolean type
-     * @param  String  $status
-     * @return bool
-     */
-    public function setVisibility(String $status): bool
-    {
-        return $status !== 'inactive';
-    }
-
-    /**
      * Store images for the product.
      * @param  array $images
      */
@@ -78,7 +68,7 @@ class Product extends Model
      * Associate categories with the product in pivot table.
      * @param array $categories
      */
-    public function associateCategories(array $categories = []): void
+    public function associateCategories(array $categories): void
     {
         if ($categories) {
             $this->categories()->sync($categories);
@@ -101,6 +91,8 @@ class Product extends Model
 
         if (array_key_exists('categories', $request->all())) {
             $this->associateCategories($request['categories']);
+        } else {
+            $this->categories()->detach(Category::all()->pluck('id')->toArray());
         }
 
         return $this;
@@ -123,7 +115,7 @@ class Product extends Model
      */
     public function isVisible(): bool
     {
-        return isset($this) && $this->visibility;
+        return $this?->visibility;
     }
 
     /**
@@ -132,7 +124,7 @@ class Product extends Model
      */
     public function isHidden(): bool
     {
-        return isset($this) && !$this->visibility;
+        return !$this?->visibility;
     }
 
     public function getVisibilityStatus(): String

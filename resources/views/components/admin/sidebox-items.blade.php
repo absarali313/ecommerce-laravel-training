@@ -7,7 +7,6 @@
                 <span @class([ '{{ $icon }} ' ])></span>
 
                 {{ $slot }}
-
             </p>
         </li>
     </a>

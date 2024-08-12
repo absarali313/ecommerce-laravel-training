@@ -49,19 +49,19 @@ class Size extends Model
     {
         if($product) {
             $this->product_id=$product->id;
-            $this->title=$request['title'];
-            $this->stock=$request['stock'];
+            $this->title=$product->title;
+            $this->stock=$product->stock;
             $this->save();
 
             $price=(new Price())->setPrice($request,$this);
         } else {
-            $this->title=$request['title'];
-            $this->stock=$request['stock'];
+            $this->title=$product->title;
+            $this->stock=$product->stock;
             $this->save();
 
             if($size) {
-                if ($this->getCurrentPrice() != $request['price']) {
-                    $price=(new Price())->setPrice($request,$this);
+                if ($this->getCurrentPrice() != $product->price) {
+                    (new Price())->setPrice($request,$this);
                 }
             }
         }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use \Illuminate\Http\UploadedFile;
 
 class Category extends Model
 {
@@ -38,9 +39,9 @@ class Category extends Model
 
     /**
      * Stores the category image
-     * @param \Illuminate\Http\UploadedFile $images
+     * @param UploadedFile $images
      */
-    public function storeImage(\Illuminate\Http\UploadedFile $image): void
+    public function storeImage(UploadedFile $image): void
     {
         $path = $image->store('category_images', 'public');
         $this->image_path = $path;

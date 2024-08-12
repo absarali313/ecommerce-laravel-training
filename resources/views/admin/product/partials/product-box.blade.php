@@ -7,13 +7,13 @@
     <div class="col-5">
         <div class="row flex justify-content-start align-items-center  ">
             <div class="col-5">
-                <a href="/admin/products/edit/{{ $product->id }}">
+                <a href="{{ route('admin_product_edit', $product->id) }}">
                     <img src="{{ asset($image_url) }}" alt="product" class="border border-1 rounded-3" style="width:50px; height:50px">
                 </a>
             </div>
 
             <div class="col-7 d-flex justify-content-center align-content-center ">
-                <a class="text-center text-black text-decoration-underline text-center"  href="/admin/products/edit/{{ $product->id }}">{{ $product->title }}</a>
+                <a class="text-center text-black text-decoration-underline text-center"  href="{{ route('admin_product_edit', $product->id) }}"> {{ $product->title }}</a>
             </div>
         </div>
     </div>
