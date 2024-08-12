@@ -2,58 +2,48 @@
 
 namespace App\Models;
 
+use App\Http\Requests\Admin\ProductProduct\ProductProductRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Void_;
 
 class ProductProduct extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'product_id',
         'related_product_id',
     ];
 
-    public function product() : BelongsTo
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function scopeRelatedProduct($query, $product, $relatedProduct) : ProductProduct
+    public function scopeRelatedProduct($query, $product, $relatedProduct): ProductProduct
     {
         return $query->where('product_id', $product)
             ->where('related_product_id', $relatedProduct);
     }
 
     /**
-     * Update or delete the product
-     * @param Request $relatedProductData
-     * @param Product $product
+     * Add or Update the product
      * @return void
      */
-    public static function updateOrDelete(Request $relatedProductData, Product $product)
+    public function destroyRelatedProduct(): void
     {
-        $action = $relatedProductData->input('action');
-        if ($action == 'update')
-        {
-            ProductProduct::where('product_id', $relatedProductData->product_id)->where( 'related_product_id', $product->id)->update([
-                'product_id' => $relatedProductData->product_id,
-                'related_product_id' => $relatedProductData->related_id,
-            ]);
-        }
-        elseif ($action == 'delete')
-        {
-            ProductProduct::where('product_id', $relatedProductData->product_id)->where( 'related_product_id', $product->id)->delete();
-        }
+        $this->delete();
     }
 
-    public static function setRelatedProduct(Request $relatedProductData)
+    /**
+     *  delete the product
+     * @param Request $relatedProductData
+     * @return void
+     */
+    public function setRelatedProduct(Request $relatedProductData): void
     {
-        ProductProduct::create([
-            'product_id' => $relatedProductData->product_id,
-            'related_product_id' => $relatedProductData->Related_id,
-        ]);
+        $this->fill($relatedProductData->all());
+        $this->save();
     }
 }

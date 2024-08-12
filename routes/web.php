@@ -37,6 +37,7 @@ Route::middleware(['admin'])->group(function ()
         {
             Route::post('/products/size/{product}}','store')->name('admin_products_size_store');
             Route::put('/products/size/{size}', 'update')->name('admin_products_size_update');
+            Route::delete('/products/size/{size}', 'destroy')->name('admin_products_size_destroy');
         });
 
         Route::controller(AdminCategoryController::class)->group(function () {
@@ -57,6 +58,8 @@ Route::middleware(['admin'])->group(function ()
         {
             Route::post('/products/related/{product}', 'store')->name('admin_related_products_store');
             Route::put('/products/related/{product}',  'update')->name('admin_related_products_update');
+            Route::delete('/products/related/{product}',  'destroy')->name('admin_related_products_destroy');
+
         });
 
         Route::controller(AdminArchiveProductController::class)->group(function ()

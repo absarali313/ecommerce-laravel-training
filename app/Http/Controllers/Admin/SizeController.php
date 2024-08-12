@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Product\UpdateProductRequest;
-use App\Http\Requests\Admin\Size\StoreSizeRequest;
-use App\Http\Requests\Admin\Size\UpdateSizeRequest;
+use App\Http\Requests\Admin\Size\SizeRequest;
 use App\Models\Price;
 use App\Models\Product;
 use App\Models\Size;
@@ -14,30 +12,25 @@ use Illuminate\Support\Facades\Date;
 
 class SizeController extends Controller
 {
-    public function store(StoreSizeRequest $request, Product $product)
+    public function store(SizeRequest $request, Product $product)
     {
-        $request->validated();
-
-        Size::setSize($request, $product);
+        $size = (new Size())->setSize($request,product: $product);
 
         return redirect()->back();
     }
 
-    public function update(StoreSizeRequest $request, Size $size)
+    public function update(SizeRequest $request, Size $size)
     {
-        $action = $request->input('action');
-
-        if ($action == 'update')
-        {
-           $request->validated();
-            Size::setSize($request, size:  $size);
-        }
-        elseif ($action == 'delete')
-        {
-            $size->delete();
-        }
+//        dd($size,$request);
+        (Size::findOrFail($size->id))->setSize($request,size: $size);
 
         return redirect()->back();
+    }
 
+    public function destroy(SizeRequest $request, Size $size)
+    {
+        (Size::findOrFail($size->id))->destroySize();
+
+        return redirect()->back();
     }
 }

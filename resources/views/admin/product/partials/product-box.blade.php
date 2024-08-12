@@ -29,7 +29,7 @@
     </div>
 
     <div class="col-2 d-flex justify-content-end align-items-center">
-        @if($status == false)
+        @if($product->trashed())
             <div>
                 <form method="POST" action="{{ route("admin_restore_archive",$product->id) }}">
                     @csrf

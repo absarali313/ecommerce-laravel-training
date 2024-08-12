@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Product\StoreProductRequest;
-use App\Http\Requests\Admin\Product\UpdateProductRequest;
+use App\Http\Requests\Admin\Product\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Exception;
@@ -18,46 +17,36 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::paginate(10);
-
         return view('admin.product.index', [
-            'products' => $products,
-            'status'=>true,
+            'products' => Product::paginate(10),
         ]);
     }
 
-    public function edit(Request $request, Product $product)
+    public function edit(Product $product)
     {
         return view('admin.product.edit', [
             'product' => $product,
             'categories' => Category::all(),
-            'selectedCategories' => $product->categories,
-            'productSizes' => $product->sizes,
-            'relatedProducts' => $product->relatedProducts,
         ]);
     }
 
     public function create()
     {
-        $categories = Category::all();
-
         return view('admin.product.create', [
-            'categories' => $categories,
+            'categories' => Category::all(),
         ]);
     }
 
-    public function store(StoreProductRequest $request)
+    public function store(ProductRequest $request)
     {
-        $validatedData = $request->validated();
-        $product = Product::setProduct($validatedData);
+        $product = (new Product())->setProduct($request);
 
         return redirect()->route('admin_products_edit', $product);
     }
 
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        $validatedData = $request->validated();
-        Product::setProduct($validatedData, $product);
+        $product= (Product::findOrFail($product->id))->setProduct($request);
 
         return redirect("/admin/products/edit/$product->id");
     }

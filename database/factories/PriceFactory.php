@@ -22,7 +22,7 @@ class PriceFactory extends Factory
                 'product_size_id'=>Size::factory(),
                 'price'=>fake()->randomFloat(2,0,1000),
                 'started_at'=>now()->subDays(30),
-                'finished_at'=>now()->addDays(30),
+                'ended_at'=>now()->addDays(30),
             ];
     }
 }

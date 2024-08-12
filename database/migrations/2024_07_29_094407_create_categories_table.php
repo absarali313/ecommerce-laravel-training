@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('image_path')->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade')->nullable();
-            $table->timestamps();
             $table->softDeletes(); // This will add the `deleted_at` column
-
+            $table->timestamps();
         });
 
     }
