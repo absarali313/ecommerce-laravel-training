@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-use GuzzleHttp\Psr7\UploadedFile;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use \Illuminate\Http\UploadedFile;
 
 class Category extends Model
 {
@@ -40,18 +39,13 @@ class Category extends Model
 
     /**
      * Stores the category image
-     * @param \Illuminate\Http\UploadedFile $images
+     * @param UploadedFile $images
      */
-    public function storeImage(UploadedFile $images): void
+    public function storeImage(UploadedFile $image): void
     {
-        if ($images)
-        {
-            foreach ($images as $image)
-            {
-                $path = $image->store('category_images');
-                $this->image_path = $path;
-            }
-        }
+        $path = $image->store('category_images', 'public');
+        $this->image_path = $path;
+        $this->save(); // Save after storing each image path
     }
 
     /**

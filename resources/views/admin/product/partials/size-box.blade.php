@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class=' col-2 '>
+        <div class='col-2'>
             <div class='row justify-content-start gap-3'>
                 <div class='col-1'>
                     <button class=' rounded-3 border-success ' name="action" value="update">
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class='col-1'>
-                    <button class=' rounded-3 border-secondary 3' name="action" value="delete">
+                    <button class='rounded-3 border-secondary 3' name="action" value="delete">
                         <li class='fa fa-trash text-secondary'></li>
                     </button>
                 </div>

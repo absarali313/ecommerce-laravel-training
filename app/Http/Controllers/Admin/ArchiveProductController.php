@@ -11,7 +11,7 @@ class ArchiveProductController extends Controller
     {
         $products=Product::onlyTrashed()->simplePaginate(8);
 
-        return view('admin.archive_product.index', [
+        return view('admin.product.archive.index', [
             'products'=>$products,
             'status'=>false,
         ]);

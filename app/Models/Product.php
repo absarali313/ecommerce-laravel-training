@@ -130,7 +130,7 @@ class Product extends Model
      */
     public function isVisible(): bool
     {
-        return isset($this) && $this->visibility;
+        return $this?->visibility;
     }
 
     /**
@@ -139,7 +139,7 @@ class Product extends Model
      */
     public function isHidden(): bool
     {
-        return isset($this) && !$this->visibility;
+        return !$this?->visibility;
     }
 
     public function getVisibilityStatus(): String

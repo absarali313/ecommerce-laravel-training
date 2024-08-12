@@ -33,7 +33,7 @@ class Size extends Model
      * Returns the current price of a product size
      * @return Price|null
      */
-    public function getCurrentPrice(): Price | null
+    public function getCurrentPrice(): Price|null
     {
         return $this->prices()->orderByDesc('started_at')->first();
     }
@@ -45,29 +45,36 @@ class Size extends Model
      * @param Size|null $size
      * @return Size
      */
-    public static function setSize(Request $request, ?Product $product = null, ?Size $size = null) : Size
+    public function setSize(Request $request ,?Product $product = null, ?Size $size = null): Size
     {
-        if ($size) {
-            // Update existing size
-            $size->update([
-                'title' => $request['size_title'],
-                'stock' => $request['stock'],
-            ]);
+        if($product) {
+            $this->product_id=$product->id;
+            $this->title=$request['title'];
+            $this->stock=$request['stock'];
+            $this->save();
 
-            if ($size->getCurrentPrice() != $request['price']) {
-                Price::createPrice($size->id, $request['price']);
+            $price=(new Price())->setPrice($request,$this);
+        } else {
+            $this->title=$request['title'];
+            $this->stock=$request['stock'];
+            $this->save();
+
+            if($size) {
+                if ($this->getCurrentPrice() != $request['price']) {
+                    $price=(new Price())->setPrice($request,$this);
+                }
             }
-        } elseif ($product) {
-            // Create new size
-            $size = self::create([
-                'title' => $request['size_title'],
-                'stock' => $request['stock'],
-                'product_id' => $product->id,
-            ]);
-
-            Price::createPrice($size->id, $request['price']);
         }
 
-        return $size;
+        return $this;
+    }
+
+    /**
+     * deletes a size
+     */
+    public function destroySize(): void
+    {
+        $this->delete();
     }
 }
+
