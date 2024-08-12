@@ -19,7 +19,7 @@
 
                 {{--Visibility--}}
                 <div class="col-3">
-                    @include('admin.product.partials.visibility.visibility-box')
+                    @include('admin.product.partials.visibility-box')
                     @include('admin.product.partials.categories-box')
                 </div>
             </div>

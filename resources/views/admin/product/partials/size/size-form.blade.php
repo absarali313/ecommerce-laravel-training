@@ -41,7 +41,7 @@
             <div class="bg-light-gray rounded-3 p-3 mt-2">
                 {{-- Product Sizes --}}
                 @foreach($product->sizes as $productSize)
-                    <x-admin.product.size-box :productSize="$productSize" />
+                    <x-admin.product.size.size.size-box :productSize="$productSize" />
                 @endforeach
             </div>
         </div>
