@@ -41,12 +41,11 @@ Route::middleware(['admin'])->group(function ()
 
         Route::controller(AdminSizeController::class)->group(function ()
         {
-            Route::post('/products/size/{product}}','store')->name('admin_size_store');
+            Route::post('/products/size/{product}','store')->name('admin_size_store');
             Route::put('/products/size/{size}', 'update')->name('admin_size_update');
         });
 
         Route::controller(AdminCategoryController::class)->group(function () {
-
             Route::get('/categories','index')->name('admin_categories');
             Route::get('/categories/create','create')->name('admin_category_create');
             Route::get('/categories/edit/{category}','edit')->name('admin_category_edit');
@@ -56,7 +55,6 @@ Route::middleware(['admin'])->group(function ()
         });
 
         Route::controller(AdminArchiveCategoryController::class)->group(function () {
-
             Route::get('/categories/archive','index')->name('admin_categories_archive')->withTrashed();
             Route::patch('/categories/archive/restore/{category}','update')->name('admin_category_restore')->withTrashed();
         });

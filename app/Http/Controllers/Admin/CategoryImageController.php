@@ -14,6 +14,5 @@ class CategoryImageController extends Controller
         $category->save();
 
         return redirect()->back();
-
     }
 }

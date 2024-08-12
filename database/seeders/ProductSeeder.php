@@ -13,14 +13,11 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-
-
         $products = Product::factory()->count(20)->create();
 
         // Establish relationships
         foreach ($products as $product) {
             $relatedProducts = $products->random(rand(1, 5))->pluck('id')->toArray();
-
             $relatedProducts = array_diff($relatedProducts, [$product->id]);
             $product->relatedProducts()->attach($relatedProducts);
         }

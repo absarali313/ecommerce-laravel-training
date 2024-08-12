@@ -19,10 +19,8 @@ class ArchiveCategoryController extends Controller
 
     public function update(Category $category)
     {
-        $category=Category::withTrashed()->findOrFail($category->id);
         $category->restore(); // Restore the soft-deleted product
 
         return redirect()->back();
-
     }
 }
