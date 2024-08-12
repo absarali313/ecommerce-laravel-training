@@ -15,7 +15,7 @@
                 <x-form-error name="price" />
 
                 <label for="stock" class='mx-2 text-start text-secondary'>Stock</label>
-                <input id="stock" name="stock" type="number" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label'  placeholder='1' value= {{ $productSize->stock }}>
+                <input id="stock" name="stock" type="number" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label'  placeholder="1" value= {{ $productSize->stock }}>
 
                 <x-form-error name="price" />
             </div>
