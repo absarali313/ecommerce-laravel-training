@@ -37,9 +37,9 @@ class ProductProduct extends Model
      *  delete the product
      * @param Request $relatedProductData
      */
-    public function setRelatedProduct(Request $relatedProductData): void
+    public function setRelatedProduct(Request $request): void
     {
-        $this->fill($relatedProductData->all());
+        $this->fill($request->all());
         $this->save();
     }
 }
