@@ -101,13 +101,11 @@ class Product extends Model
         $this->save();
 
         if (array_key_exists('images', $request->all())) {
-            $this->storeImages($request['images']);
+            $this->storeImages($request->images);
         }
 
         if (array_key_exists('categories', $request->all())) {
             $this->associateCategories($request['categories']);
-        } else {
-            $this->categories()->detach(Category::all()->pluck('id')->toArray());
         }
 
         return $this;

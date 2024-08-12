@@ -25,7 +25,7 @@
         <x-admin.image-card :action_route="'admin_category_image_delete'" :item="$category" />
     </div>
 
-    @push('tinymce')
+    @push('script')
         <script src="{{ asset('js/tinymce.js') }}"></script>
     @endpush
 </x-admin.layout>
