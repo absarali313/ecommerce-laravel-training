@@ -1,8 +1,8 @@
 <?php
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\SessionController;
-use App\Http\Controllers\Client\CategoryController as ClientCategoryController;
-use App\Http\Controllers\Client\ProductController as ClientProductController;
+use App\Http\Controllers\Client\CategoryController;
+use App\Http\Controllers\Client\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -18,12 +18,12 @@ Route::middleware('guest')->group(function () {
     });
 });
 
-Route::controller(ClientCategoryController::class)->group(function () {
+Route::controller(CategoryController::class)->group(function () {
     Route::get('/categories', 'index')->name('client_categories');
     Route::get('/categories/{category}', 'show')->name('client_category_products');
 });
 
-Route::controller(ClientProductController::class)->group(function () {
+Route::controller(ProductController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/products', 'index')->name('client_products');
     Route::get('/product/{product}', 'show')->name('client_product');
