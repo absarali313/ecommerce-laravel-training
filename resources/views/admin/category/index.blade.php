@@ -9,11 +9,17 @@
                     <div class="col-6 mt-2 ">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <x-admin.product.product-button class="nav-link active" aria-current="page"  href="/admin/categories" class="btn-gray rounded-2 mb-1 px-1 py-1">Category</x-admin.product.product-button>
+                                <x-admin.product.product-button class="nav-link active" aria-current="page"
+                                                                href="/admin/categories"
+                                                                class="btn-gray rounded-2 mb-1 px-1 py-1">Category
+                                </x-admin.product.product-button>
                             </li>
 
                             <li class="nav-item">
-                                <x-admin.product.product-button class="nav-link" href="{{ route('admin_categories_archive') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Archive</x-admin.product.product-button>
+                                <x-admin.product.product-button class="nav-link"
+                                                                href="{{ route('admin_categories_archive') }}"
+                                                                class="btn-gray rounded-2 mb-1 px-1 py-1">Archive
+                                </x-admin.product.product-button>
                             </li>
                         </ul>
                     </div>
@@ -41,7 +47,7 @@
             {{-- Categories --}}
             <div>
                 @foreach($categories as $category)
-                    @include('admin.category.partials.category-box', [
+                    @include('admin.category.partials.box', [
                         'category' => $category,
                     ])
                 @endforeach

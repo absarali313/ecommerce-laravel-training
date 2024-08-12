@@ -22,8 +22,7 @@ class ProductProductController extends Controller
     {
         (ProductProduct::where('related_product_id', $product->id)
             ->where('related_product_id', $product->id)
-            ->firstOrFail())
-            ->setRelatedProduct($request);
+            ->firstOrFail())->setRelatedProduct($request);
 
         return redirect()->back();
     }
@@ -32,8 +31,7 @@ class ProductProductController extends Controller
     {
         (ProductProduct::where('related_product_id', $product->id)
             ->where('related_product_id', $product->id)
-            ->firstOrFail())
-            ->destroyRelatedProduct();
+            ->firstOrFail())->destroyRelatedProduct();
 
         return redirect()->back();
     }
