@@ -57,7 +57,7 @@ class Product extends Model
      * Returns the lowest price from different variations of product
      * @return Price|null
      */
-    public function getSmallestPriceAttribute(): Price | null
+    public function getSmallestPriceAttribute(): Size | null
     {
         // Fetch the minimum price among all sizes related to the product
         $smallestPrice = $this->prices()
