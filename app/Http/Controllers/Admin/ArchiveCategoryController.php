@@ -13,7 +13,6 @@ class ArchiveCategoryController extends Controller
 
         return view('admin.category.archive.index', [
             'categories'=> $categories,
-            'status'=>false,
         ]);
     }
 
