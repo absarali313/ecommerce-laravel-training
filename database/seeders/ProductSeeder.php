@@ -16,37 +16,32 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-
-        // Create 20 products
         $products = Product::factory()->count(18)->create();
 
-        // Establish relationships
-        foreach ($products as $product) {
-            // Randomly attach related products
+        foreach ($products as $product)
+        {
             $relatedProducts = $products->random(rand(1, 5))->pluck('id')->toArray();
-
-            // Avoid self-referencing
             $relatedProducts = array_diff($relatedProducts, [$product->id]);
-
             $product->relatedProducts()->attach($relatedProducts);
         }
 
-        $products->each(function ($product) {
+        $products->each(function ($product)
+        {
             ProductImage::factory(1)->create(['product_id' => $product->id]);
         });
 
-
-        foreach ($products as $product) {
+        foreach ($products as $product)
+        {
            $size= Size::factory(4)->create([
                 'product_id' => $product->id,
             ]);
 
-           $size->each(function ($size) {
+           $size->each(function ($size)
+           {
                 Price::factory(2)->create([
                     'product_size_id' => $size->id,
                 ]);
            });
         }
-//        $this->call(ProductImageSeeder::class);
     }
 }

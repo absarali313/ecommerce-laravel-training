@@ -22,13 +22,4 @@ class ProductController extends Controller
             'product' => $product,
         ]);
     }
-
-    public function home()
-    {
-        $products = Product::cursorPaginate(8);
-
-        return view('client.home', [
-            'products' => $products,
-        ]);
-    }
 }

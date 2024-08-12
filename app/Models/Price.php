@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Price extends Model
 {
@@ -16,7 +17,7 @@ class Price extends Model
         'ended_at',
     ];
 
-    public function size()
+    public function size(): BelongsTo
     {
         return $this->belongsTo(Size::class,'product_size_id');
     }

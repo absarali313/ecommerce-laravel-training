@@ -1,13 +1,14 @@
-<x-layout>
-
+<x-client.layout>
     <div class="container my-5">
-
         <div class="row">
+            {{-- Product Boxes --}}
             @foreach($categories as $category)
-                 <x-client.category.category-box :item="$category" />
+                @include('client.category.partials.box', [
+                     'category' => $category,
+                ])
             @endforeach
         </div>
 
-       <x-client.paginator :items="$categories" />
+        <x-client.paginator :items="$categories"/>
     </div>
-</x-layout>
+</x-client.layout>

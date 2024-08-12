@@ -12,6 +12,7 @@
                     <a class="page-link text-black" href="{{ $items->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&laquo;</a>
                 </li>
             @endif
+
             {{-- Next Page Link --}}
             @if ($items->hasMorePages())
                 <li class="page-item">
