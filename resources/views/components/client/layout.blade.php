@@ -51,33 +51,5 @@
         </form>
     @endauth
 </body>
-@push('search-style')
-    <style>
-        .search-container
-        {
-            position: relative;
-        }
-
-        .search-container .form-control
-        {
-            width: 0;
-            opacity: 0;
-            transition: width 0.4s ease, opacity 0.4s ease;
-            position: absolute;
-            right: 0;
-        }
-
-        .search-container:hover .form-control
-        {
-            width: 200px;
-            opacity: 1;
-        }
-
-        .search-icon
-        {
-            cursor: pointer;
-        }
-    </style>
-@endpush
 </html>
 
