@@ -33,7 +33,7 @@ class SessionController extends Controller
         $request->session()->flush();
         Auth::logout();
 
-        return redirect('/login');
+        return redirect()->route('admin_products');
     }
 
 }

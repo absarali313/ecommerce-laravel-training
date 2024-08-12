@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\File;
-
+use Illuminate\Http\Request;
 
 class Category extends Model
 {
@@ -56,10 +57,10 @@ class Category extends Model
     /**
      * Stores or updates the category
      * return instance of resultant category
-     * @param array $categoryData
+     * @param Request $categoryData
      * @return Category
      */
-    public function setCategory(array $categoryData ): Category
+    public function setCategory(Request $categoryData): Category
     {
         $this->name = $categoryData['name'];
 

@@ -46,7 +46,8 @@ Route::middleware(['admin'])->group(function ()
             Route::delete('/products/size/{size}', 'destroy')->name('admin_size_destroy');
         });
 
-        Route::controller(AdminCategoryController::class)->group(function () {
+        Route::controller(AdminCategoryController::class)->group(function ()
+        {
             Route::get('/categories','index')->name('admin_categories');
             Route::get('/categories/create','create')->name('admin_category_create');
             Route::get('/categories/edit/{category}','edit')->name('admin_category_edit');
@@ -55,7 +56,8 @@ Route::middleware(['admin'])->group(function ()
             Route::patch('/categories/{category}','update')->name('admin_category_update');
         });
 
-        Route::controller(AdminArchiveCategoryController::class)->group(function () {
+        Route::controller(AdminArchiveCategoryController::class)->group(function ()
+        {
             Route::get('/categories/archive','index')->name('admin_categories_archive')->withTrashed();
             Route::patch('/categories/archive/restore/{category}','update')->name('admin_category_restore')->withTrashed();
         });
@@ -70,7 +72,7 @@ Route::middleware(['admin'])->group(function ()
         Route::controller(AdminArchiveProductController::class)->group(function ()
         {
             Route::get('/products/archive', 'index')->name('admin_products_archive')->withTrashed();
-            Route::patch('/products/restore/{product}',  'update')->name('admin_restore_archive')->withTrashed();
+            Route::patch('/products/restore/{product}',  'update')->name('admin_product_restore')->withTrashed();
         });
 
         Route::controller(AdminCategoryImageController::class)->group(function ()
@@ -80,16 +82,19 @@ Route::middleware(['admin'])->group(function ()
     });
 });
 
-Route::middleware('guest')->group(function () {
-    Route::controller(SessionController::class)->group(function () {
-        Route::post('/login', 'store');
-        Route::get('/login', 'create');
-        Route::post('/logout', 'destroy')->withoutMiddleware('guest')->middleware('auth');
+Route::middleware('guest')->group(function ()
+{
+    Route::controller(SessionController::class)->group(function ()
+    {
+        Route::post('/login', 'store')->name('login');
+        Route::get('/login', 'create')->name('login_page');
+        Route::post('/logout', 'destroy')->withoutMiddleware('guest')->middleware('auth')->name('logout');
     });
 
-    Route::controller(RegisteredUserController::class)->group(function () {
-        Route::post('/register', 'store');
-        Route::get('/register', 'create');
+    Route::controller(RegisteredUserController::class)->group(function ()
+    {
+        Route::post('/register', 'store')->name('register_page');
+        Route::get('/register', 'create')->name('register_page');
     });
 });
 

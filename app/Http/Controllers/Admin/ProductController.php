@@ -7,12 +7,6 @@ use App\Http\Requests\Admin\Product\StoreProductRequest;
 use App\Http\Requests\Admin\Product\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
-use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use Illuminate\Session\Store;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -50,13 +44,13 @@ class ProductController extends Controller
         $product= (Product::findOrFail($product->id))->setProduct($request);
         Product::setProduct($request->validated(), $product);
 
-        return redirect("/admin/products/edit/$product->id");
+        return redirect()->route('admin_product_edit', $product);
     }
 
     public function destroy(Product $product)
     {
         $product->destroyProduct();
 
-        return redirect("/admin/products");
+        return redirect()->route('admin_products');
     }
 }
