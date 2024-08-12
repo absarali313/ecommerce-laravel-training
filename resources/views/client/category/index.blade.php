@@ -3,12 +3,12 @@
         <div class="row">
             {{-- Product Boxes --}}
             @foreach($categories as $category)
-                @include('client.category.partials.category-box', [
+                @include('client.category.partials.box', [
                      'category' => $category,
                 ])
             @endforeach
         </div>
 
-        <x-client.paginator :items="$categories" />
+        <x-client.paginator :items="$categories"/>
     </div>
 </x-client.layout>

@@ -13,6 +13,7 @@
 <body>
     <p  class="text-center my-2">Welcome to ShopEase</p>
     <hr>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent my-0">
         <div class="container-fluid">
             <!-- Shop Name -->
@@ -40,6 +41,7 @@
             </div>
         </div>
     </nav>
+
     <hr>
 
     {{ $slot }}
