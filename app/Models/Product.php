@@ -27,7 +27,7 @@ class Product extends Model
 
     public function relatedProducts() : BelongsToMany
     {
-        return $this->belongsToMany(Product::class,'product_products','product_id','related_product_id');
+        return $this->belongsToMany(Product::class,'product_product','product_id','related_product_id');
     }
 
     public function sizes() : HasMany
@@ -78,7 +78,7 @@ class Product extends Model
      * Associate categories with the product in pivot table.
      * @param array $categories
      */
-    public function associateCategories(array $categories): void
+    public function associateCategories(array $categories = []): void
     {
         if ($categories) {
             $this->categories()->sync($categories);
@@ -101,8 +101,6 @@ class Product extends Model
 
         if (array_key_exists('categories', $request->all())) {
             $this->associateCategories($request['categories']);
-        } else {
-            $this->categories()->detach(Category::all()->pluck('id')->toArray());
         }
 
         return $this;
