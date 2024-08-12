@@ -4,7 +4,7 @@
             @csrf
             <x-admin.back-button :link="'admin_categories'"/>
 
-            <x-admin.header :has-action="true" >Add Product</x-admin.header>
+            <x-admin.header :has-action="true">Add Product</x-admin.header>
 
             <div class="row d-flex justify-content-around mt-1 p-1 ">
                 <div class="col-7">
@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="col-3">
-                    @include('admin.product.partials.visibility-box',[
+                    @include('admin.product.partials.visibility.visibility-box',[
                         'product' => null
                     ])
                     @include('admin.product.partials.categories-box', [
@@ -25,7 +25,7 @@
         </form>
     </div>
 
-    @push('tinymce')
+    @push('script')
         <script src="{{ asset('js/tinymce.js') }}"></script>
     @endpush
 </x-admin.layout>

@@ -33,7 +33,7 @@ class Size extends Model
      * Returns the current price of a product size
      * @return Price|null
      */
-    public function getCurrentPrice(): Price|null
+    public function getCurrentPrice(): Price | null
     {
         return $this->prices()->orderByDesc('started_at')->first();
     }
@@ -45,7 +45,7 @@ class Size extends Model
      * @param Size|null $size
      * @return Size
      */
-    public function setSize(Request $request ,?Product $product = null, ?Size $size = null): Size
+    public function setSize(Request $request, ?Product $product = null, ?Size $size = null): Size
     {
         if($product) {
             $this->product_id=$product->id;
@@ -53,7 +53,7 @@ class Size extends Model
             $this->stock=$product->stock;
             $this->save();
 
-            $price=(new Price())->setPrice($request,$this);
+            (new Price())->setPrice($request, $this);
         } else {
             $this->title=$product->title;
             $this->stock=$product->stock;
@@ -61,7 +61,7 @@ class Size extends Model
 
             if($size) {
                 if ($this->getCurrentPrice() != $product->price) {
-                    (new Price())->setPrice($request,$this);
+                    (new Price())->setPrice($request, $this);
                 }
             }
         }
