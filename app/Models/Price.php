@@ -31,7 +31,7 @@ class Price extends Model
     public function setPrice(Request $request, Size $productSize): Price
     {
         $this->product_size_id = $productSize->id;
-        $this->price = $request['price'];
+        $this->price = $request->price;
         $this->started_at = now();
         $this->save();
 
