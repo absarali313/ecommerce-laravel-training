@@ -11,14 +11,14 @@
 
             {{-- Product Sizes --}}
             @foreach($product->sizes as $size)
-                @include('client.product.partials.product-size', [
+                @include('client.product.partials.size', [
                     'size' => $size->title,
                 ])
             @endforeach
 
             <p  class="text-gray-200 my-2 ">Quantity</p>
 
-            @include('client.product.partials.product-quantity')
+            @include('client.product.partials.quantity')
 
             {{-- Add to cart Block --}}
             <div class="d-flex align-items-center justify-content-center border border-1 border-dark mt-4 hover-border">
@@ -44,7 +44,7 @@
     <div class="container my-5">
         <div class="row">
             @foreach($product->relatedproducts as $relate)
-                @include('client.product.partials.product-box', [
+                @include('client.product.partials.box', [
                     'item' => $relate,
                 ])
             @endforeach
