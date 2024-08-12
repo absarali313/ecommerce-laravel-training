@@ -18,11 +18,6 @@ class ArchiveProductController extends Controller
         ]);
     }
 
-    public function show(Product $product)
-    {
-        //return view('admin.archive_product.archive-show', [])
-    }
-
     public function update(Product $product)
     {
         $product->restore(); // Restore the soft-deleted product
