@@ -29,10 +29,10 @@
         @include('admin.product.partials.images-form')
 
         {{--Product Sizes Block--}}
-        @include('admin.product.partials.size.size-form')
+        @include('admin.product.partials.size-form')
 
         {{--Product Related Products Block--}}
-        @include('admin.product.partials.related_product.relatedproducts-form', [
+        @include('admin.product.partials.relatedproducts-form', [
             'relatedProducts' => $product->relatedProducts
         ])
     </div>
