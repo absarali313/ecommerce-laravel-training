@@ -16,8 +16,8 @@
 
                     <x-form-error name="product_id"/>
 
-                    <label for="Related_id" class="mx-2 text-start text-secondary">Related Product ID</label>
-                    <input id="Related_id" name="Related_id" type="number" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-25"  placeholder="Like: 2">
+                    <label for="related_product_id" class="mx-2 text-start text-secondary">Related Product ID</label>
+                    <input id="related_product_id" name="related_product_id" type="number" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-25"  placeholder="Like: 2">
 
                     <x-form-error name="Related_id"/>
 
@@ -29,37 +29,34 @@
 
             {{--Display Existed Related Prroducts--}}
             <div class="bg-light-gray rounded-3 p-3 mt-2">
-                @foreach($relatedProducts as $relatedProduct)
-                    <form method="POST" action="{{ route('admin_related_products_update',$relatedProduct) }}">
-                        @csrf
-                        @method('PUT')
-                        <div class="row my-2">
-                            {{--Display Related Products--}}
-                            <div class="col-9 align-content-center">
-
+                @foreach($product->relatedProducts as $relatedProduct)
+                    {{--Display Related Products--}}
+                    <div class="row">
+                        <div class="col-6">
+                            <form method="POST" action="{{ route('admin_related_products_update',$relatedProduct) }}">
+                                @csrf
+                                @method('PUT')
                                 <x-admin.product.relatedProduct-box :relatedProduct="$relatedProduct"/>
-                            </div>
 
-                            {{--Modification Buttons--}}
-                            <div class=" col-2 ms-5">
-                                <div class="row justify-content-start gap-3">
-                                    {{--Update Button--}}
-                                    <div class="col-1">
-                                        <button class="rounded-3 border-success" name="action" value="update">
-                                            <li class="fa fa-pen text-success"></li>
-                                        </button>
-                                    </div>
-
-                                    {{--Delete Button--}}
-                                    <div class="col-1">
-                                        <button class="rounded-3 border-secondary 3" name="action" value="delete">
-                                            <li class="fa fa-trash text-secondary"></li>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                                <button class="rounded-3 border-success" name="action" value="update">
+                                    <li class="fa fa-pen text-success"></li>
+                                </button>
+                            </form>
                         </div>
-                    </form>
+
+                        <div class="col-6">
+                            <form method="POST" action="{{ route('admin_related_products_destroy',$relatedProduct) }}">
+                                @csrf
+                                @method('Delete')
+                                <input type="hidden" name="product_id" value="{{ $relatedProduct->pivot->product_id }}">
+                                <input type="hidden" name="related_product_id" value="{{ $relatedProduct->pivot->related_product_id }}">
+
+                                <button class="rounded-3 border-secondary 3" name="action" value="delete">
+                                    <li class="fa fa-trash text-secondary"></li>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 @endforeach
             </div>
         </div>

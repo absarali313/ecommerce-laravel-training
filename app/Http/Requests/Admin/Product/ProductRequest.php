@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Admin\Category;
+namespace App\Http\Requests\Admin\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreCategoryRequest extends FormRequest
+class ProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +23,13 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:categories|max:255',
-            'parent' => 'required',
-            'images' => 'required',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'images' => 'nullable',
+            'visibility' => ['required', Rule::in(['active', 'inactive'])],
+            'categories' => 'nullable|array',
+            'categories.*' => 'exists:categories,id',
         ];
+
     }
 }

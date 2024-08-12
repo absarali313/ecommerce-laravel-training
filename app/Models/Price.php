@@ -24,17 +24,17 @@ class Price extends Model
     }
 
     /**
-     * @param int $productSizeId
-     * @param int $price
+     * @param Request $request
+     * @param Size $productSize
      * @return Price
      */
-    public static function createPrice(int $productSizeId, int $price): Price
+    public function setPrice(Request $request, Size $productSize): Price
     {
-        return Price::create([
-            'product_size_id' => $productSizeId,
-            'price' => $price,
-            'started_at' => now(),
-        ]);
-    }
+        $this->product_size_id = $productSize->id;
+        $this->price = $request['price'];
+        $this->started_at = now();
+        $this->save();
 
+        return $this;
+    }
 }

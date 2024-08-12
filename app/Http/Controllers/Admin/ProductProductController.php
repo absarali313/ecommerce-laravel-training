@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ProductProduct\StoreProductProductRequest;
+use App\Http\Requests\Admin\ProductProduct\ProductProductRequest;
 use App\Models\Product;
 use App\Models\ProductProduct;
 use Illuminate\Http\Request;
@@ -11,17 +11,23 @@ use Illuminate\Http\Request;
 
 class ProductProductController extends Controller
 {
-    public function store(StoreProductProductRequest $request, Product $product)
+    public function store(ProductProductRequest $request)
     {
-        $request->validated();
-        ProductProduct::setRelatedProduct($request);
+        (new ProductProduct())->setRelatedProduct($request);
 
         return redirect()->back();
     }
 
-    public function update(Request $request, Product $product)
+    public function update(ProductProductRequest $request, Product $product)
     {
-        ProductProduct::updateOrDelete($request, $product);
+        (ProductProduct::where('related_product_id', $product->id)->where('related_product_id', $product->id)->firstOrFail())->setRelatedProduct($request);
+
+        return redirect()->back();
+    }
+
+    public function destroy(ProductProductRequest $request, Product $product)
+    {
+        (ProductProduct::where('related_product_id', $product->id)->firstOrFail())->destroyRelatedProduct($request);
 
         return redirect()->back();
     }

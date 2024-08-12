@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Product;
+namespace App\Http\Requests\Admin\ProductProduct;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreProductRequest extends FormRequest
+class ProductProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +22,8 @@ class StoreProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'images' => 'nullable',
-            'visibility' => ['required', Rule::in(['active', 'inactive'])],
-            'categories' => 'nullable|array',
-            'categories.*' => 'exists:categories,id',
+            'product_id' => 'required|numeric',
+            'related_product_id' => 'required|numeric',
         ];
     }
 }
