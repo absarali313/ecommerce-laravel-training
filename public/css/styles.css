@@ -1,44 +1,108 @@
-.hover-border:hover
+/* Light text color on hover for elements with hover-text-light */
+.hover-text-light:hover
 {
-    border-width: 5px;
+    color: #f8f9fa; /* Light text color on hover */
 }
 
-.text-gray-200
+/* Custom background colors */
+.bg-light-gray
 {
-    color: 	#787878;
+    background: #EBEBEB; /* light gray background */
 }
 
-.hover-border:hover
+.bg-off-white
 {
-    border-width: 5px;
+    background: #f3f3f3; /* light gray background */
 }
 
-.button-hover
+.hover-bg-light-gray:hover
 {
-    color: Gray;
-    background-color: transparent;
+    background: #f3f3f3; /* light gray background */
 }
 
-.search-container
+.bg-gray
 {
-    position: relative;
+    background: #252525;
 }
 
-.search-container .form-control
+.btn-gray
 {
-    width: 0;
-    opacity: 0;
-    transition: width 0.4s ease, opacity 0.4s ease;
-    position: absolute;
-    right: 0;
+    background: linear-gradient(180deg, #151515, #393939);
+    box-shadow: 0 1px #999;
+    color:white;
+    font-weight:bold;
+    font-size:12px;
 }
 
-.search-container:hover .form-control
+.btn-red
 {
-    width: 200px;
+    background: linear-gradient(180deg, rgba(174, 54, 54, 0.85), rgba(189, 44, 44, 0.85));
+    box-shadow: 0 1px #999;
+    color:white;
+    font-weight:bold;
+    font-size:12px;
+}
+
+.bg-light-black
+{
+    background: rgb(28, 28, 28); /* Black background */
+}
+
+.bg-dark-gray
+{
+    background: rgb(48, 48, 48); /* Black background */
+}
+
+.hover-bg-dark-gray:hover
+{
+    background: rgb(57, 57, 57);
+}
+
+.form-control::placeholder
+{
+    color: #6c757d;
     opacity: 1;
 }
-.search-icon
+
+.active
 {
-    cursor: pointer;
+    color: #02cf2a;
+}
+
+.form-label
+{
+    width: 100px;
+}
+
+.no-margin
+{
+    margin:0;
+    padding:0
+}
+
+.div-style
+{
+    background: white
+}
+
+.box-style
+{
+    width: 80px
+}
+
+.image-style
+{
+    height:150px;
+    width:150px
+}
+
+.category-style
+{
+    width:50px;
+    height:50px
+}
+
+.small-text
+{
+    font-size:12px;
 }

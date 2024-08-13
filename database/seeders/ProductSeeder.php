@@ -16,32 +16,19 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $products = Product::factory()->count(18)->create();
 
-        foreach ($products as $product)
-        {
+        $products = Product::factory()->count(10)->create();
+
+        // Establish relationships
+        foreach ($products as $product) {
             $relatedProducts = $products->random(rand(1, 5))->pluck('id')->toArray();
             $relatedProducts = array_diff($relatedProducts, [$product->id]);
             $product->relatedProducts()->attach($relatedProducts);
         }
 
-        $products->each(function ($product)
-        {
-            ProductImage::factory(1)->create(['product_id' => $product->id]);
-        });
-
-        foreach ($products as $product)
-        {
-           $size= Size::factory(4)->create([
-                'product_id' => $product->id,
-            ]);
-
-           $size->each(function ($size)
-           {
-                Price::factory(2)->create([
-                    'product_size_id' => $size->id,
-                ]);
-           });
-        }
+        $this->call(ProductImageSeeder::class);
+        $this->call(SizeSeeder::class);
+        $this->call(PriceSeeder::class);
+        $this->call(CategorySeeder::class);
     }
 }

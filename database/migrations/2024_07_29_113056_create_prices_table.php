@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_size_id')->constrained('sizes')->cascadeOnDelete();
             $table->integer('price');
-//            add start and end date
             $table->timestamp('started_at')->nullable();
             $table->timestamp('ended_at')->nullable();
             $table->timestamps();

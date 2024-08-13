@@ -7,14 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
+use \Illuminate\Http\UploadedFile;
 
 class Category extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'name',
-        'image_url',
+        'image_path',
         'parent_id'
     ];
 
@@ -25,11 +29,55 @@ class Category extends Model
 
     public function children(): HasMany
     {
-        return $this->hasMany(Category::class,'parent_id');
+        return $this->hasMany(Category::class, 'parent_id');
     }
 
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class,'category_product');
+    }
+
+    /**
+     * Stores the category image
+     * @param UploadedFile $images
+     */
+    public function storeImage(UploadedFile $image): void
+    {
+        $path = $image->store('category_images', 'public');
+        $this->image_path = $path;
+        $this->save(); // Save after storing each image path
+    }
+
+    /**
+     * Stores or updates the category
+     * return instance of resultant category
+     * @param Request $categoryData
+     * @return Category
+     */
+    public function setCategory(Request $categoryData): Category
+    {
+        $this->name = $categoryData['name'];
+
+        if (isset($categoryData['image'])) {
+            $this->storeImage($categoryData['image']);
+        }
+
+        if (isset($categoryData['parent'])){
+            $parentCategoryId = Category::where('name', $categoryData['parent'])->value('id');
+            $this->parent_id = $parentCategoryId;
+        }
+
+        $this->save();
+
+        return $this;
+    }
+
+    /**
+     * Return the number of products associated with a category
+     * @return int
+     */
+    public function getTotalProductsCount(): int
+    {
+        return $this->products()->count();
     }
 }

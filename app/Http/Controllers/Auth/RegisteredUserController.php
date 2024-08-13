@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisteredUserController extends Controller
 {
-
     public function create()
     {
         return view('auth.register');
@@ -20,6 +19,6 @@ class RegisteredUserController extends Controller
         $user = User::create($request->validated());
         Auth::login($user);
 
-        return redirect('/');
+        return redirect()->route('login_page');
     }
 }
