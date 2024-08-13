@@ -18,7 +18,8 @@
                         'product' => null
                     ])
                     @include('admin.product.partials.categories-box', [
-                        'selectedCategories' => null
+                        'selectedCategories' => null,
+                        'product' => null,
                     ])
                 </div>
             </div>

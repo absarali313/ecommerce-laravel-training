@@ -35,7 +35,7 @@ class ProductController extends Controller
     {
         $product = (new Product())->setProduct($request);
 
-        return redirect()->route('admin_products_edit', $product);
+        return redirect()->route('admin_product_edit', $product);
     }
 
     public function update(ProductRequest $request, Product $product)

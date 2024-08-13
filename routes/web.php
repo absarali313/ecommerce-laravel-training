@@ -74,7 +74,7 @@ Route::middleware(['admin'])->group(function ()
         Route::controller(ArchiveProductController::class)->group(function ()
         {
             Route::get('/products/archive', 'index')->name('admin_products_archive')->withTrashed();
-            Route::patch('/products/restore/{product}',  'update')->name('admin_product_restore')->withTrashed();
+            Route::patch('/products/restore/{product}', 'update')->name('admin_product_restore')->withTrashed();
         });
 
         Route::controller(CategoryImageController::class)->group(function ()
