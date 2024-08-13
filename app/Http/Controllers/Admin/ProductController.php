@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\DestroyProductAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Actions\CreateProductAction;
 
 class ProductController extends Controller
 {
+    protected $createProductAction, $destroyProductAction;
+
+    public function __construct(CreateProductAction $createProductAction,DestroyProductAction $destroyProductAction)
+    {
+        $this->createProductAction = $createProductAction;
+        $this->destroyProductAction = $destroyProductAction;
+    }
+
     public function index()
     {
         return view('admin.product.index', [
@@ -31,23 +41,24 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(ProductRequest $request)
+    public function store(ProductRequest $request, CreateProductAction $createProductAction)
     {
-        $product = (new Product())->setProduct($request);
+        $product =  (new Product);
+        $product = $createProductAction->handle($request->validated(),$product);
 
         return redirect()->route('admin_product_edit', $product);
     }
 
-    public function update(ProductRequest $request, Product $product)
+    public function update(ProductRequest $request, Product $product, CreateProductAction $createProductAction)
     {
-        $product->setProduct($request);
+        $product = $createProductAction->handle($request->validated(),$product);
 
         return redirect()->route('admin_product_edit', $product);
     }
 
-    public function destroy(Product $product)
+    public function destroy(Product $product, DestroyProductAction $destroyProductAction)
     {
-        $product->destroyProduct();
+        $destroyProductAction->handle($product);
 
         return redirect()->route('admin_products');
     }
