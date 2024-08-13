@@ -39,37 +39,6 @@ class Size extends Model
     }
 
     /**
-     * Creates or updates a size along its price
-     * @param Request $request
-     * @param Product|null $product
-     * @param Size|null $size
-     * @return Size
-     */
-    public function setSize(Request $request, ?Product $product = null, ?Size $size = null): Size
-    {
-        if($product) {
-            $this->product_id=$product->id;
-            $this->title=$request->title;
-            $this->stock=$request->stock;
-            $this->save();
-
-            (new Price())->setPrice($request, $this);
-        } else {
-            $this->title=$request->title;
-            $this->stock=$request->stock;
-            $this->save();
-
-            if($size) {
-                if ($this->getCurrentPrice() != $request->price) {
-                    (new Price())->setPrice($request, $this);
-                }
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * deletes a size
      */
     public function destroySize(): void
