@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\ProductProduct;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductProductRequest extends FormRequest
 {
@@ -23,7 +24,7 @@ class ProductProductRequest extends FormRequest
     {
         return [
             'product_id' => 'required | numeric',
-            'Related_id' => 'required | numeric',
+            'related_product_id' => 'required | numeric',
         ];
     }
 }

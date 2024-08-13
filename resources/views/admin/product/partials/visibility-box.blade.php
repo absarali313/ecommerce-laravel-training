@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col">
                 <label for="visibility" class="text-start text-secondary">Visibility</label>
+
                 <select id="visibility" name="visibility" class="form-select">
                     <option value="active" @selected($product?->isVisible())>Active</option>
                     <option value="inactive" @selected($product?->isHidden())>Inactive</option>

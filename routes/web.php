@@ -12,11 +12,13 @@ use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/', function ()
+{
     return view('home');
 });
 
-Route::get('redirect-back', function () {
+Route::get('redirect-back', function ()
+{
     return redirect()->back();
 })->name('redirect.back');
 

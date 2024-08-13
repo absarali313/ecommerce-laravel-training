@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 class Price extends Model
 {
     use HasFactory;
 
     protected $fillable=[
-        'product_size_id',
         'price',
         'started_at',
         'ended_at',
@@ -33,6 +33,7 @@ class Price extends Model
         $this->product_size_id = $productSize->id;
         $this->price = $request->price;
         $this->started_at = now();
+
         $this->save();
 
         return $this;

@@ -8,7 +8,7 @@
                     <select id="parent" name="parent" class="form-select">
                         <option></option>
                          @foreach($categories as $parentCategory)
-                            <option value="{{ $parentCategory?->name }}" @selected($parentCategory == $category?->parent)>{{ $parentCategory->name }}</option>
+                            <option value="{{ $parentCategory?->name }}" @selected($parentCategory == $category?->parent) >{{ $parentCategory->name }}</option>
                          @endforeach
                     </select>
 

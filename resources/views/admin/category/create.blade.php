@@ -3,6 +3,7 @@
         <form method="POST" action="{{ route('admin_categories') }}" enctype="multipart/form-data">
             @csrf
             <x-admin.back-button :link="'admin_categories'"/>
+
             <x-admin.header :has-action="true" :action-btn="'Save'"> Add Category </x-admin.header>
 
             <div class="row d-flex justify-content-around mt-1 p-1 ">

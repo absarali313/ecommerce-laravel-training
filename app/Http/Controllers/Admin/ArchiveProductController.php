@@ -13,7 +13,6 @@ class ArchiveProductController extends Controller
 
         return view('admin.product.archive.index', [
             'products'=>$products,
-            'status'=>false,
         ]);
     }
 

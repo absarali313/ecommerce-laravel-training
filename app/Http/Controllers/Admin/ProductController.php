@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Product\StoreProductRequest;
-use App\Http\Requests\Admin\Product\UpdateProductRequest;
+use App\Http\Requests\Admin\Product\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 
@@ -36,13 +35,12 @@ class ProductController extends Controller
     {
         $product = (new Product())->setProduct($request);
 
-        return redirect()->route('admin_product_edit', $product);
+        return redirect()->route('admin_products_edit', $product);
     }
 
     public function update(ProductRequest $request, Product $product)
     {
-        $product= (Product::findOrFail($product->id))->setProduct($request);
-        Product::setProduct($request->validated(), $product);
+        $product->setProduct($request);
 
         return redirect()->route('admin_product_edit', $product);
     }

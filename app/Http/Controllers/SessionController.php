@@ -20,7 +20,9 @@ class SessionController extends Controller
 
             return redirect('/admin/products');
         } else {
-            return redirect()->back()
+
+            return redirect()
+                ->back()
                 ->withInput($request->only('email'))
                 ->withErrors([
                     'email' => 'The provided credentials are incorrect.',
@@ -35,5 +37,4 @@ class SessionController extends Controller
 
         return redirect()->route('admin_products');
     }
-
 }

@@ -11,6 +11,7 @@
                     <button form="image_delete_btn" class="btn border-2 border-secondary rounded-5"> X </button>
                 </form>
             </div>
+
             <img src="{{ asset($item->image_path) }}" class="card-img-top" alt="...">
         </div>
     </div>

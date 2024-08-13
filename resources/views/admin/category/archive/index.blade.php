@@ -6,6 +6,7 @@
             </div>
 
             <div class="container-fluid bg-white rounded-3 mt-3">
+                {{-- Filter Bar --}}
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <x-admin.product.product-button class="nav-link active" aria-current="page" href="/admin/categories" class="btn-gray rounded-2 mb-1 px-1 py-1">Category</x-admin.product.product-button>

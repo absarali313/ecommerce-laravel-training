@@ -18,6 +18,7 @@
                         </ul>
                     </div>
                 </div>
+            </div>
 
             {{-- Category List Container --}}
             <div class="row d-flex justify-content-between bg-light-gray mt-1 p-1">
@@ -50,7 +51,6 @@
             <div class="row mt-4">
                 <div class="col-12 d-flex justify-content-center">
                     {{ $categories->links('pagination::bootstrap-4') }}
-                </div>
             </div>
         </div>
     </div>

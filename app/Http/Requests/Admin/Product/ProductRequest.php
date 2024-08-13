@@ -30,6 +30,5 @@ class ProductRequest extends FormRequest
             'categories' => 'nullable | array',
             'categories.*' => 'exists:categories,id',
         ];
-
     }
 }

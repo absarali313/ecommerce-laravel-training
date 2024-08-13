@@ -6,6 +6,7 @@
             </div>
 
             <div class="container-fluid bg-white rounded-3 mt-3">
+                {{--Filter Bar--}}
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <x-admin.product.product-button class="nav-link active" aria-current="page" href="/admin/products" class="btn-gray rounded-2 mb-1 px-1 py-1">Product</x-admin.product.product-button>
@@ -16,6 +17,7 @@
                     </li>
                 </ul>
 
+                {{-- Category Box Headings --}}
                 <div class="row d-flex justify-content-between bg-light-gray mt-1 p-1">
                     <div class="col-2">
                         <h6 class="text-secondary">Product</h6>
@@ -42,7 +44,6 @@
                 @foreach($products as $product)
                     @include('admin.product.partials.listing-box', [
                         'product' => $product,
-                        'status' => false
                     ])
                 @endforeach
             </div>

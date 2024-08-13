@@ -14,10 +14,11 @@ class ProductImage extends Model
         'order',
         'image_path',
         'product_id'
+
     ];
 
     public function product(): BelongsTo
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsTo(Product::class);
     }
 }

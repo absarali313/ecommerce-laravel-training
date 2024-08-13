@@ -22,6 +22,7 @@
                 </div>
             </div>
         </form>
+
         <x-admin.image-card :action_route="'admin_category_image_delete'" :item="$category" />
     </div>
 
