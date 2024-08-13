@@ -22,7 +22,7 @@
             <!-- Navigation Tabs (Centered) -->
             <div class="collapse navbar-collapse justify-content-center">
                 <div class="navbar-nav">
-                    <a href="/" class="btn nav-link text-black">Home</a>
+                    <a href="{{ route('home') }}" class="btn nav-link text-black">Home</a>
                     <a href="{{ route('client_categories') }}" class="btn nav-link text-black">Category</a>
                     <a href="{{ route('client_products') }}" class="btn nav-link text-black">All Products</a>
                     <a class="btn nav-link text-black">Rings</a>

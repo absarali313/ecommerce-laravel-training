@@ -1,4 +1,6 @@
 <x-client.layout>
+    <x-client.product.hero-banner/>
+
     <div class="container my-5">
         <div class="row">
             {{-- Product Boxes --}}

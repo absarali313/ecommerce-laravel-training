@@ -4,6 +4,9 @@ use App\Http\Controllers\Admin\CategoryImageController;
 use App\Http\Controllers\Admin\ProductProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Client\CategoryController as ClientCategoryController;
+use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\ProductController as ClientProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\ArchiveProductController;
@@ -11,11 +14,6 @@ use App\Http\Controllers\Admin\ArchiveCategoryController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function ()
-{
-    return view('home');
-});
 
 Route::get('redirect-back', function ()
 {
@@ -99,4 +97,20 @@ Route::middleware('guest')->group(function ()
         Route::get('/register', 'create')->name('register_page');
     });
 });
+
+
+Route::controller(ClientCategoryController::class)->group(function () {
+    Route::get('/categories', 'index')->name('client_categories');
+    Route::get('/categories/{category}', 'show')->name('client_category_products');
+});
+
+Route::controller(ClientProductController::class)->group(function () {
+    Route::get('/products', 'index')->name('client_products');
+    Route::get('/product/{product}', 'show')->name('client_product');
+});
+
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index')->name('home');
+});
+
 

@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::cursorPaginate(8);
+        $products = Product::cursorPaginate(12);
 
         return view('client.product.index', [
             'products' => $products,
