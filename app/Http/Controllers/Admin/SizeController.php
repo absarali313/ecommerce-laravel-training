@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Actions\Admin\Price\CreatePrice;
-use App\Actions\Admin\Size\CreateSize;
+use App\Actions\Admin\Size\SaveSize;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Size\SizeRequest;
 use App\Models\Product;
@@ -11,7 +11,7 @@ use App\Models\Size;
 
 class SizeController extends Controller
 {
-    public function store(SizeRequest $request, Product $product, CreateSize $createSizeAction)
+    public function store(SizeRequest $request, Product $product, SaveSize $createSizeAction)
     {
         $size = new Size;
         $createSizeAction->handle($request->validated(), new CreatePrice(), $product, $size);
@@ -19,7 +19,7 @@ class SizeController extends Controller
         return redirect()->back();
     }
 
-    public function update(SizeRequest $request, Size $size, CreateSize $createSizeAction)
+    public function update(SizeRequest $request, Size $size, SaveSize $createSizeAction)
     {
         $createSizeAction->handle($request->validated(), new CreatePrice(), size: $size);
 

@@ -5,7 +5,7 @@ namespace App\Actions\Admin\Category;
 use App\Models\Category;
 use Illuminate\Http\UploadedFile;
 
-class CreateCategory
+class SaveCategory
 {
     /**
      * Creates or updates the category

@@ -2,7 +2,7 @@
 
 namespace App\Actions\Admin\Size;
 
-use App\Actions\Admin\Category\CreateCategory;
+use App\Actions\Admin\Category\SaveCategory;
 use App\Actions\Admin\Price\CreatePrice;
 use App\Models\Category;
 use App\Models\Price;
@@ -10,7 +10,7 @@ use App\Models\Product;
 use App\Models\Size;
 use Illuminate\Http\Request;
 
-class CreateSize
+class SaveSize
 {
     /**
      * Creates of updates size

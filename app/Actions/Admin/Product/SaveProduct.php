@@ -4,7 +4,7 @@ namespace App\Actions\Admin\Product;
 
 use App\Models\Product;
 
-class CreateProduct
+class SaveProduct
 {
     /**
      * Create or Update a product

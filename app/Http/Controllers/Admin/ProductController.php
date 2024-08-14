@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin\Product\CreateProduct;
+use App\Actions\Admin\Product\SaveProduct;
 use App\Actions\Admin\Product\DestroyProduct;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\ProductRequest;
@@ -33,7 +33,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(ProductRequest $request, CreateProduct $createProductAction)
+    public function store(ProductRequest $request, SaveProduct $createProductAction)
     {
         $product =  (new Product);
         $product = $createProductAction->handle($request->validated(),$product);
@@ -41,7 +41,7 @@ class ProductController extends Controller
         return to_route('admin_product_edit', $product);
     }
 
-    public function update(ProductRequest $request, Product $product, CreateProduct $createProductAction)
+    public function update(ProductRequest $request, Product $product, SaveProduct $createProductAction)
     {
         $product = $createProductAction->handle($request->validated(),$product);
 
