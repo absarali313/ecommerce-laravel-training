@@ -36,7 +36,7 @@ class CategoryController extends Controller
         $category = new Category();
         $createCategoryAction->handle($request->validated(), $category);
 
-        return redirect()->route('admin_category_edit', $category);
+        return to_route('admin_category_edit', $category);
     }
 
     public function update(CategoryRequest $request, Category $category, CreateCategory $createCategoryAction)
@@ -50,6 +50,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('admin_categories');
+        return to_route('admin_categories');
     }
 }

@@ -19,7 +19,7 @@ class SessionController extends Controller
         if (Auth::attempt($request->validated())) {
             $request->session()->regenerate();
 
-            return redirect('/admin/products');
+            return to_route('admin_products');
         } else {
 
             return redirect()
@@ -36,6 +36,6 @@ class SessionController extends Controller
         $request->session()->flush();
         Auth::logout();
 
-        return redirect()->route('admin_products');
+        return to_route('home');
     }
 }

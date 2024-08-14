@@ -38,20 +38,20 @@ class ProductController extends Controller
         $product =  (new Product);
         $product = $createProductAction->handle($request->validated(),$product);
 
-        return redirect()->route('admin_product_edit', $product);
+        return to_route('admin_product_edit', $product);
     }
 
     public function update(ProductRequest $request, Product $product, CreateProduct $createProductAction)
     {
         $product = $createProductAction->handle($request->validated(),$product);
 
-        return redirect()->route('admin_product_edit', $product);
+        return to_route('admin_product_edit', $product);
     }
 
     public function destroy(Product $product, DestroyProduct $destroyProductAction)
     {
         $destroyProductAction->handle($product);
 
-        return redirect()->route('admin_products');
+        return to_route('admin_products');
     }
 }
