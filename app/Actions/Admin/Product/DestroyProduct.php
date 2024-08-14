@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Admin\Product;
 
 use App\Models\Product;
-use Illuminate\Support\Facades\Hash;
 
-class DestroyProductAction
+class DestroyProduct
 {
     /**
      * Deletes a product.

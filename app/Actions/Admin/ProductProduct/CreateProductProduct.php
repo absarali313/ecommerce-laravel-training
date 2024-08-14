@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Admin\ProductProduct;
 
 use App\Models\ProductProduct;
-use Illuminate\Support\Facades\Hash;
 
-class CreateProductProductAction
+class CreateProductProduct
 {
     /**
      * Create or Update a product.
