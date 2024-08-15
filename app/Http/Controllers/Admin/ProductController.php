@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin\product\CreateProductAction;
-use App\Actions\Admin\product\DestroyProductAction;
+use App\Actions\Admin\Product\SaveProduct;
+use App\Actions\Admin\Product\DestroyProduct;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\ProductRequest;
 use App\Models\Category;
@@ -11,14 +11,6 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    protected $createProductAction, $destroyProductAction;
-
-    public function __construct(CreateProductAction $createProductAction,DestroyProductAction $destroyProductAction)
-    {
-        $this->createProductAction = $createProductAction;
-        $this->destroyProductAction = $destroyProductAction;
-    }
-
     public function index()
     {
         return view('admin.product.index', [
@@ -41,25 +33,25 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(ProductRequest $request, CreateProductAction $createProductAction)
+    public function store(ProductRequest $request, SaveProduct $createProductAction)
     {
         $product =  (new Product);
         $product = $createProductAction->handle($request->validated(),$product);
 
-        return redirect()->route('admin_product_edit', $product);
+        return to_route('admin_product_edit', $product);
     }
 
-    public function update(ProductRequest $request, Product $product, CreateProductAction $createProductAction)
+    public function update(ProductRequest $request, Product $product, SaveProduct $createProductAction)
     {
         $product = $createProductAction->handle($request->validated(),$product);
 
-        return redirect()->route('admin_product_edit', $product);
+        return to_route('admin_product_edit', $product);
     }
 
-    public function destroy(Product $product, DestroyProductAction $destroyProductAction)
+    public function destroy(Product $product, DestroyProduct $destroyProductAction)
     {
         $destroyProductAction->handle($product);
 
-        return redirect()->route('admin_products');
+        return to_route('admin_products');
     }
 }

@@ -71,7 +71,7 @@ class Product extends Model
      */
     public function isHidden(): bool
     {
-        return !$this?->visibility;
+        return !$this?->isVisible();
     }
 
     public function getVisibilityStatus(): String

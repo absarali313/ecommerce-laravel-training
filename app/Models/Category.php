@@ -38,17 +38,6 @@ class Category extends Model
     }
 
     /**
-     * Stores the category image
-     * @param UploadedFile $images
-     */
-    public function storeImage(UploadedFile $image): void
-    {
-        $path = $image->store('category_images', 'public');
-        $this->image_path = $path;
-        $this->save(); // Save after storing each image path
-    }
-
-    /**
      * Return the number of products associated with a category
      * @return int
      */

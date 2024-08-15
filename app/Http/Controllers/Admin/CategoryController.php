@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin\Category\CreateCategoryAction;
+use App\Actions\Admin\Category\SaveCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\CategoryRequest;
 use App\Models\Category;
@@ -31,15 +31,15 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function store(CategoryRequest $request, CreateCategoryAction $createCategoryAction)
+    public function store(CategoryRequest $request, SaveCategory $createCategoryAction)
     {
         $category = new Category();
         $createCategoryAction->handle($request->validated(), $category);
 
-        return redirect()->route('admin_category_edit', $category);
+        return to_route('admin_category_edit', $category);
     }
 
-    public function update(CategoryRequest $request, Category $category, CreateCategoryAction $createCategoryAction)
+    public function update(CategoryRequest $request, Category $category, SaveCategory $createCategoryAction)
     {
         $createCategoryAction->handle($request->validated(), $category);
 
@@ -50,6 +50,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('admin_categories');
+        return to_route('admin_categories');
     }
 }

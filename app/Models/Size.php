@@ -37,13 +37,5 @@ class Size extends Model
     {
         return $this->prices()->orderByDesc('started_at')->first();
     }
-
-    /**
-     * deletes a size
-     */
-    public function destroySize(): void
-    {
-        $this->delete();
-    }
 }
 
