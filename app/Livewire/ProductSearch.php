@@ -13,6 +13,8 @@ class ProductSearch extends Component
 
     public $searchTerm = '';
     public $products = '';
+    public $showResults = false;
+
 
     public function mount()
     {
@@ -24,6 +26,7 @@ class ProductSearch extends Component
     {
         \Log::info('Search Term: ' . $this->searchTerm);
         $searchTerm = '%' . $this->searchTerm . '%';
+        $this->showResults = $this->products->isNotEmpty();
 
         // Perform the query and paginate the results
         $this->products = Product::where('title', 'like', $searchTerm)->paginate(10);
