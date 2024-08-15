@@ -16,7 +16,8 @@
 
             <div class="col-7 d-flex justify-content-center align-content-center ">
                 <a class="text-center text-black text-decoration-underline text-center"
-                   href="{{ route('admin_product_edit', $product->id) }}"> {{ $product->title }}</a>
+                   href="{{ route('admin_product_edit', $product->id) }}"> {{ $product->title }}
+                </a>
             </div>
         </div>
     </div>
