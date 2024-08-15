@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\CreateProductProductAction;
+use App\Actions\Admin\product\CreateProductProductAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProductProduct\ProductProductRequest;
 use App\Models\Product;
 use App\Models\ProductProduct;
-use App\Http\Requests\Admin\ProductProduct\ProductProductRequest;
 
 
 class ProductProductController extends Controller

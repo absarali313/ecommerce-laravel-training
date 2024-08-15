@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Admin\product;
 
 use App\Models\ProductProduct;
-use Illuminate\Support\Facades\Hash;
 
 class CreateProductProductAction
 {
     /**
      * Create or Update a product.
      *
-     * @param   array $data
+     * @param  array $data
      * @param  \App\Models\Product  $product
      * @return void
      */

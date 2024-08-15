@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Admin\product;
 
 use App\Models\Product;
-use Illuminate\Support\Facades\Hash;
 
 class DestroyProductAction
 {

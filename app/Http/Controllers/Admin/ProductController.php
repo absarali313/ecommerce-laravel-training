@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\DestroyProductAction;
+use App\Actions\Admin\product\CreateProductAction;
+use App\Actions\Admin\product\DestroyProductAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
-use App\Actions\CreateProductAction;
 
 class ProductController extends Controller
 {
