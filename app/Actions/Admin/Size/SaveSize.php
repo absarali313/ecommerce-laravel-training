@@ -14,9 +14,9 @@ class SaveSize
 {
     /**
      * Creates of updates size
-     * @param array $request
-     * @param Product|null $product
-     * @param Size|null $size
+     * @param array $request the data for size including title, stock, and price
+     * @param Product|null $product the product against which a size variant is being added
+     * @param Size|null $size the size variant of the product
      * @return Size
      */
    public function handle(array $request, CreatePrice $createPriceAction, ?Product $product = null, ?Size $size = null): Size

@@ -9,8 +9,10 @@ class SaveCategory
 {
     /**
      * Creates or updates the category
-     * @param array $data
-     * @param Category $category
+     * Updates the category image
+     * Updates the parent category
+     * @param array $data provides the data including title, image, and parent category
+     * @param Category $category the category to verify if this instance already exists in the database
      * @return Category
      */
     public function handle(array $data, Category $category): Category
@@ -37,7 +39,8 @@ class SaveCategory
 
     /**
      * Stores the category image
-     * @param UploadedFile $images
+     * @param UploadedFile $image the image that needs to be stored
+     * @param Category $category the category against which image is to be stored
      */
     private function storeImage(Category $category, UploadedFile $image): void
     {

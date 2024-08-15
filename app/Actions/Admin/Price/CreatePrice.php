@@ -9,9 +9,9 @@ class CreatePrice
 {
     /**
      * Create price for a size
-     * @param array $data
-     * @param Size $size
-     * @param Price $price
+     * @param array $data includes the data for size and its price
+     * @param Size $size The size variant for which price is being saved
+     * @param Price $price The price against a specific size variant
      * @return Price
      */
     public function handle(array $data, Size $size, Price $price): Price

@@ -9,8 +9,7 @@ class DestroyProduct
     /**
      * Deletes a product.
      * Set the visibility to false and delete the product.
-     *
-     * @param  \App\Models\Product  $product
+     * @param  Product $product the product that needs to be deleted
      * @return void
      */
     public function handle(Product $product): void
