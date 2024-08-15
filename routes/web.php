@@ -1,18 +1,18 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryImageController;
-use App\Http\Controllers\Admin\ProductProductController;
+use App\Http\Controllers\Admin\ArchiveCategoryController;
+use App\Http\Controllers\Admin\ArchiveProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CategoryImageController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductImageController;
+use App\Http\Controllers\Admin\ProductProductController;
+use App\Http\Controllers\Admin\SizeController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\Client\CategoryController as ClientCategoryController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductController as ClientProductController;
-use App\Http\Controllers\Admin\ProductImageController;
-use App\Http\Controllers\Admin\SizeController;
-use App\Http\Controllers\Admin\ArchiveProductController;
-use App\Http\Controllers\Admin\ArchiveCategoryController;
-use App\Http\Controllers\RegisteredUserController;
-use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('redirect-back', function ()
@@ -112,5 +112,3 @@ Route::controller(ClientProductController::class)->group(function () {
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
 });
-
-

@@ -58,80 +58,6 @@ class Product extends Model
     }
 
     /**
-     * Set the visibility status of product in boolean type
-     * @param  String  $status
-     * @return bool
-     */
-    public function setVisibility(String $status): bool
-    {
-        if ($status == ('inactive'))
-        {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Store images for the product.
-     * @param  array $images
-     */
-    public function storeImages(array $images): void
-    {
-        if ($images) {
-            foreach ($images as $image) {
-                $path = $image->store('product_images');
-                $this->images()->create(['image_path' => $path, 'product_id' => $this->id]);
-            }
-        }
-    }
-
-    /**
-     * Associate categories with the product in pivot table.
-     * @param array $categories
-     */
-    public function associateCategories(array $categories = []): void
-    {
-        if ($categories) {
-            $this->categories()->sync($categories);
-        }
-    }
-
-    /**
-     * Create or Update a product
-     * @param  Request $request
-     * @return \App\Models\Product
-     */
-    public function setProduct(Request $request): Product
-    {
-        $this->fill($request->all());
-        $this->visibility = $request->visibility == 'active';
-        $this->save();
-
-        if (array_key_exists('images', $request->all())) {
-            $this->storeImages($request->images);
-        }
-
-        if (array_key_exists('categories', $request->all())) {
-            $this->associateCategories($request['categories']);
-        } else {
-            $this->categories()->detach();
-        }
-
-        return $this;
-    }
-
-    /**
-     * Deletes a product.
-     * Set the visibility to false
-     */
-    public function destroyProduct(): void
-    {
-        $this->visibility = false;
-        $this->save();
-        $this->delete();
-    }
-
-    /**
      * Checks if the product is visible
      * @return bool
      */
@@ -146,7 +72,7 @@ class Product extends Model
      */
     public function isHidden(): bool
     {
-        return !$this?->visibility;
+        return !$this?->isVisible();
     }
 
     public function getVisibilityStatus(): String

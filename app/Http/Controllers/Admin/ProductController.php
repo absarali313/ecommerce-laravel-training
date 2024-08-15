@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Admin\Product\SaveProduct;
+use App\Actions\Admin\Product\DestroyProduct;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\ProductRequest;
 use App\Models\Category;
@@ -31,24 +33,25 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(ProductRequest $request)
+    public function store(ProductRequest $request, SaveProduct $createProductAction)
     {
-        $product = (new Product())->setProduct($request);
+        $product =  (new Product);
+        $product = $createProductAction->handle($request->validated(),$product);
 
-        return redirect()->route('admin_product_edit', $product);
+        return to_route('admin_product_edit', $product);
     }
 
-    public function update(ProductRequest $request, Product $product)
+    public function update(ProductRequest $request, Product $product, SaveProduct $createProductAction)
     {
-        $product->setProduct($request);
+        $product = $createProductAction->handle($request->validated(),$product);
 
-        return redirect()->route('admin_product_edit', $product);
+        return to_route('admin_product_edit', $product);
     }
 
-    public function destroy(Product $product)
+    public function destroy(Product $product, DestroyProduct $destroyProductAction)
     {
-        $product->destroyProduct();
+        $destroyProductAction->handle($product);
 
-        return redirect()->route('admin_products');
+        return to_route('admin_products');
     }
 }

@@ -2,36 +2,41 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Admin\ProductProduct\SaveProductProduct;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProductProduct\ProductProductRequest;
 use App\Models\Product;
 use App\Models\ProductProduct;
-use Illuminate\Http\Request;
-use App\Http\Requests\Admin\ProductProduct\ProductProductRequest;
 
 
 class ProductProductController extends Controller
 {
-    public function store(ProductProductRequest $request)
+    public function store(ProductProductRequest $request, SaveProductProduct $saveProductProduct)
     {
-        (new ProductProduct())->setRelatedProduct($request);
+        $productProduct = new ProductProduct();
+        $saveProductProduct->handle($request->validated(), $productProduct);
 
         return redirect()->back();
     }
 
-    public function update(ProductProductRequest $request, Product $product)
+    public function update(ProductProductRequest $request, Product $product, SaveProductProduct $saveProductProduct)
     {
-        (ProductProduct::where('related_product_id', $product->id)
-            ->where('related_product_id', $product->id)
-            ->firstOrFail())->setRelatedProduct($request);
+        $productProduct = ProductProduct::where('related_product_id', $product->id)
+                                        ->where('related_product_id', $product->id)
+                                        ->firstOrFail();
+
+        $saveProductProduct->handle($request->validated(), $productProduct);
 
         return redirect()->back();
     }
 
     public function destroy(ProductProductRequest $request, Product $product)
     {
-        (ProductProduct::where('related_product_id', $product->id)
-            ->where('related_product_id', $product->id)
-            ->firstOrFail())->destroyRelatedProduct();
+        $productProduct = ProductProduct::where('related_product_id', $product->id)
+                                        ->where('related_product_id', $product->id)
+                                        ->firstOrFail();
+
+        $productProduct->delete();
 
         return redirect()->back();
     }

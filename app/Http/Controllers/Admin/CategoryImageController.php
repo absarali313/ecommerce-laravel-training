@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Admin\Category\DeleteCategoryImage;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 
 class CategoryImageController extends Controller
 {
-    public function destroy(Category $category)
+    public function destroy(Category $category, DeleteCategoryImage $deleteCategoryImageAction)
     {
-        $category->image_path = null;
-        $category->save();
+        $deleteCategoryImageAction->handle($category);
 
         return redirect()->back();
     }

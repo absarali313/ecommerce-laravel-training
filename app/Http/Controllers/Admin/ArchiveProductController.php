@@ -20,6 +20,6 @@ class ArchiveProductController extends Controller
     {
         $product->restore(); // Restore the soft-deleted product
 
-        return redirect()->route('admin_products_archive')->with('success', 'Product restored successfully!');
+        return to_route('admin_products_archive')->with('success', 'Product restored successfully!');
     }
 }

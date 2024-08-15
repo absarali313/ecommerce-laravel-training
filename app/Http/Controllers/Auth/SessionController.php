@@ -1,44 +1,41 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\SessionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class SessionController extends Controller
 {
-    public function destroy(Request $request)
-    {
-        $request->session()->flush();
-        Auth::logout();
-        return redirect('/login');
-    }
-
     public function create()
     {
         return view('auth.login');
     }
 
-
-    public function store(Request $request)
+    public function store(SessionRequest $request)
     {
-
-        $details = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-        if (Auth::attempt($details)) {
+        if (Auth::attempt($request->validated())) {
             $request->session()->regenerate();
 
-            return redirect('/');
+            return to_route('admin_products');
         } else {
 
-            return redirect()->back()
+            return redirect()
+                ->back()
                 ->withInput($request->only('email'))
                 ->withErrors([
                     'email' => 'The provided credentials are incorrect.',
                 ]);
         }
+    }
 
+    public function destroy(Request $request)
+    {
+        $request->session()->flush();
+        Auth::logout();
+
+        return to_route('home');
     }
 }

@@ -38,41 +38,6 @@ class Category extends Model
     }
 
     /**
-     * Stores the category image
-     * @param UploadedFile $images
-     */
-    public function storeImage(UploadedFile $image): void
-    {
-        $path = $image->store('category_images', 'public');
-        $this->image_path = $path;
-        $this->save(); // Save after storing each image path
-    }
-
-    /**
-     * Stores or updates the category
-     * return instance of resultant category
-     * @param Request $categoryData
-     * @return Category
-     */
-    public function setCategory(Request $categoryData): Category
-    {
-        $this->name = $categoryData['name'];
-
-        if (isset($categoryData['image'])) {
-            $this->storeImage($categoryData['image']);
-        }
-
-        if (isset($categoryData['parent'])){
-            $parentCategoryId = Category::where('name', $categoryData['parent'])->value('id');
-            $this->parent_id = $parentCategoryId;
-        }
-
-        $this->save();
-
-        return $this;
-    }
-
-    /**
      * Return the number of products associated with a category
      * @return int
      */
