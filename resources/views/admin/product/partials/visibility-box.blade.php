@@ -1,4 +1,4 @@
-<div class="row bg-white rounded-3 px-3 py-2 border border-1 border-white">
+<div class="row bg-white rounded-3 px-3 py-2 border border-1 border-white shadow">
     <div class="col">
         <div class="row">
             <div class="col">

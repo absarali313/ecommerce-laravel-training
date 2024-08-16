@@ -1,4 +1,4 @@
-<div class="row bg-white rounded-3 px-3 py-2 border border-1 border-white mt-4">
+<div class="row bg-white rounded-3 px-3 py-2 border border-1 border-white mt-4 shadow">
     <div class="row">
         <div class="col">
             <form method="POST" action="{{ route("admin_size_store", $product) }}" >

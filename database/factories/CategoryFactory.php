@@ -20,6 +20,7 @@ class CategoryFactory extends Factory
             [
                 'name' => $this->faker->name(),
                 'image_path' => $this->faker->imageUrl(),
+                'position' => $this->faker->numberBetween(1, 10),
             ];
     }
 }

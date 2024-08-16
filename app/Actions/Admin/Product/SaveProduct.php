@@ -23,13 +23,6 @@ class SaveProduct
             $this->storeImages($product, $data['images']);
         }
 
-        // Handle the product's categories if provided
-        if (isset($data['categories'])) {
-            $product->categories()->sync($data['categories']);
-        } else {
-            $product->categories()->detach();
-        }
-
         return $product;
     }
 

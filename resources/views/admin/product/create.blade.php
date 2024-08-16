@@ -17,10 +17,6 @@
                     @include('admin.product.partials.visibility-box',[
                         'product' => null
                     ])
-                    @include('admin.product.partials.categories-box', [
-                        'selectedCategories' => null,
-                        'product' => null,
-                    ])
                 </div>
             </div>
         </form>

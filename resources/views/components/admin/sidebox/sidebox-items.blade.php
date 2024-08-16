@@ -4,7 +4,7 @@
     <a href="{{ $link }}" class='text-decoration-none text-black'>
         <li class=' mt-md-3 mt-sm-1 w-100'>
             <p>
-                <span @class([ '{{ $icon }} ' ])></span>
+                <span class='{{ $icon }}' ])></span>
 
                 {{ $slot }}
             </p>

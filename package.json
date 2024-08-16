@@ -12,6 +12,11 @@
         "vite": "^5.0"
     },
     "dependencies": {
-        "@popperjs/core": "^2.11.8"
+        "@alpinejs/intersect": "^3.14.1",
+        "@alpinejs/sort": "^3.14.1",
+        "@popperjs/core": "^2.11.8",
+        "alpinejs": "^3.14.1",
+        "sortable": "^2.0.0",
+        "sortablejs": "^1.15.2"
     }
 }

@@ -18,9 +18,12 @@
                 </div>
 
                 {{--Visibility--}}
-                <div class="col-3">
+                <div class="col-4">
                     @include('admin.product.partials.visibility-box')
-                    @include('admin.product.partials.categories-box')
+                    @livewire('category-tree', [
+                        'product' => $product,
+                        'selectedCategory' => $product->categories()->pluck('category_id')->toArray(),
+                    ])
                 </div>
             </div>
         </form>

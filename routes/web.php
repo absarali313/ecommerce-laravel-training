@@ -13,12 +13,17 @@ use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\Client\CategoryController as ClientCategoryController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductController as ClientProductController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::get('redirect-back', function ()
 {
     return redirect()->back();
 })->name('redirect.back');
+
+Route::get('/test', function () {
+    return view('admin.text' , ['products' => Product::all()]);
+});
 
 Route::middleware(['admin'])->group(function ()
 {

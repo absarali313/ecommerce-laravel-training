@@ -7,15 +7,19 @@
             <div class="container-fluid bg-white mt-3">
                 <div class="row d-flex flex-row justify-content-between">
                     <div class="col-6 mt-2 ">
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
+                        <div class="row d-flex align-items-center">
+                            <div class="col-2 align-items-center">
                                 <x-admin.product.product-button class="nav-link active" aria-current="page" href="/admin/categories" class="btn-gray rounded-2 mb-1 px-1 py-1">Category</x-admin.product.product-button>
-                            </li>
+                            </div>
 
-                            <li class="nav-item">
+                            <div class="col-2">
                                 <x-admin.product.product-button class="nav-link" href="{{ route('admin_categories_archive') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Archive</x-admin.product.product-button>
-                            </li>
-                        </ul>
+                            </div>
+
+                            <div class="col w-100 mb-1 d-flex align-items-start rounded-4">
+                                @livewire('category-search')
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
