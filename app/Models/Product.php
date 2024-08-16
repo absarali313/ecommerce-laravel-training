@@ -18,7 +18,8 @@ class Product extends Model
     protected $fillable = [
         'title',
         'description',
-        'Visibility'
+        'Visibility',
+        'sort_order'
     ];
 
     public function categories(): BelongsToMany

@@ -7,6 +7,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <title>Document</title>
         <script src="https://cdn.tiny.cloud/1/v4437h8gvq2ak03n506ro895c5i9gmgr5xnnsgjpfttf8uqd/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         @stack('script')

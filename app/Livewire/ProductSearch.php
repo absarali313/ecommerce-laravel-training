@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -24,7 +25,7 @@ class ProductSearch extends Component
 
     public function search()
     {
-        \Log::info('Search Term: ' . $this->searchTerm);
+        Log::info('Search Term: ' . $this->searchTerm);
         $searchTerm = '%' . $this->searchTerm . '%';
         $this->showResults = $this->products->isNotEmpty();
 

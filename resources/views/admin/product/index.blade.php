@@ -1,3 +1,5 @@
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <x-admin.layout>
     <div class="container-fluid my-5 ">
         <x-admin.header :link="'admin_product_create'" :action-btn="'Add Product'">Products</x-admin.header>
@@ -41,17 +43,24 @@
             </div>
 
             {{-- Products --}}
-            @foreach($products as $product)
-                @include('admin.product.partials.listing-box', [
-                    'product' => $product,
-                ])
-            @endforeach
+            <livewire:product-reorder />
+{{--            <div x-data="sortableProducts()" x-init="initializeSortable" x-ref="sortableList">--}}
+{{--                <div class="row">--}}
+{{--                    @foreach($products as $product)--}}
+{{--                        <div class="col-12" data-id="{{ $product->sort_order }}">--}}
+{{--                            @include('admin.product.partials.listing-box', [--}}
+{{--                                'product' => $product,--}}
+{{--                            ])--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="row mt-4">
-                <div class="col-12 d-flex justify-content-center">
-                    {{ $products->links('pagination::bootstrap-4') }}
-                </div>
-            </div>
+{{--            <div class="row mt-4">--}}
+{{--                <div class="col-12 d-flex justify-content-center">--}}
+{{--                    {{ $products->links('pagination::bootstrap-4') }}--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
 </x-admin.layout>

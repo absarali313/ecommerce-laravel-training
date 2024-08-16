@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        return view('admin.product.index', [
-            'products' => Product::paginate(10),
+        return view('admin.product.index',[
+            'products' =>  Product::orderBy('sort_order')->get()
         ]);
     }
 

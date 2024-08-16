@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
 
-        $products = Product::factory()->count(10)->create();
+        $products = Product::factory()->count(5)->create();
 
         // Establish relationships
         foreach ($products as $product) {

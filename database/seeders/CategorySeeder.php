@@ -15,9 +15,9 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categories = Category::factory(3)->create();
-        $products = Product::factory(10)->create();
+        $products = Product::factory(5)->create();
 
-// Attach products to each category
+        // Attach products to each category
         $categories->each(function ($category) use ($products) {
             $category->products()->attach($products->pluck('id')->toArray());
         });

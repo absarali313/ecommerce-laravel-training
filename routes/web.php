@@ -32,6 +32,8 @@ Route::middleware(['admin'])->group(function ()
             Route::post('/products', 'store')->name('admin_product_store');
             Route::patch('/products/edit/{product}', 'update')->name('admin_product_update');
             Route::delete('/products/delete/{product}', 'destroy')->name('admin_product_delete');
+            Route::post('/admin/products/reorder',  'reorder')->name('admin_product_reorder');
+
         });
 
         Route::controller(ProductImageController::class)->group(function ()
