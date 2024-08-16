@@ -36,12 +36,11 @@
                     </div>
                 </div>
 
-                {{-- Products --}}
-                @foreach($categories as $category)
-                    @include('admin.category.partials.box', [
-                        'category' => $category,
-                    ])
-                @endforeach
+                <div>
+                    @livewire('category-page' , [
+                    'trashed' => true,
+                ])
+                </div>
             </div>
         </div>
     </div>

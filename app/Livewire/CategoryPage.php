@@ -9,32 +9,35 @@ use Livewire\Component;
 class CategoryPage extends Component
 {
     #[Validate('required|min:3')]
-    public String $searchText = "";
+    public string $searchText = '';
     public $categories;
+    public bool $trashed = false;
 
-    public function mount()
+    public function mount(bool $trashed = false)
     {
-        $this->categories = Category::all();
+        $this->trashed = $trashed;
+        $this->loadCategories();
     }
+
     /**
-     * Find related categories
+     * Load categories based on the search text and trashed status.
      * @return void
      */
-    public function getCategories(): void
+    public function loadCategories(): void
     {
-        if( strlen($this->searchText) > 0) {
-            $this->categories = Category::whereAny([
-                'name',
-            ] , 'like', '%' . trim($this->searchText) . '%')->get();
-        } else {
-            $this->categories = Category::all();
+        $query = $this->trashed ? Category::onlyTrashed() : Category::query();
+
+        if (strlen($this->searchText) > 0) {
+            $query->where('name', 'like', '%' . trim($this->searchText) . '%');
         }
 
+        $this->categories = $query->get();
     }
+
     public function render()
     {
         return view('livewire.category-page', [
-            'categories' => $this->categories, // Pass categories to the view
+            'categories' => $this->categories,
         ]);
     }
 }

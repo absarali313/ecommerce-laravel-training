@@ -41,7 +41,9 @@
 
             {{-- Categories --}}
             <div>
-                @livewire('category-page')
+                @livewire('category-page' , [
+                    'trashed' => false,
+                ])
             </div>
 
             <div class="row mt-4">
