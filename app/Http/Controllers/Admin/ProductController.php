@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('admin.product.index',[
+         return view('admin.product.index',[
             'products' =>  Product::orderBy('sort_order')->get()
         ]);
     }

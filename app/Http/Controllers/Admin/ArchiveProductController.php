@@ -9,7 +9,7 @@ class ArchiveProductController extends Controller
 {
     public function index()
     {
-        $products=Product::onlyTrashed()->simplePaginate(8);
+        $products=Product::onlyTrashed()->get();
 
         return view('admin.product.archive.index', [
             'products'=>$products,

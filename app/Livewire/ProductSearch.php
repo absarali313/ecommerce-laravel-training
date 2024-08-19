@@ -12,31 +12,25 @@ class ProductSearch extends Component
 {
     use WithPagination;
 
-    public $searchTerm = '';
-    public $products = '';
     public $showResults = false;
+    public $searchTerm = '';
 
-
-    public function mount()
+    public function updatedSearchTerm()
     {
-        // Initialize $products as an empty collection to avoid null issues
-        $this->products = collect();
+        $this->showResults = true; // Show results even if empty
     }
 
-    public function search()
-    {
-        Log::info('Search Term: ' . $this->searchTerm);
-        $searchTerm = '%' . $this->searchTerm . '%';
-        $this->showResults = $this->products->isNotEmpty();
-
-        // Perform the query and paginate the results
-        $this->products = Product::where('title', 'like', $searchTerm)->paginate(10);
-        $this->products = new Collection($this->products->items());
-
-        return $this; // Trigger a re-render
-    }
     public function render()
     {
-        return view('livewire.product-search');
+        // Perform the query and paginate the results
+//        dd("%{$this->searchTerm}%");
+        $products = Product::where('title', 'like', "%{$this->searchTerm}%")
+            ->orderBy('sort_order')
+            ->get();
+
+
+        return view('livewire.product-search', [
+            'products' => $products,
+        ]);
     }
 }

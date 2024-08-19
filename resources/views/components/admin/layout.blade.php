@@ -25,7 +25,7 @@
                         </div>
 
                         <div class= 'col-md-5 d-none d-md-block h-auto align-content-center' >
-                            <livewire:product-search />
+                          <x-admin.search-box />
                         </div>
 
                         <div class= 'col-md-2 col-sm-4 d-flex justify-content-end align-items-center text-center' >

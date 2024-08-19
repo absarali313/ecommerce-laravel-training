@@ -1,3 +1,5 @@
+@props(['products'=> []])
+
 <div x-data="sortableProducts()" x-init="initializeSortable" x-ref="sortableList">
     <div class="row">
         @foreach($products as $product)
@@ -18,7 +20,6 @@
                     animation: 150,
                     onEnd: (event) => {
                         console.log('Dragged:', event);
-                        // Define reorderedIds here
                         const reorderedIds = Array.from(this.$refs.sortableList.querySelector('.row').children)
                             .map((item) => item.dataset.id)
 

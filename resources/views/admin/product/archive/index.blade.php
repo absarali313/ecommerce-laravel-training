@@ -41,11 +41,7 @@
                 </div>
 
                 {{-- Products --}}
-                @foreach($products as $product)
-                    @include('admin.product.partials.listing-box', [
-                        'product' => $product,
-                    ])
-                @endforeach
+                <livewire:product-reorder :products="$products" />
             </div>
         </div>
     </div>
