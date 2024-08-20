@@ -1,13 +1,42 @@
- <div>
-    <div>
-        <div class="container d-flex border border-top-0 border-start-0 border-end-0 border-secondary-subtle justify-content-center mb-1 pb-1">
-            <input id="searchInput" wire:model="searchText" wire:keydown="loadCategories()" class="form-control w-auto" type="search" placeholder="Search" aria-label="Search">
+<div>
+<div x-data="sortableProducts()" x-init="initializeSortable()">
+    <div class="container">
+        <div class="row" x-ref="sortableList">
+            @foreach($categories as $category)
+                <div class="col-12 sortable-item" data-id="{{ $category->id }}">
+                    @include('admin.category.partials.box', ['category' => $category])
+                </div>
+            @endforeach
         </div>
     </div>
+</div>
 
-    @foreach($categories as $category)
-        @include('admin.category.partials.box', [
-            'category' => $category,
-        ])
-    @endforeach
- </div>
+    <script>
+        function sortableProducts() {
+            return {
+                initializeSortable() {
+                    if (this.$refs.sortableList) {
+                        const sortable = Sortable.create(this.$refs.sortableList, {
+                            animation: 150,
+                            onEnd: (event) => {
+                                // Ensure this.$refs.sortableList.children is not undefined
+                                if (this.$refs.sortableList.children) {
+                                    const reorderedIds = Array.from(this.$refs.sortableList.children)
+                                        .map((item) => item.dataset.id);
+
+                                    // Emit the event to Livewire
+                                    if (window.Livewire) {
+                                        @this.call('updateSortOrder', reorderedIds);
+                                    } else {
+                                        console.error('Livewire is not defined.');
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            };
+        }
+    </script>
+
+</div>

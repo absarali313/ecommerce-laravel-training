@@ -11,6 +11,7 @@ class CategoryIndex extends Component
     public string $searchText = '';
     public $categories;
     public bool $trashed = false;
+    public $reorderedIds = [];
 
     public function mount(bool $trashed = false): void
     {
@@ -31,8 +32,25 @@ class CategoryIndex extends Component
             $query->where('name', 'like', '%' . trim($this->searchText) . '%');
         }
 
-        $this->categories = $query->get();
+        $this->categories = $query->orderBy('position','asc')->get();
     }
+
+    public function updateSortOrder($reorderedIds)
+    {
+        // Validate and update the sort order
+        foreach ($reorderedIds as $position => $id) {
+            Category::where('id', $id)->update(['position' => $position]);
+        }
+        // Optionally refresh categories to reflect new order
+        $this->categories = Category::orderBy('position')->get();
+    }
+
+    public function updateSortOrderFromButton()
+    {
+        $this->updateSortOrder($this->reorderedIds);
+    }
+
+
 
     public function render()
     {
