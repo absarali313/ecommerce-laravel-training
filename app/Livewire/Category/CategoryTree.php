@@ -13,8 +13,9 @@ class CategoryTree extends Component
     public $selectedCategory = [];
     public $product;
 
-    public function mount()
+    public function mount(): void
     {
+        $this->selectedCategory = $this->product->categories()->pluck('category_id')->toArray();
         $this->categories = Category::whereNull('parent_id')->get();
     }
 

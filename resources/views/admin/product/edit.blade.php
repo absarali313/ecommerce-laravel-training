@@ -22,7 +22,6 @@
                     @include('admin.product.partials.visibility-box')
                     @livewire('category.category-tree', [
                         'product' => $product,
-                        'selectedCategory' => $product->categories()->pluck('category_id')->toArray(),
                     ])
                 </div>
             </div>

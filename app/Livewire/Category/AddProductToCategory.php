@@ -14,7 +14,7 @@ class AddProductToCategory extends Component
     public array $selectedProducts = [];
     public Category $category;
 
-    public function mount()
+    public function mount(): void
     {
         $this->products = Product::all();
         // Convert related products to array of IDs

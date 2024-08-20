@@ -12,7 +12,7 @@ class CategoryIndex extends Component
     public $categories;
     public bool $trashed = false;
 
-    public function mount(bool $trashed = false)
+    public function mount(bool $trashed = false): void
     {
         $this->trashed = $trashed;
         $this->loadCategories();
