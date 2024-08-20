@@ -37,7 +37,7 @@
                 </div>
 
                 <div>
-                    @livewire('category-page' , [
+                    @livewire('category.category-index' , [
                     'trashed' => true,
                 ])
                 </div>

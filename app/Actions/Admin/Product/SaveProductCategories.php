@@ -6,7 +6,12 @@ use App\Models\Product;
 
 class SaveProductCategories
 {
-    public function handle(array $data, Product $product)
+    /**
+     * Stores the product associations with the categories
+     * @param array $data includes the category array
+     * @param Product $product the product against which categories are being associated
+     */
+    public function handle(array $data, Product $product): void
     {
         $product->categories()->sync($data);
     }

@@ -20,7 +20,7 @@
                 {{--Visibility--}}
                 <div class="col-4">
                     @include('admin.product.partials.visibility-box')
-                    @livewire('category-tree', [
+                    @livewire('category.category-tree', [
                         'product' => $product,
                         'selectedCategory' => $product->categories()->pluck('category_id')->toArray(),
                     ])

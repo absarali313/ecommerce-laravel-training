@@ -7,6 +7,11 @@
             {{--Back Button--}}
             <x-admin.back-button :link="'admin_categories'"/>
 
+            <!-- Modal -->
+           @livewire('category.add-product-to-category', [
+                'category' => $category,
+           ])
+
             {{--Form Header--}}
             <x-admin.header class="mx-4" :has-action="true" >Edit Category</x-admin.header>
 
@@ -19,6 +24,8 @@
                 {{--Visibility--}}
                 <div class="col-3">
                     @include('admin.category.partials.parent-selection-box')
+                    <!-- Button to trigger modal -->
+                    <button type="button" class="d-flex w-100 mt-3 justify-content-center btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add products</button>
                 </div>
             </div>
         </form>

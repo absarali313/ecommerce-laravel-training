@@ -41,7 +41,7 @@
 
             {{-- Categories --}}
             <div>
-                @livewire('category-page' , [
+                @livewire('category.category-index' , [
                     'trashed' => false,
                 ])
             </div>

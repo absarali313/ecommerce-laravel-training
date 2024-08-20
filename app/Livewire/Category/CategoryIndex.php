@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Category;
 
 use App\Models\Category;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-class CategoryPage extends Component
+class CategoryIndex extends Component
 {
-    #[Validate('required|min:3')]
     public string $searchText = '';
     public $categories;
     public bool $trashed = false;
@@ -25,6 +24,7 @@ class CategoryPage extends Component
      */
     public function loadCategories(): void
     {
+        // Checks if the categories should be loaded from trashed only
         $query = $this->trashed ? Category::onlyTrashed() : Category::query();
 
         if (strlen($this->searchText) > 0) {
