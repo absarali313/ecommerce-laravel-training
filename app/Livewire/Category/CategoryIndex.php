@@ -29,30 +29,32 @@ class CategoryIndex extends Component
         $this->categories = $query->orderBy('position','asc')->get();
     }
 
-    public function reorder($data){
-
-        $itemId = $data[0]; // The ID of the item being moved
-        $newPosition = $data[1]; // The new position of the item
-
+    /**
+     * Reorder the position of categories
+     * @param int $id the id of the category
+     * @param int $position new position of the category
+     */
+    public function reorder($id, $position): void
+    {
         // Get the current position of the item
-        $currentPosition = Category::where('id', $itemId)->value('position');
+        $currentPosition = Category::where('id', $id)->value('position');
 
         // Move the item up
-        if ($currentPosition > $newPosition) {
+        if ($currentPosition > $position) {
             // Shift items down in the new position range
-            Category::whereBetween('position', [$newPosition, $currentPosition - 1])
+            Category::whereBetween('position', [$position, $currentPosition - 1])
                 ->increment('position');
         }
         // Move the item down
-        elseif ($currentPosition < $newPosition) {
+        elseif ($currentPosition < $position) {
             // Shift items up in the current position range
-            Category::whereBetween('position', [$currentPosition + 1, $newPosition])
+            Category::whereBetween('position', [$currentPosition + 1, $position])
                 ->decrement('position');
         }
 
         // Move the item to its new position
-        Category::where('id', $itemId)
-            ->update(['position' => $newPosition]);
+        Category::where('id', $id)
+            ->update(['position' => $position]);
 
         // Refresh the categories
         $this->categories = Category::orderBy('position')->get();
