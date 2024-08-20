@@ -21,10 +21,6 @@ Route::get('redirect-back', function ()
     return redirect()->back();
 })->name('redirect.back');
 
-Route::get('/test', function () {
-    return view('admin.text' , ['products' => Product::all()]);
-});
-
 Route::middleware(['admin'])->group(function ()
 {
     Route::prefix('admin')->group(function ()
