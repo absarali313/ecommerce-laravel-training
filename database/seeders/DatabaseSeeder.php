@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
              'is_admin' => true,
          ]);
         $this->call(ProductSeeder::class);
-
+        $products = Product::get();
+        foreach ($products as $product) {
+            $product->sort_order = $product->id;
+            $product->save();
+        }
     }
 }
