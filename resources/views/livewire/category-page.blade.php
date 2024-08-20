@@ -1,15 +1,17 @@
 <div>
-<div x-data="sortableProducts()" x-init="initializeSortable()">
-    <div class="container">
-        <div class="row" x-ref="sortableList">
-            @foreach($categories as $category)
-                <div class="col-12 sortable-item" data-id="{{ $category->id }}">
-                    @include('admin.category.partials.box', ['category' => $category])
-                </div>
-            @endforeach
+    <div x-data="sortableProducts()" x-init="initializeSortable()">
+        <div class="container">
+            <div class="row" x-ref="sortableList">
+                @foreach($categories as $category)
+                    <div class="col-12 sortable-item" data-id="{{ $category->id }}">
+                        @include('admin.category.partials.box', [
+                            'category' => $category
+                        ])
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
-</div>
 
     <script>
         function sortableProducts() {
