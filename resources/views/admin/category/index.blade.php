@@ -45,12 +45,6 @@
                     'trashed' => false,
                 ])
             </div>
-
-            <div class="row mt-4">
-                <div class="col-12 d-flex justify-content-center">
-                    {{ $categories->links('pagination::bootstrap-4') }}
-            </div>
-        </div>
     </div>
     </div>
 </x-admin.layout>

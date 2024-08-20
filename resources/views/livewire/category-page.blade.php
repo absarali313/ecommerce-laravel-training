@@ -1,9 +1,9 @@
 <div>
-    <div x-data="sortableProducts()" x-init="initializeSortable()">
+    <div>
         <div class="container">
-            <div class="row" x-ref="sortableList">
+            <div x-data="{ handle: (item, position) => { $wire.call('reorder', [item, position]) } }" x-sort="handle">
                 @foreach($categories as $category)
-                    <div class="col-12 sortable-item" data-id="{{ $category->id }}">
+                    <div class="col-12 sortable-item" x-sort:item="{{ $category->id}}">
                         @include('admin.category.partials.box', [
                             'category' => $category
                         ])
@@ -12,33 +12,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function sortableProducts() {
-            return {
-                initializeSortable() {
-                    if (this.$refs.sortableList) {
-                        const sortable = Sortable.create(this.$refs.sortableList, {
-                            animation: 150,
-                            onEnd: (event) => {
-                                // Ensure this.$refs.sortableList.children is not undefined
-                                if (this.$refs.sortableList.children) {
-                                    const reorderedIds = Array.from(this.$refs.sortableList.children)
-                                        .map((item) => item.dataset.id);
-
-                                    // Emit the event to Livewire
-                                    if (window.Livewire) {
-                                        @this.call('updateSortOrder', reorderedIds);
-                                    } else {
-                                        console.error('Livewire is not defined.');
-                                    }
-                                }
-                            }
-                        });
-                    }
-                }
-            };
-        }
-    </script>
-
 </div>

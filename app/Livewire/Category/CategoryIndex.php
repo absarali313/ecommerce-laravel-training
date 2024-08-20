@@ -8,7 +8,6 @@ use Livewire\Component;
 
 class CategoryIndex extends Component
 {
-    public string $searchText = '';
     public $categories;
     public bool $trashed = false;
     public $reorderedIds = [];
@@ -27,30 +26,37 @@ class CategoryIndex extends Component
     {
         // Checks if the categories should be loaded from trashed only
         $query = $this->trashed ? Category::onlyTrashed() : Category::query();
-
-        if (strlen($this->searchText) > 0) {
-            $query->where('name', 'like', '%' . trim($this->searchText) . '%');
-        }
-
         $this->categories = $query->orderBy('position','asc')->get();
     }
 
-    public function updateSortOrder($reorderedIds)
-    {
-        // Validate and update the sort order
-        foreach ($reorderedIds as $position => $id) {
-            Category::where('id', $id)->update(['position' => $position]);
+    public function reorder($data){
+
+        $itemId = $data[0]; // The ID of the item being moved
+        $newPosition = $data[1]; // The new position of the item
+
+        // Get the current position of the item
+        $currentPosition = Category::where('id', $itemId)->value('position');
+
+        // Move the item up
+        if ($currentPosition > $newPosition) {
+            // Shift items down in the new position range
+            Category::whereBetween('position', [$newPosition, $currentPosition - 1])
+                ->increment('position');
         }
-        // Optionally refresh categories to reflect new order
+        // Move the item down
+        elseif ($currentPosition < $newPosition) {
+            // Shift items up in the current position range
+            Category::whereBetween('position', [$currentPosition + 1, $newPosition])
+                ->decrement('position');
+        }
+
+        // Move the item to its new position
+        Category::where('id', $itemId)
+            ->update(['position' => $newPosition]);
+
+        // Refresh the categories
         $this->categories = Category::orderBy('position')->get();
     }
-
-    public function updateSortOrderFromButton()
-    {
-        $this->updateSortOrder($this->reorderedIds);
-    }
-
-
 
     public function render()
     {
