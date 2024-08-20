@@ -1,4 +1,4 @@
-@props(['allProducts' => []])
+@props(['products' => []])
 
 <div>
     <!-- Search Input -->
@@ -13,17 +13,17 @@
 
     @if($showResults)
         <div class="mt-3 "  x-show="showResults">
-                @if($products->isNotEmpty())
-                    @foreach($products as $product)
-                        @include('admin.product.partials.listing-box', [
-                            'product' => $product,
-                        ])
-                    @endforeach
-                @else
-                    <p class="text-muted">No products found.</p>
-                @endif
+            @if($products->isNotEmpty())
+                @include('admin.product.partials.display', [
+                    'products' => $products,
+                ])
+            @else
+                <p class="text-muted">No products found.</p>
+            @endif
         </div>
     @else
-        <livewire:product-reorder :products="$products" />
+        @include('admin.product.partials.display', [
+            'products' => $products,
+        ])
     @endif
 </div>

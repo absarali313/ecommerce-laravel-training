@@ -41,7 +41,7 @@
             </div>
 
             {{-- Products --}}
-            <livewire:product-search  />
+            <livewire:product-search />
         </div>
     </div>
 </x-admin.layout>

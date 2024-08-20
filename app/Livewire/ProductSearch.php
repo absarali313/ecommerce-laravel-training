@@ -17,20 +17,20 @@ class ProductSearch extends Component
 
     public function updatedSearchTerm()
     {
-        $this->showResults = true; // Show results even if empty
+        // Show results only if searchTerm is not empty
+        $this->showResults = !empty($this->searchTerm);
     }
 
     public function render()
     {
-        // Perform the query and paginate the results
-//        dd("%{$this->searchTerm}%");
-        $products = Product::where('title', 'like', "%{$this->searchTerm}%")
-            ->orderBy('sort_order')
-            ->get();
-
+       $products = $this->showResults ?
+                   Product::where('title', 'like', "%{$this->searchTerm}%")
+                          ->orderBy('title')
+                          ->paginate(10) :
+                   Product::paginate(10);
 
         return view('livewire.product-search', [
-            'products' => $products,
+            'products' => $products, // Paginated products for Blade
         ]);
     }
 }
