@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image_path')->nullable();
-            $table->integer('position');
+            $table->integer('position')->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade')->nullable();
             $table->softDeletes();
             $table->timestamps();

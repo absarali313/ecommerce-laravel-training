@@ -19,6 +19,7 @@ class SaveCategory
     {
         // Set category attributes
         $category->name = $data['name'];
+        $category->position = Category::getNewPosition();
 
         // Store image if provided
         if (isset($data['image'])) {

@@ -6,5 +6,4 @@
             'category' => $category
         ])
     @endforeach
-
 </div>

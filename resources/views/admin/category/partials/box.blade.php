@@ -19,21 +19,13 @@
 
     <div class="col-2 flex justify-content-end align-items-center">
         @if($category->trashed())
-            <form method="POST" action="{{ route('admin_category_restore', $category) }}">
-                @csrf
-                @method('PATCH')
-                <button type="submit" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
-                    <li class="fa fa-undo text-secondary "></li>
-                </button>
-            </form>
+            <button type="submit" wire:click="restore({{ $category->id }})" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
+                <li class="fa fa-undo text-secondary "></li>
+            </button>
         @else
-            <form method="POST" action="{{ route('admin_category_destroy', $category) }}">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
-                    <li class="fa fa-trash text-secondary "></li>
-                </button>
-            </form>
+            <button type="submit" wire:click="delete({{ $category }})" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
+                <li class="fa fa-trash text-secondary "></li>
+            </button>
         @endif
     </div>
 </div>

@@ -3,18 +3,20 @@
 namespace App\Livewire\Category;
 
 use App\Models\Category;
+use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CategoryIndex extends Component
 {
     public $categories;
+
     public bool $trashed = false;
+
     public $reorderedIds = [];
 
-    public function mount(bool $trashed = false): void
+    public function mount(): void
     {
-        $this->trashed = $trashed;
         $this->loadCategories();
     }
 
@@ -25,7 +27,9 @@ class CategoryIndex extends Component
     public function loadCategories(): void
     {
         // Checks if the categories should be loaded from trashed only
+        $this->trashed = request()->route()->getName() == 'admin_categories_archive';
         $query = $this->trashed ? Category::onlyTrashed() : Category::query();
+
         $this->categories = $query->orderBy('position','asc')->get();
     }
 
@@ -34,7 +38,7 @@ class CategoryIndex extends Component
      * @param int $id the id of the category
      * @param int $position new position of the category
      */
-    public function reorder($id, $position): void
+    public function reorder(int $id, int $position): void
     {
         // Get the current position of the item
         $currentPosition = Category::where('id', $id)->value('position');
@@ -60,10 +64,49 @@ class CategoryIndex extends Component
         $this->categories = Category::orderBy('position')->get();
     }
 
-    public function render()
+    /**
+     * Deletes a category
+     * Set the category's position to null
+     * Reorder the categories position that comes after the deleting category
+     * @param Category $category the category that needs to be deleted
+     */
+    public function delete(Category $category): void
     {
-        return view('livewire.category-page', [
-            'categories' => $this->categories,
-        ]);
+        $currentPosition = Category::where('id', $category->id)->value('position');
+        $category->position = null;
+        $category->save();
+
+        Category::whereBetween('position', [$currentPosition + 1, $this->categories->max('position')])
+            ->decrement('position');
+
+        $category->delete();
+
+        to_route('admin_categories');
+    }
+
+    /**
+     * Restores a deleted category
+     * Sets the new position of the category
+     * The new position of the category is N + 1. Where N is the current maximum position of categories.
+     * @param int $id
+     * @return void
+     */
+    public function restore(int $id): void
+    {
+        $category = Category::withTrashed()->find($id);
+        $category->restore();
+        $category->position = Category::getNewPosition();
+        $category->save();
+
+        to_route('admin_categories_archive');
+    }
+
+    /**
+     * Display the view for this component
+     * @return View
+     */
+    public function render(): view
+    {
+        return view('livewire.category-page');
     }
 }

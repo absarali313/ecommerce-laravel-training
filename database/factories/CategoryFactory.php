@@ -16,11 +16,19 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        return
-            [
-                'name' => $this->faker->name(),
-                'image_path' => $this->faker->imageUrl(),
-                'position' => $this->faker->numberBetween(1, 10),
-            ];
+        return [
+            'name' => $this->faker->name(),
+            'image_path' => $this->faker->imageUrl(),
+            // Position will be set to the same value as the id after creation
+        ];
+    }
+
+    // After the model is created
+    public function configure()
+    {
+        return $this->afterCreating(function ($model) {
+            // Set the position to be the same as the id
+            $model->update(['position' => $model->id - 1]);
+        });
     }
 }

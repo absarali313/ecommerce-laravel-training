@@ -5,13 +5,17 @@ namespace App\Livewire\Category;
 use App\Actions\Admin\Category\SaveCategoryProducts;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class AddProductToCategory extends Component
 {
     public string $searchText = '';
+
     public $products;
+
     public array $selectedProducts = [];
+
     public Category $category;
 
     public function mount(): void
@@ -61,10 +65,12 @@ class AddProductToCategory extends Component
         $saveCategoryProducts->handle($this->selectedProducts, $this->category);
     }
 
-    public function render()
+    /**
+     * Display the view
+     * @return View
+     */
+    public function render(): view
     {
-        return view('livewire.add-product-to-category', [
-            'products' => $this->products,
-        ]);
+        return view('livewire.add-product-to-category');
     }
 }

@@ -15,11 +15,4 @@ class ArchiveCategoryController extends Controller
             'categories'=> $categories,
         ]);
     }
-
-    public function update(Category $category)
-    {
-        $category->restore(); // Restore the soft-deleted product
-
-        return redirect()->back();
-    }
 }

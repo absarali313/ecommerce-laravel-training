@@ -5,12 +5,15 @@ namespace App\Livewire\Category;
 use App\Actions\Admin\Category\SaveCategoryProducts;
 use App\Actions\Admin\Product\SaveProductCategories;
 use App\Models\Category;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class CategoryTree extends Component
 {
     public $categories;
+
     public $selectedCategory = [];
+
     public $product;
 
     public function mount(): void
@@ -47,7 +50,11 @@ class CategoryTree extends Component
         $saveProductCategories->handle($this->selectedCategory, $this->product);
     }
 
-    public function render()
+    /**
+     * Display the view for this component
+     * @return View
+     */
+    public function render(): view
     {
         return view('livewire.category-tree');
     }

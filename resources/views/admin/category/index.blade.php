@@ -41,10 +41,8 @@
 
             {{-- Categories --}}
             <div>
-                @livewire('category.category-index' , [
-                    'trashed' => false,
-                ])
+                @livewire('category.category-index')
             </div>
-    </div>
+        </div>
     </div>
 </x-admin.layout>

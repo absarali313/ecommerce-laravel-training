@@ -45,4 +45,9 @@ class Category extends Model
     {
         return $this->products()->count();
     }
+
+    public static function getNewPosition()
+    {
+        return Category::get()->max('position') + 1;
+    }
 }

@@ -11,7 +11,7 @@
 
     <div class="col-6 d-flex justify-content-end ">
         @if( $hasAction )
-            <button class="btn btn-gray rounded-2 mx-1 ">{{ $actionBtn }}</button>
+            <button type="submit" class="btn btn-gray rounded-2 mx-1 ">{{ $actionBtn }}</button>
         @else
             <a href="{{ route($link) }}" class="btn btn-gray rounded-2 mx-1 ">{{ $actionBtn }}</a>
         @endif
