@@ -1,16 +1,16 @@
  <div class="container-fluid my-5 ">
-    {{--Product Edit Block--}}
+     {{--Product Edit Block--}}
      <form id="categoryForm" wire:submit="save()" enctype="multipart/form-data">
-        @method('PATCH')
-        @csrf
-        {{--Back Button--}}
-        <x-admin.back-button :link="'admin_categories'"/>
+         @method('PATCH')
+         @csrf
+         {{--Back Button--}}
+         <x-admin.back-button :link="'admin_categories'"/>
 
-        <!-- Modal -->
-        @include('livewire.add-product-to-category')
+         <!-- Modal -->
+         @include('livewire.add-product-to-category')
 
+         {{--Form Header--}}
          @if(request()->route()->getName() === 'admin_category_edit')
-        {{--Form Header--}}
              <x-admin.header class="mx-4" :has-action="true" wire:ignore.self >Edit Category</x-admin.header>
          @else(request()->route()->getName() === 'admin_category_create')
              <x-admin.header class="mx-4" :has-action="true" wire:ignore.self>Add Category</x-admin.header>
@@ -32,7 +32,7 @@
     </form>
 
      @if(isset($this->categoryForm->category))
-        <x-admin.image-card :action_route="'admin_category_image_delete'" :item="$this->categoryForm->category" />
+         <x-admin.image-card :action_route="'admin_category_image_delete'" :item="$this->categoryForm->category" />
      @endif
 </div>
 

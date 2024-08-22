@@ -20,9 +20,7 @@
                 {{--Visibility--}}
                 <div class="col-4">
                     @include('admin.product.partials.visibility-box')
-                    @livewire('category.category-tree', [
-                        'product' => $product,
-                    ])
+                    <livewire:category.category-tree :product="$product"/>
                 </div>
             </div>
         </form>

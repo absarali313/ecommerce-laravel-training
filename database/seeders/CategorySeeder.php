@@ -14,11 +14,13 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = Category::factory(3)->create();
+        for($i = 0; $i < 3; $i++) {
+            Category::factory(1)->create();
+        }
         $products = Product::factory(10)->create();
 
 // Attach products to each category
-        $categories->each(function ($category) use ($products) {
+        Category::each(function ($category) use ($products) {
             $category->products()->attach($products->pluck('id')->toArray());
         });
 

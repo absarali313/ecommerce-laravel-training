@@ -5,10 +5,7 @@
         </div>
     </div>
 
-
-    @livewire('category.save-category' , [
-        'category' => $category
-    ])
+    <livewire:category.manage-category :category="$category" />
 
     @push('script')
         <script src="{{ asset('js/tinymce.js') }}"></script>

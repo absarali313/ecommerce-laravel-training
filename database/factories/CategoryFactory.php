@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,16 +20,7 @@ class CategoryFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'image_path' => $this->faker->imageUrl(),
-            // Position will be set to the same value as the id after creation
+            'position' => Category::getNewPosition(),
         ];
-    }
-
-    // After the model is created
-    public function configure()
-    {
-        return $this->afterCreating(function ($model) {
-            // Set the position to be the same as the id
-            $model->update(['position' => $model->id - 1]);
-        });
     }
 }

@@ -9,7 +9,7 @@
                     <div class="col-6 mt-2 ">
                         <div class="row d-flex align-items-center">
                             <div class="col-2 align-items-center">
-                                <x-admin.product.product-button class="nav-link active" aria-current="page" href="/admin/categories" class="btn-gray rounded-2 mb-1 px-1 py-1">Category</x-admin.product.product-button>
+                                <x-admin.product.product-button class="nav-link active" aria-current="page" href="{{ route('admin_categories') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Category</x-admin.product.product-button>
                             </div>
 
                             <div class="col-2">
@@ -41,7 +41,7 @@
 
             {{-- Categories --}}
             <div>
-                @livewire('category.category-index')
+                <livewire:category.category-index/>
             </div>
         </div>
     </div>

@@ -48,6 +48,6 @@ class Category extends Model
 
     public static function getNewPosition()
     {
-        return Category::get()->max('position') + 1;
+        return Category::count() == 0 ? 0 : Category::get()->max('position') + 1 ;
     }
 }

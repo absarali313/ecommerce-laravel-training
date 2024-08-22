@@ -23,6 +23,15 @@ class CategoryTree extends Component
     }
 
     /**
+     * Display the view for this component
+     * @return View
+     */
+    public function render(): view
+    {
+        return view('livewire.category-tree');
+    }
+
+    /**
      * Stores the category list in an array
      * @param int $categoryId the category id that needs to be stored
      */
@@ -48,14 +57,5 @@ class CategoryTree extends Component
     public function save(SaveProductCategories $saveProductCategories): void
     {
         $saveProductCategories->handle($this->selectedCategory, $this->product);
-    }
-
-    /**
-     * Display the view for this component
-     * @return View
-     */
-    public function render(): view
-    {
-        return view('livewire.category-tree');
     }
 }

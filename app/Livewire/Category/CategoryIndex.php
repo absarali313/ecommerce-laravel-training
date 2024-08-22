@@ -21,6 +21,15 @@ class CategoryIndex extends Component
     }
 
     /**
+     * Display the view for this component
+     * @return View
+     */
+    public function render(): view
+    {
+        return view('livewire.category-page');
+    }
+
+    /**
      * Load categories based on the search text and trashed status.
      * @return void
      */
@@ -61,7 +70,7 @@ class CategoryIndex extends Component
             ->update(['position' => $position]);
 
         // Refresh the categories
-        $this->categories = Category::orderBy('position')->get();
+        $this->loadCategories();
     }
 
     /**
@@ -76,12 +85,11 @@ class CategoryIndex extends Component
         $category->position = null;
         $category->save();
 
-        Category::whereBetween('position', [$currentPosition + 1, $this->categories->max('position')])
-            ->decrement('position');
+        Category::where('position', '>', $currentPosition)->decrement('position');
 
         $category->delete();
 
-        to_route('admin_categories');
+        $this->loadCategories();
     }
 
     /**
@@ -98,15 +106,6 @@ class CategoryIndex extends Component
         $category->position = Category::getNewPosition();
         $category->save();
 
-        to_route('admin_categories_archive');
-    }
-
-    /**
-     * Display the view for this component
-     * @return View
-     */
-    public function render(): view
-    {
-        return view('livewire.category-page');
+        $this->loadCategories();
     }
 }

@@ -10,11 +10,12 @@ use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class SaveCategory extends Component
+class ManageCategory extends Component
 {
     use WithFileUploads;
 
     public CategoryForm $categoryForm;
+
     public string $searchText = '';
 
     public $products;
@@ -37,17 +38,18 @@ class SaveCategory extends Component
         $this->selectedProducts = $this->category->products->pluck('id')->toArray();
     }
 
+    public function render(): view
+    {
+        return view('livewire.manage-category');
+    }
+
     /**
      * Load products based on the search text.
      * @return void
      */
     public function loadProducts(): void
     {
-        if (strlen($this->searchText) > 0) {
-            $this->products = Product::where('title', 'like', '%' . trim($this->searchText) . '%')->get();
-        } else {
-            $this->products = Product::all();
-        }
+        $this->products = Product::where('title', 'like', '%' . trim($this->searchText) . '%')->get();
     }
 
     /**
@@ -112,11 +114,6 @@ class SaveCategory extends Component
         }
 
         $this->saveProducts( new SaveCategoryProducts());
-    }
-
-    public function render(): view
-    {
-        return view('livewire.save-category');
     }
 
     /**

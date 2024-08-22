@@ -1,5 +1,5 @@
 <x-admin.layout>
-    @livewire('category.save-category')
+    <livewire:category.manage-category/>
 </x-admin.layout>
 
 
