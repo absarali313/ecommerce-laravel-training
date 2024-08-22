@@ -29,7 +29,7 @@ class ManageCategory extends Component
     public function mount(): void
     {
         $this->setCategory();
-        $this->products = Product::all();
+        $this->loadProducts();
         $this->categories = Category::all();
         $this->selectedProducts = $this->category->products->pluck('id')->toArray();
     }

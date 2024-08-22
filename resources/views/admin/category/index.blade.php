@@ -40,9 +40,7 @@
             </div>
 
             {{-- Categories --}}
-            <div>
-                <livewire:category.category-index/>
-            </div>
+            <livewire:category.category-index/>
         </div>
     </div>
 </x-admin.layout>

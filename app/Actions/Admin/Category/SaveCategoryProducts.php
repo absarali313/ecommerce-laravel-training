@@ -13,7 +13,7 @@ class SaveCategoryProducts
      * @param array $data includes the products array
      * @param Category $category the category against which products are being associated
      */
-    public function handle(array $data, Category $category) : void
+    public function handle(array $data, Category $category): void
     {
         $category->products()->sync($data);
     }

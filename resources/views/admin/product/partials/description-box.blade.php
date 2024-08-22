@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col">
                 <label for="title" class="text-start text-secondary">Title</label>
-                <input id="title" name="title" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-100" placeholder="Black Titanium Ring" value="{{ $product?->title }}">
+                <input id="title" name="title" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-100" placeholder="Black Titanium Ring" value="{{isset($product)? $product?->title : '' }}">
 
                 <x-form-error name="title" />
             </div>
@@ -12,7 +12,7 @@
         <div class="row mt-4">
             <div class="col">
                 <label for="description" class="text-start text-secondary">Description</label>
-                <textarea id="description" name="description" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-100" placeholder="Describe the specifications of your product">{{ $product?->description }}</textarea>
+                <textarea id="description" name="description" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-100" placeholder="Describe the specifications of your product">{{isset($product)? $product?->description : '' }}</textarea>
 
                 <x-form-error name="description" />
             </div>

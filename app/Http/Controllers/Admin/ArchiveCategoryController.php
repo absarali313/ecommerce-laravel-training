@@ -9,7 +9,7 @@ class ArchiveCategoryController extends Controller
 {
     public function index()
     {
-        $categories=Category::onlyTrashed()->simplePaginate(8);
+        Category::onlyTrashed()->simplePaginate(8);
 
         return view('admin.category.archive.index');
     }

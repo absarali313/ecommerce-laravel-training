@@ -36,9 +36,7 @@
                     </div>
                 </div>
 
-                <div>
-                    <livewire:category.category-index/>
-                </div>
+                <livewire:category.category-index/>
             </div>
         </div>
     </div>

@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Category;
 
-use App\Actions\Admin\Category\SaveCategoryProducts;
 use App\Actions\Admin\Product\SaveProductCategories;
 use App\Models\Category;
 use Illuminate\View\View;
