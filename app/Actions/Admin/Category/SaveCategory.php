@@ -22,7 +22,7 @@ class SaveCategory
         $category->position = Category::getNewPosition();
 
         // Store image if provided
-        $this->storeImage($category, $data['image']);
+        $this->storeImage($category, $data);
 
         // Set parent category if provided
         $this->storeParent($data['parent'], $category);
