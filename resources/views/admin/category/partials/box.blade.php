@@ -20,11 +20,11 @@
     <div class="col-2 flex justify-content-end align-items-center">
         @if($category->trashed())
             <button type="submit" wire:click="restore({{ $category->id }})" wire:confirm="Are you sure you want to restore this category?" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
-                <li class="fa fa-undo text-secondary "></li>
+                <li class="fa fa-undo text-secondary"></li>
             </button>
         @else
             <button type="submit" wire:click="delete({{ $category }})" wire:confirm="Are you sure you want to delete this category?" class="text-center btn rounded-3 mx-5 border border-1 border-secondary">
-                <li class="fa fa-trash text-secondary "></li>
+                <li class="fa fa-trash text-secondary"></li>
             </button>
         @endif
     </div>

@@ -2,7 +2,7 @@
     <li class="list-group-item border border-bottom-0 border-start-0 border-end-0 hover-bg-offwhite" >
          <div class="row d-flex ">
             <div class="col-10">
-                <input class="form-check-input" type="checkbox" wire:click="toggle({{$category->id}})" name="category-{{$category->id}}" @checked(in_array($category->id,$selectedCategory)) id="{{$category->id}}">
+                <input class="form-check-input" type="checkbox" wire:click="toggleSelectedCategory({{$category->id}})" name="category-{{$category->id}}" @checked(in_array($category->id,$selectedCategory)) id="{{$category->id}}">
                 <label class="form-check-label" for="category-{{ $category->id }}"> {{ $category->name }} </label>
             </div>
 

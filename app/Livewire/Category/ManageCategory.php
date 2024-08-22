@@ -90,7 +90,7 @@ class ManageCategory extends Component
      * Stores a new category
      * @return void
      */
-    public function storeCategory()
+    public function storeCategory(): void
     {
        $this->categoryForm->save( new Category());
 
@@ -101,7 +101,7 @@ class ManageCategory extends Component
      * Otherwise, update the existing record/
      * @return void
      */
-    public function saveCategory()
+    public function saveCategory(): void
     {
         if($this->category->exists) {
             $this->updateCategory();

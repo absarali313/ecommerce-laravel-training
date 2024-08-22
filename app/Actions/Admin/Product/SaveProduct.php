@@ -14,9 +14,7 @@ class SaveProduct
      */
     public function handle(array $data, Product $product ): Product
     {
-        $product->fill($data);
-        $product->visibility = $data['visibility'];
-        $product->save();
+        $this->setProduct($product, $data);
 
         // Handle the product's images if provided
         if (isset($data['images'])) {
@@ -40,5 +38,17 @@ class SaveProduct
                 $product->images()->create(['image_path' => $path, 'product_id' => $product->id]);
             }
         }
+    }
+
+    /**
+     * @param Product $product
+     * @param array $data
+     * @return void
+     */
+    public function setProduct(Product $product, array $data): void
+    {
+        $product->fill($data);
+        $product->visibility = $data['visibility'];
+        $product->save();
     }
 }

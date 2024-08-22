@@ -2,8 +2,6 @@
     <label for="visibility" class="text-start text-secondary">Categories</label>
 
     @foreach($categories as $category)
-        @include('livewire.partials._category', [
-            'category' => $category
-        ])
+        @include('livewire.partials._category')
     @endforeach
 </div>

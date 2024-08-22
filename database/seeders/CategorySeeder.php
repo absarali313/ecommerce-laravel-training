@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
         }
         $products = Product::factory(10)->create();
 
-// Attach products to each category
+        // Attach products to each category
         Category::each(function ($category) use ($products) {
             $category->products()->attach($products->pluck('id')->toArray());
         });
