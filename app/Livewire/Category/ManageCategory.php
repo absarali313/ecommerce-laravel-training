@@ -28,11 +28,7 @@ class ManageCategory extends Component
 
     public function mount(): void
     {
-        if(isset($this->category)){
-            $this->setCategoryForm();
-        } else {
-            $this->category = new Category();
-        }
+        $this->setCategory();
         $this->products = Product::all();
         $this->categories = Category::all();
         $this->selectedProducts = $this->category->products->pluck('id')->toArray();
@@ -56,7 +52,7 @@ class ManageCategory extends Component
      * Stores the selected products in array
      * @param int $productId the product id that is being stored in the array
      */
-    public function toggle(int $productId): void
+    public function toggleSelectedProduct(int $productId): void
     {
         if (in_array($productId, $this->selectedProducts)) {
             // Remove the product ID from the array
@@ -74,7 +70,7 @@ class ManageCategory extends Component
      * @param SaveCategoryProducts $saveCategoryProducts
      * @return void
      */
-    public function saveProducts(SaveCategoryProducts $saveCategoryProducts): void
+    public function associateProducts(SaveCategoryProducts $saveCategoryProducts): void
     {
         if($this->category) {
             $saveCategoryProducts->handle($this->selectedProducts, $this->category);
@@ -85,7 +81,7 @@ class ManageCategory extends Component
      * Updates an existing record of category
      * @return void
      */
-    public function update(): void
+    public function updateCategory(): void
     {
        $this->categoryForm->save($this->category);
     }
@@ -94,7 +90,7 @@ class ManageCategory extends Component
      * Stores a new category
      * @return void
      */
-    public function store()
+    public function storeCategory()
     {
        $this->categoryForm->save( new Category());
 
@@ -105,15 +101,15 @@ class ManageCategory extends Component
      * Otherwise, update the existing record/
      * @return void
      */
-    public function save()
+    public function saveCategory()
     {
         if($this->category->exists) {
-            $this->update();
+            $this->updateCategory();
         } else {
-            $this->store();
+            $this->storeCategory();
         }
 
-        $this->saveProducts( new SaveCategoryProducts());
+        $this->associateProducts( new SaveCategoryProducts());
     }
 
     /**
@@ -126,5 +122,18 @@ class ManageCategory extends Component
         $this->categoryForm->name = $this->category->name;
         $this->categoryForm->parent = $this->category->parent?->name;
         $this->categoryForm->imagePath = $this->category->image_path;
+    }
+
+    /**
+     * Instantiate a new category object if it does not already exist
+     * @return void
+     */
+    public function setCategory(): void
+    {
+        if (isset($this->category)) {
+            $this->setCategoryForm();
+        } else {
+            $this->category = new Category();
+        }
     }
 }

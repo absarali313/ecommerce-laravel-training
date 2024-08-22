@@ -14,6 +14,7 @@ use \Illuminate\Http\UploadedFile;
 class Category extends Model
 {
     use HasFactory;
+
     use SoftDeletes;
 
     protected $fillable = [

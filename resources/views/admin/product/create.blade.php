@@ -14,9 +14,7 @@
                 </div>
 
                 <div class="col-3">
-                    @include('admin.product.partials.visibility-box',[
-                        'product' => null
-                    ])
+                    @include('admin.product.partials.visibility-box')
                 </div>
             </div>
         </form>

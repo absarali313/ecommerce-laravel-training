@@ -33,9 +33,9 @@
 <form method="POST" action="{{ route('admin_size_destroy',$productSize) }}">
     @csrf
     @method('DELETE')
-    <input id="title" name="title" type="hidden"  class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 " value={{ $productSize->title }}>
+    <input id="title" name="title" type="hidden"  class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2" value={{ $productSize->title }}>
     <input id="price" name="price" type="hidden"  class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2" value= {{ $productSize->getCurrentPrice()->price?? 0 }}>
-    <input id="stock" name="stock" type="hidden"  class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 " value={{ $productSize->stock }}>
+    <input id="stock" name="stock" type="hidden"  class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2" value={{ $productSize->stock }}>
 
         <button class= ' rounded-3 border-secondary 3' name="action" value="delete">
             <li class= 'fa fa-trash text-secondary' ></li>

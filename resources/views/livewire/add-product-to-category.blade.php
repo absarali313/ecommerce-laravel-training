@@ -15,7 +15,7 @@
                 @foreach($products as $product)
                     <div class="row d-flex justify-content-center align-items-center mt-1 border-top">
                         <div class="col">
-                            <input type="checkbox" class="form-check-input" name="product-title-{{ $product->id }}" id="{{ $product->id }}" wire:click="toggle({{ $product->id }})"@checked(in_array($product->id, $selectedProducts))>
+                            <input type="checkbox" class="form-check-input" name="product-title-{{ $product->id }}" id="{{ $product->id }}" wire:click="toggleSelectedProduct({{ $product->id }})" @checked(in_array($product->id, $selectedProducts))>
                             <img class="rounded-3" src="{{ asset($product->images->first()?->image_path ?? '') }}" style="width: 50px; height: 50px" alt="product_img">
                         </div>
 

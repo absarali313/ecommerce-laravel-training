@@ -15,7 +15,7 @@ class SaveProduct
     public function handle(array $data, Product $product ): Product
     {
         $product->fill($data);
-        $product->visibility = $data['visibility'] === 'active';
+        $product->visibility = $data['visibility'];
         $product->save();
 
         // Handle the product's images if provided

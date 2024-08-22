@@ -26,9 +26,19 @@ class ProductRequest extends FormRequest
             'title' => 'required | string | max:255',
             'description' => 'required | string',
             'images' => 'nullable',
-            'visibility' => ['required', Rule::in(['active', 'inactive'])],
+            'visibility' => ['required'],
             'categories' => 'nullable | array',
             'categories.*' => 'exists:categories,id',
         ];
+    }
+
+    /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'visibility' => $this->input('visibility') == 'on',
+        ]);
     }
 }

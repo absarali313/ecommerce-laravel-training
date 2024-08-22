@@ -13,12 +13,14 @@
     </li>
 
     @if($category->children->isNotEmpty())
-        <ul x-show="expanded" x-collapse.duration.100ms>
+        <div x-show="expanded" x-collapse.duration.100ms>
             <ul>
-            @foreach($category->children as $child)
-                @include('livewire.partials._category', ['category' => $child])
-            @endforeach
+                @foreach($category->children as $child)
+                    @include('livewire.partials._category', [
+                        'category' => $child
+                    ])
+                @endforeach
             </ul>
-        </ul>
+        </div>
     @endif
 </div>
