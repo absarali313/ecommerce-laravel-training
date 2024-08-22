@@ -19,7 +19,7 @@ class SaveCategory
     {
         // Set category attributes
         $category->name = $data['name'];
-        $category->position = Category::getNewPosition();
+        $this->storePosition($category);
 
         // Store image if provided
         $this->storeImage($category, $data);
@@ -48,6 +48,7 @@ class SaveCategory
     }
 
     /**
+     * Store the parent category
      * @param $parent
      * @param Category $category
      * @return void
@@ -57,6 +58,19 @@ class SaveCategory
         if ($parent) {
             $parentCategoryId = Category::where('name', $parent)->value('id');
             $category->parent_id = $parentCategoryId;
+        }
+    }
+
+    /**
+     * Assign the position to the category.
+     * Only assign the position if it is a new category object
+     * @param Category $category
+     * @return void
+     */
+    private function storePosition(Category $category): void
+    {
+        if (!isset($category->position)) {
+            $category->position = Category::getNewPosition();
         }
     }
 }
