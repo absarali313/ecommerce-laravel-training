@@ -7,17 +7,17 @@
         <div class='col-10 align-content-center' >
             <div class='col' >
                 <label for="title" class='text-start text-secondary'>Size Title</label>
-                <input id="title" name="size_title" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Small" value= {{ $productSize->title || old('size_title') }}>
+                <input id="title" name="size_title" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Small" value= {{ old('size_title')?? $productSize->title }}>
 
                 <x-form-error name="size_title"/>
 
                 <label for="price" class= 'mx-2 text-start text-secondary' >Price</label>
-                <input id="price" name="price" type="number" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Rs. 1000" value= {{ $productSize->getCurrentPrice()->price?? 0 || old('price') }}>
+                <input id="price" name="price" type="number" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Rs. 1000" value= {{ old('price')?? $productSize->getCurrentPrice()->price?? 0 }}>
 
                 <x-form-error name="price"/>
 
                 <label for="stock" class= 'mx-2 text-start text-secondary' >Stock</label>
-                <input id="stock" name="stock" type="number" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Small" value= {{ $productSize->stock || old('stock') }}>
+                <input id="stock" name="stock" type="number" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Small" value= {{ old('stock')?? $productSize->stock }}>
 
                 <x-form-error name="price"/>
             </div>
