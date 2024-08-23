@@ -22,16 +22,16 @@ class SaveSize
    public function handle(array $request, CreatePrice $createPriceAction, ?Product $product = null, ?Size $size = null): Size
    {
        if($product) {
-           $size->product_id=$product->id;
-           $size->title=$request['size_title'];
-           $size->stock=$request['stock'];
+           $size->product_id = $product->id;
+           $size->title = $request['size_title'];
+           $size->stock = $request['stock'];
            $size->save();
 
            $price = new Price;
            $createPriceAction->handle($request, $size, $price);
        } else {
-           $size->title=$request['title'];
-           $size->stock=$request['stock'];
+           $size->title = $request['title'];
+           $size->stock = $request['stock'];
            $size->save();
 
            if($size) {

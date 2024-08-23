@@ -1,6 +1,6 @@
  <div class="container-fluid my-5 ">
      {{--Product Edit Block--}}
-     <form id="categoryForm" wire:submit="saveCategory()" enctype="multipart/form-data">
+     <form id="categoryForm" wire:submit="saveCategory" enctype="multipart/form-data">
          @method('PATCH')
          @csrf
          {{--Back Button--}}
