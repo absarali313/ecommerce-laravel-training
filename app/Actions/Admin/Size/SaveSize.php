@@ -23,7 +23,7 @@ class SaveSize
    {
        if($product) {
            $size->product_id=$product->id;
-           $size->title=$request['title'];
+           $size->title=$request['size_title'];
            $size->stock=$request['stock'];
            $size->save();
 

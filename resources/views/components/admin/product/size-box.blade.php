@@ -7,24 +7,24 @@
         <div class='col-10 align-content-center' >
             <div class='col' >
                 <label for="title" class='text-start text-secondary'>Size Title</label>
-                <input id="title" name="title" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Small" value= {{ $productSize->title }}>
+                <input id="title" name="size_title" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Small" value= {{ $productSize->title || old('size_title') }}>
 
-                <x-form-error name="title"/>
+                <x-form-error name="size_title"/>
 
                 <label for="price" class= 'mx-2 text-start text-secondary' >Price</label>
-                <input id="price" name="price" type="number" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Rs. 1000" value= {{ $productSize->getCurrentPrice()->price?? 0 }}>
+                <input id="price" name="price" type="number" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Rs. 1000" value= {{ $productSize->getCurrentPrice()->price?? 0 || old('price') }}>
 
                 <x-form-error name="price"/>
 
                 <label for="stock" class= 'mx-2 text-start text-secondary' >Stock</label>
-                <input id="stock" name="stock" type="number" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Small" value= {{ $productSize->stock }}>
+                <input id="stock" name="stock" type="number" class='bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-10 form-label' placeholder="Small" value= {{ $productSize->stock || old('stock') }}>
 
                 <x-form-error name="price"/>
             </div>
         </div>
 
         <div class='col-1' >
-                <button class='rounded-3 border-success ' name="action" value="update">
+                <button class='rounded-3 border-success' name="action" value="update">
                     <li class='fa fa-pen text-success' ></li>
                 </button>
         </div>

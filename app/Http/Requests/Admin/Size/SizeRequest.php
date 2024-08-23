@@ -22,9 +22,9 @@ class SizeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required | string',
-            'price' => 'required | numeric',
-            'stock' => 'required | integer',
+            'size_title' => 'required | string',
+            'price' => 'required | numeric | min:0',
+            'stock' => 'required | integer | min:0',
         ];
     }
 }

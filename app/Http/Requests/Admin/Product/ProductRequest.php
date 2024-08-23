@@ -38,7 +38,7 @@ class ProductRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'visibility' => $this->input('visibility') == 'on',
+            'visibility' => $this->input('visibility') == 'true',
         ]);
     }
 }

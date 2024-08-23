@@ -16,9 +16,9 @@
                     <x-form-error name="product_id"/>
 
                     <label for="related_product_id" class="mx-2 text-start text-secondary">Related Product ID</label>
-                    <input id="related_product_id" name="related_product_id" type="number" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-25"  placeholder="Like: 2">
+                    <input id="related_product_id" name="related_product_id" type="number" class="bg-white-50 border border-opacity-25 border-black rounded-2 px-2 w-25" value="{{ old('related_product_id') }}"  placeholder="Like: 2">
 
-                    <x-form-error name="Related_id"/>
+                    <x-form-error name="related_product_id"/>
 
                     <button type='submit' class="mx-3 text-secondary border border-1 border-secondary rounded-2">
                         <li class="fa fa-plus"></li>
