@@ -1,3 +1,4 @@
+<tr>
 <div class="col-md-3 mb-4">
     <div class="card shadow-sm h-100">
         {{-- Category Image --}}
@@ -13,3 +14,4 @@
         </div>
     </div>
 </div>
+</tr>

@@ -7,15 +7,15 @@
             <div class="container-fluid bg-white mt-3">
                 <div class="row d-flex flex-row justify-content-between">
                     <div class="col-6 mt-2 ">
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <x-admin.product.product-button class="nav-link active" aria-current="page" href="/admin/categories" class="btn-gray rounded-2 mb-1 px-1 py-1">Category</x-admin.product.product-button>
-                            </li>
+                        <div class="row d-flex align-items-center">
+                            <div class="col-2 align-items-center">
+                                <x-admin.product.product-button class="nav-link active" aria-current="page" href="{{ route('admin_categories') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Category</x-admin.product.product-button>
+                            </div>
 
-                            <li class="nav-item">
+                            <div class="col-2">
                                 <x-admin.product.product-button class="nav-link" href="{{ route('admin_categories_archive') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Archive</x-admin.product.product-button>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,19 +40,7 @@
             </div>
 
             {{-- Categories --}}
-            <div>
-                @foreach($categories as $category)
-                    @include('admin.category.partials.box', [
-                        'category' => $category,
-                    ])
-                @endforeach
-            </div>
-
-            <div class="row mt-4">
-                <div class="col-12 d-flex justify-content-center">
-                    {{ $categories->links('pagination::bootstrap-4') }}
-            </div>
+            <livewire:category.category-index/>
         </div>
-    </div>
     </div>
 </x-admin.layout>

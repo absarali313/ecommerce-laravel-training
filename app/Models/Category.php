@@ -14,6 +14,7 @@ use \Illuminate\Http\UploadedFile;
 class Category extends Model
 {
     use HasFactory;
+
     use SoftDeletes;
 
     protected $fillable = [
@@ -44,5 +45,14 @@ class Category extends Model
     public function getTotalProductsCount(): int
     {
         return $this->products()->count();
+    }
+
+    /**
+     * Calculate the position for new category
+     * @return int
+     */
+    public static function getNewPosition(): int
+    {
+        return Category::count() == 0 ? 0 : Category::get()->max('position') + 1 ;
     }
 }

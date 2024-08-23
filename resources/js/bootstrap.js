@@ -1,5 +1,4 @@
 import axios from 'axios';
-require('bootstrap');
 
 window.axios = axios;
 

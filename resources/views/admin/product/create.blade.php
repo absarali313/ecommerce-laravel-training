@@ -8,19 +8,11 @@
 
             <div class="row d-flex justify-content-around mt-1 p-1 ">
                 <div class="col-7">
-                    @include('admin.product.partials.description-box', [
-                         'product' => null
-                    ])
+                    @include('admin.product.partials.description-box')
                 </div>
 
                 <div class="col-3">
-                    @include('admin.product.partials.visibility-box',[
-                        'product' => null
-                    ])
-                    @include('admin.product.partials.categories-box', [
-                        'selectedCategories' => null,
-                        'product' => null,
-                    ])
+                    @include('admin.product.partials.visibility-box')
                 </div>
             </div>
         </form>

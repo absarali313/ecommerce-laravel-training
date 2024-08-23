@@ -5,14 +5,14 @@
                 <div class="col">
                     <label for="parent" class="text-start text-secondary">Parent Category</label>
 
-                    <select id="parent" name="parent" class="form-select">
+                    <select wire:model="categoryForm.parent" id="parent" name="parent" class="form-select">
                         <option></option>
                          @foreach($categories as $parentCategory)
-                            <option value="{{ $parentCategory?->name }}" @selected($parentCategory == $category?->parent) >{{ $parentCategory->name }}</option>
-                         @endforeach
+                            <option value="{{ $parentCategory?->name }}" @selected($parentCategory->id === $this->categoryForm->parent) >{{ $parentCategory->name }}</option>
+                        @endforeach
                     </select>
 
-                    <x-form-error name="parent" />
+                    <x-form-error name="categoryForm.parent" />
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@ class ProductProductRequest extends FormRequest
     {
         return [
             'product_id' => 'required | numeric',
-            'related_product_id' => 'required | numeric',
+            'related_product_id' => 'required | numeric | min:1 | exists:products,id',
         ];
     }
 }

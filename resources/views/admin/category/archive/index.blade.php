@@ -9,7 +9,7 @@
                 {{-- Filter Bar --}}
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <x-admin.product.product-button class="nav-link active" aria-current="page" href="/admin/categories" class="btn-gray rounded-2 mb-1 px-1 py-1">Category</x-admin.product.product-button>
+                        <x-admin.product.product-button class="nav-link active" aria-current="page" href="{{ route('admin_categories') }}" class="btn-gray rounded-2 mb-1 px-1 py-1">Category</x-admin.product.product-button>
                     </li>
 
                     <li class="nav-item">
@@ -36,12 +36,7 @@
                     </div>
                 </div>
 
-                {{-- Products --}}
-                @foreach($categories as $category)
-                    @include('admin.category.partials.box', [
-                        'category' => $category,
-                    ])
-                @endforeach
+                <livewire:category.category-index/>
             </div>
         </div>
     </div>

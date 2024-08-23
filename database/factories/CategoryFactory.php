@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,10 +17,10 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        return
-            [
-                'name' => $this->faker->name(),
-                'image_path' => $this->faker->imageUrl(),
-            ];
+        return [
+            'name' => $this->faker->name(),
+            'image_path' => $this->faker->imageUrl(),
+            'position' => Category::getNewPosition(),
+        ];
     }
 }

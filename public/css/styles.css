@@ -106,3 +106,8 @@
 {
     font-size:12px;
 }
+
+.hover-bg-offwhite:hover
+{
+    background: #f3f3f3; /* light gray background */
+}
